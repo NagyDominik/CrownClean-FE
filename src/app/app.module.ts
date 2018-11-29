@@ -4,13 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { UsersComponent } from './users/users.component';
-import { OrdersComponent } from './orders/orders.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
 import { UserAddComponent } from './users/user-add/user-add.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserUpdateComponent } from './users/user-update/user-update.component';
-import { UserListComponent } from './users/user-list/user-list.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
@@ -21,18 +17,18 @@ import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail
 import { VehicleUpdateComponent } from './vehicles/vehicle-update/vehicle-update.component';
 import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WelcomeComponent,
-    UsersComponent,
-    OrdersComponent,
-    VehiclesComponent,
     UserAddComponent,
     UserDetailComponent,
     UserUpdateComponent,
-    UserListComponent,
     OrdersListComponent,
     UsersListComponent,
     OrderDetailComponent,
@@ -42,11 +38,16 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     VehicleDetailComponent,
     VehicleUpdateComponent,
     VehicleAddComponent,
-    NavbarComponent
+    NavbarComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlexLayoutModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
