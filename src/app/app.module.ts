@@ -1,0 +1,54 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { UsersComponent } from './users/users.component';
+import { OrdersComponent } from './orders/orders.component';
+import { VehiclesComponent } from './vehicles/vehicles.component';
+import { UserAddComponent } from './users/user-add/user-add.component';
+import { UserDetailComponent } from './users/user-detail/user-detail.component';
+import { UserUpdateComponent } from './users/user-update/user-update.component';
+import { UserListComponent } from './users/user-list/user-list.component';
+import { OrdersListComponent } from './orders/orders-list/orders-list.component';
+import { UsersListComponent } from './users/users-list/users-list.component';
+import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
+import { OrderUpdateComponent } from './orders/order-update/order-update.component';
+import { OrderAddComponent } from './orders/order-add/order-add.component';
+import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
+import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
+import { VehicleUpdateComponent } from './vehicles/vehicle-update/vehicle-update.component';
+import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    WelcomeComponent,
+    UsersComponent,
+    OrdersComponent,
+    VehiclesComponent,
+    UserAddComponent,
+    UserDetailComponent,
+    UserUpdateComponent,
+    UserListComponent,
+    OrdersListComponent,
+    UsersListComponent,
+    OrderDetailComponent,
+    OrderUpdateComponent,
+    OrderAddComponent,
+    VehiclesListComponent,
+    VehicleDetailComponent,
+    VehicleUpdateComponent,
+    VehicleAddComponent,
+    NavbarComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
