@@ -9,7 +9,16 @@
     Email: {{currentUser.email}}
     Phone number: {{currentUser.phoneNumber}}
     Addresses: {{currentUser.addresses}}
-    Vehicles: {{currentUser.vehicles}}
+    <div *ngIf="currentUser.vehicles != null ">
+      <div *ngFor="let vehicle of currentUser.vehicles">
+        <pre>
+          Brand: {{vehicle.brand}}
+          Type: {{vehicle.type}}
+          UniqueID: {{vehicle.uniqueID}}
+        </pre>
+      </div>
+    </div>
+
   </pre>
 </div>
 <div *ngIf="!currentUser">

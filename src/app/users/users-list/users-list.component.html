@@ -1,7 +1,7 @@
 <Ul *ngIf="users">
   <li *ngFor="let user of users"><a routerLink="/users/{{user.id}}">
-    {{user.id}}, {{user.firstName}}  
-    </a>
+    {{user.id}}, {{user.firstName}}
+  </a>
     <button routerLink="/user-update//{{user.id}}">Update</button>
     <button (click)="delete(user.id)">Delete</button>
   </li>
