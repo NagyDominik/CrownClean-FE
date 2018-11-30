@@ -20,7 +20,7 @@ export class UsersListComponent implements OnInit {
 
   delete(id: number)
   {
-    this.userService.deleteCustomer(id).subscribe(message => {
+    this.userService.deleteUser(id).subscribe(message => {
       this.refresh();
     },
       error => {

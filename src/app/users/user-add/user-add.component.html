@@ -1,3 +1,28 @@
-<p>
-  user-add works!
-</p>
+<button routerLink="/users">Back</button>
+<form [formGroup]="userForm" (ngSubmit)="save()">
+    <label>
+       First Name: <input type="text" formControlName="firstName">
+    </label>
+    <label>
+        Last Name: <input type="text" formControlName="lastName">
+    </label>
+    <label>
+        Addresses: <input type="text" formControlName="addresses">
+    </label>
+    <label>
+        Email: <input type="text" formControlName="email">
+    </label>
+    <label>
+        Phone Number: <input type="text" formControlName="phoneNumber">
+    </label>
+    <label>
+      Company: <input type="checkbox" formControlName="isCompany">
+    </label>
+    <label>
+      Admin: <input type="checkbox" formControlName="isAdmin">
+    </label>
+    <label>
+      Approved: <input type="checkbox" formControlName="isApproved">
+    </label>
+    <button type="submit">Save</button>
+</form>

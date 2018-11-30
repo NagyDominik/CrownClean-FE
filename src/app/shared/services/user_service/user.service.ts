@@ -21,19 +21,20 @@ export class UserService {
     return this.http.get<User>(environment.apiURL + 'users/' + id);
   }
 
-  updateUser(user: User): Observable<User>
+  updateUser(user: User): Observable<any>
   {
     const id = user.id;
-    return this.http.put<User>(environment.apiURL + 'users/' + id, user);
+    return this.http.put(environment.apiURL + 'users/' + id, user, {responseType: 'text'});
   }
 
-  addUser(user: User): Observable<User>
+  addUser(user: User): Observable<any>
   {
-    return this.http.post<User>(environment.apiURL + 'users', user);
+    debugger;
+    return this.http.post(environment.apiURL + 'users', user, {responseType: 'text'});
   }
 
-  deleteCustomer(id: number): Observable<User>
+  deleteUser(id: number): Observable<any>
   {
-    return this.http.delete<User>(environment.apiURL + 'users/' + id);
+    return this.http.delete(environment.apiURL + 'users/' + id, {responseType: 'text'});
   }
 }
