@@ -1,3 +1,17 @@
-<p>
-  order-detail works!
-</p>
+<h1>Order details</h1>
+<button routerLink="/orders">Back</button>
+<div *ngIf="currentOrder">
+  <pre>
+    Id: {{currentOrder.id}}
+    Services: {{currentOrder.services}}
+    Vehicle: {{currentOrder.vehicle.brand}} {{currentOrder.vehicle.type}}
+    User: {{currentOrder.user.firstName}} {{currentOrder.user.lastName}} {{currentOrder.user.email}}
+    Clean at address: {{currentOrder.atAddress}}
+    Description: {{currentOrder.description}}
+    Order date: {{currentOrder.orderDate}}
+    Approved date: {{currentOrder.approveDate}}
+  </pre>
+</div>
+<div *ngIf="!currentOrder">
+  <h2>Order not found!</h2>
+</div>
