@@ -4,9 +4,13 @@ import { UsersListComponent } from './users/users-list/users-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
 import { UserUpdateComponent } from './users/user-update/user-update.component';
 import { AdminComponent } from './admin/admin.component';
+import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 
 const routes: Routes = [
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, children: [
+    { path: '', component: OrdersListComponent },
+    { path: 'users', component: UsersListComponent },
+  ]},
 
   { path: 'users', component: UsersListComponent },
   { path: 'users/:id', component: UserDetailComponent },
