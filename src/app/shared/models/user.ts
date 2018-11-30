@@ -1,7 +1,7 @@
-import { Vehicle } from "./vehicle";
-import { Order } from "./order";
+import { Vehicle } from './vehicle';
+import { Order } from './order';
 
-export class User{
+export class User {
     id: number;
     firstName: string;
     lastName: string;
