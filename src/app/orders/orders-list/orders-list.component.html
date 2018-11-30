@@ -1,3 +1,9 @@
-<p>
-  orders-list works!
-</p>
+<Ul *ngIf="orders">
+  <li *ngFor="let order of orders"><a routerLink="/orders/{{order.id}}">
+   {{order.services}}, {{order.id}}
+  </a>
+    <button routerLink="/order-update//{{order.id}}">Update</button>
+    <button (click)="delete(order.id)">Delete</button>
+  </li>
+</Ul>
+<h4 *ngIf="!orders">Loading...</h4>
