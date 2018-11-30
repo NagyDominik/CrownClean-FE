@@ -1,3 +1,16 @@
-<p>
-  user-detail works!
-</p>
+<h1>User details</h1>
+<button routerLink="/users">Back</button>
+<div *ngIf="currentUser">
+  <pre>
+    Id: {{currentUser.id}}
+    First Name: {{currentUser.firstName}}
+    Last Name: {{currentUser.lastName}}
+    Address: {{currentUser.address}}
+    Email: {{currentUser.email}}
+    Phone number: {{currentUser.phoneNumber}}
+    Addresses: {{currentUser.addresses}}
+  </pre>
+</div>
+<div *ngIf="!currentUser">
+  <h2>User not found!</h2>
+</div>
