@@ -20,9 +20,6 @@ export class UserAddComponent implements OnInit {
     email: new FormControl(''),
     phoneNumber: new FormControl(''),
     addresses: new FormControl(''),
-    isCompany: new FormControl(''),
-    isAdmin: new FormControl(''),
-    isApproved: new FormControl('')
   });
 
   ngOnInit() {
@@ -31,10 +28,17 @@ export class UserAddComponent implements OnInit {
   save()
   {
     const user = this.userForm.value;
+    user.isApproved = false;
+    user.isCompany = false;
+    user.isAdmin = false;
+    const address = this.userForm.get('addresses').value;
+    const addresses: string[] = [address];
+    user.addresses = addresses;
     this.userService.addUser(user).subscribe(() => {
       this.router.navigateByUrl('/users');
     },
       error => {
+        debugger;
         console.log(error.message);
         alert(error.message);
       }

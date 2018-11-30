@@ -29,7 +29,6 @@ export class UserService {
 
   addUser(user: User): Observable<any>
   {
-    debugger;
     return this.http.post(environment.apiURL + 'users', user, {responseType: 'text'});
   }
 
