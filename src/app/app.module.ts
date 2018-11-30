@@ -17,9 +17,9 @@ import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail
 import { VehicleUpdateComponent } from './vehicles/vehicle-update/vehicle-update.component';
 import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatButtonModule, MatCheckboxModule, MatRippleModule } from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
@@ -48,6 +48,7 @@ import { AdminComponent } from './admin/admin.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatRippleModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
