@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<div fxFlexFill fxLayout="column">
+  <app-navbar class="navbar"></app-navbar>
+
+  <div fxFlex fxLayout="column">
+    <div fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+    <footer fxLayout="column">
+      <div fxLayout="row">
+        <hr fxFlex="100">
+      </div>
+      <p fxFlexAlign="center">Copyright © 2018 CrownClean Kft.</p>
+    </footer>
+  </div>
+</div>
