@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/shared/services/user_service/user.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-user-update',
@@ -7,9 +10,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserUpdateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService,
+              private route: ActivatedRoute,
+              private router: Router) { }
+
+  id: number;
+
+  userForm = new FormGroup({
+    firstName: new FormControl(''),
+    lastName: new FormControl(''),
+    email: new FormControl(''),
+    phoneNumber: new FormControl(''),
+    addresses: new FormControl(''),
+    isCompany: new FormControl(''),
+    isAdmin: new FormControl(''),
+    isApproved: new FormControl('')
+  });
 
   ngOnInit() {
+    this.id = +this.route.snapshot.paramMap.get('id');
+    this.userService.getUserByID(this.id).subscribe(user =>
+    {
+      this.userForm.patchValue({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        addresses: user.addresses,
+        isCompany: user.isCompany,
+        isAdmin: user.isAdmin,
+        isApproved: user.isApproved
+      });
+    },
+      error => {
+        console.log(error.message);
+        alert(error.message);
+      }
+    );
+  }
+
+  save()
+  {
+    const user = this.userForm.value;
+    user.id = this.id;
+
+    this.userService.updateUser(user).subscribe(() => {
+      this.router.navigateByUrl('/users');
+    },
+      error => {
+        console.log(error.message);
+        alert(error.message);
+      }
+    );
   }
 
 }
