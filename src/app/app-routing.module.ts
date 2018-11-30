@@ -17,8 +17,11 @@ const routes: Routes = [
   {path: 'orders/:id', component: OrderDetailComponent},
 
   { path: 'admin', component: AdminComponent },
-
-];
+  { path: 'admin', component: AdminComponent, children: [
+      { path: '', component: OrdersListComponent },
+      { path: 'users', component: UsersListComponent },
+    ]},
+  ]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
