@@ -1,3 +1,17 @@
 mat-sidenav {
+    background-color: #eeeeee;
     width: 300px;
+}
+
+.sidemenu {
+    background-color: #eeeeee;
+}
+
+.menubtn {
+    margin-top: 15%
+}
+
+.menuopt {
+    padding-top: 5px;
+    padding-bottom: 5px
 }
