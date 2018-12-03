@@ -26,7 +26,7 @@ export class VehiclesListComponent implements OnInit {
     },
       error =>{
         console.log(error);
-        alert(error.message);
+        alert(error.error);
       }
     );
   }
@@ -38,7 +38,7 @@ export class VehiclesListComponent implements OnInit {
     },
       error => {
         console.log(error);
-        alert(error.message);
+        alert(error.error);
       }
     );
   }

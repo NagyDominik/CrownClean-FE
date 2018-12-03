@@ -1,8 +1,9 @@
+<button routerLink="/order-add">Add New user</button>
 <Ul *ngIf="orders">
   <li *ngFor="let order of orders"><a routerLink="/orders/{{order.id}}">
    {{order.services}}, {{order.id}}
   </a>
-    <button routerLink="/order-update//{{order.id}}">Update</button>
+    <button (click)="approve(order.id)">Approve</button>
     <button (click)="delete(order.id)">Delete</button>
   </li>
 </Ul>

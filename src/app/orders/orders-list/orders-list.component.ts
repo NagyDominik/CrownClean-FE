@@ -16,14 +16,14 @@ export class OrdersListComponent implements OnInit {
   ngOnInit() {
     this.refresh();
   }
-  refresh() {
 
+  refresh() {
     this.orderService.getOrders().subscribe(listOfOrders => {
         this.orders = listOfOrders;
       },
       error => {
-        console.log(error.message);
-        alert(error.message);
+        console.log(error);
+        alert(error.error);
       }
     );
   }
@@ -33,11 +33,20 @@ export class OrdersListComponent implements OnInit {
         this.refresh();
       },
       error => {
-        console.log(error.message);
-        alert(error.message);
+        console.log(error);
+        alert(error.error);
       }
     );
   }
 
-
+  approve(id: number) {
+    this.orderService.approveOrder(id).subscribe(message => {
+        this.refresh();
+      },
+      error => {
+        console.log(error);
+        alert(error.error);
+      }
+    );
+  }
 }
