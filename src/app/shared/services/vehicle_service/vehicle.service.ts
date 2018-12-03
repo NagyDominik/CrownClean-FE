@@ -11,7 +11,7 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<Vehicle[]>
+  getVehicles(): Observable<Vehicle[]>
   {
     return this.http.get<Vehicle[]>(environment.apiURL + 'vehicles');
   }

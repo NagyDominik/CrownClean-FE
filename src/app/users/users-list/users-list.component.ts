@@ -37,7 +37,7 @@ export class UsersListComponent implements OnInit {
       this.users = listOfUsers;
     },
       error => {
-        console.log(error.message);
+        console.log(error);
         alert(error.message);
       }
     );
