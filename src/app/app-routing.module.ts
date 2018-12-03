@@ -22,6 +22,8 @@ const routes: Routes = [
       { path: 'user-update/:id', component: UserUpdateComponent },
     ]
   },
+  { path: 'orders', component: OrdersListComponent },
+  { path: 'orders/:id', component: OrderDetailComponent },
   { path: 'order-add', component: OrderAddComponent },
   { path: 'users', component: UsersListComponent },
   { path: 'users/:id', component: UserDetailComponent },

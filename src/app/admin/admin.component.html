@@ -1,4 +1,4 @@
-<mat-sidenav-container class="container" style="height: 100%">
+<mat-sidenav-container class="container" style="height: 100%" fxLayout="row">
 
   <mat-sidenav #sidenav mode="over">
     <div fxLayout="column">
@@ -7,13 +7,15 @@
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content fxLayout="row">
+  <mat-sidenav-content fxLayout="row" fxFlex>
     <div class="sidemenu">
       <button mat-button class="menubtn" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
-    <router-outlet></router-outlet>
+    <div fxFlex="95vw" fxFlexOffset="1vw">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

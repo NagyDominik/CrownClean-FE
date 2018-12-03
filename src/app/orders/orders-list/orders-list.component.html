@@ -1,9 +1,28 @@
-<Ul *ngIf="orders">
-  <li *ngFor="let order of orders"><a routerLink="/orders/{{order.id}}">
-   {{order.services}}, {{order.id}}
-  </a>
-    <button (click)="approve(order.id)">Approve</button>
-    <button (click)="delete(order.id)">Delete</button>
-  </li>
-</Ul>
-<h4 *ngIf="!orders">Loading...</h4>
+<div fxLayout="column">
+  <div>
+    <H2>Orders</H2>
+  </div>
+  <div *ngIf="orders">
+    <mat-card *ngFor="let order of orders" fxLayout="row" fxLayoutGap="2vw">
+      <div routerLink="/orders/{{order.id}}" fxFlex="75vw">
+        {{order.services}}, {{order.id}}
+      </div>
+      <div>
+        <button mat-raised-button [color]="primary" (click)="approve(order.id)">Approve</button>
+        <button mat-raised-button (click)="delete(order.id)">Delete</button>
+      </div>
+    </mat-card>
+  </div>
+  <Ul *ngIf="orders">
+    <li *ngFor="let order of orders">
+      <a routerLink="/orders/{{order.id}}">
+        {{order.services}}, {{order.id}}
+      </a>
+      <button (click)="approve(order.id)">Approve</button>
+      <button (click)="delete(order.id)">Delete</button>
+    </li>
+  </Ul>
+  <div *ngIf="!orders" fxFlexAlign="center" fxFlexOffset="40vh">
+    <mat-spinner [color]="accent"></mat-spinner>
+  </div>
+</div>
