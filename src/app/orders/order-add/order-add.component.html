@@ -1,3 +1,18 @@
-<p>
-  order-add works!
-</p>
+<button routerLink="/admin">Back</button>
+<form [formGroup]="orderForm" (ngSubmit)="save()">
+  <label>
+    Vehicle: <select id="vehicle" formControlName="vehicle">
+      <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.id">{{vehicle.uniqueID}}</option>
+    </select>
+  </label>
+  <label>
+    Services: <input type="text" formControlName="services">
+  </label>
+  <label>
+    Description: <input type="text" formControlName="description">
+  </label>
+  <label>
+    Cleaning at address: <input type="checkbox" formControlName="atAddress">
+  </label>
+  <button type="submit">Save</button>
+</form>

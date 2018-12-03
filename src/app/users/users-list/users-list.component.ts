@@ -20,7 +20,7 @@ export class UsersListComponent implements OnInit {
 
   delete(id: number)
   {
-    this.userService.deleteCustomer(id).subscribe(message => {
+    this.userService.deleteUser(id).subscribe(message => {
       this.refresh();
     },
       error => {
@@ -37,7 +37,7 @@ export class UsersListComponent implements OnInit {
       this.users = listOfUsers;
     },
       error => {
-        console.log(error.message);
+        console.log(error);
         alert(error.message);
       }
     );
