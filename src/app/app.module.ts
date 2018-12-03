@@ -22,6 +22,7 @@ import { MatButtonModule, MatCheckboxModule, MatRippleModule } from '@angular/ma
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { VehicleListComponent } from './app/vehicle/vehicle-list/vehicle-list.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     VehicleUpdateComponent,
     VehicleAddComponent,
     NavbarComponent,
-    AdminComponent
+    AdminComponent,
+    VehicleListComponent
   ],
   imports: [
     BrowserModule,
