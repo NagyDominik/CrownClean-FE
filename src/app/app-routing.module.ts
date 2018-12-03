@@ -10,24 +10,28 @@ import { OrdersListComponent } from './orders/orders-list/orders-list.component'
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
 import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.component';
+import { OrderAddComponent } from './orders/order-add/order-add.component';
 
 const routes: Routes = [
-  { path: 'admin', component: AdminComponent, children: [
+  {
+    path: 'admin', component: AdminComponent, children: [
       { path: '', component: OrdersListComponent },
       { path: 'orders', component: OrdersListComponent },
       { path: 'orders/:id', component: OrderDetailComponent },
-      { path: 'orders-update/:id', component: OrderDetailComponent },
       { path: 'users', component: UsersListComponent },
       { path: 'users/:id', component: UserDetailComponent },
       { path: 'user-update/:id', component: UserUpdateComponent },
-    ]},
+    ]
+  },
+  { path: 'orders', component: OrdersListComponent },
+  { path: 'orders/:id', component: OrderDetailComponent },
+  { path: 'order-add', component: OrderAddComponent },
   { path: 'users', component: UsersListComponent },
   { path: 'users/:id', component: UserDetailComponent },
   { path: 'user-update/:id', component: UserUpdateComponent },
   { path: 'user-add', component: UserAddComponent },
   { path: 'vehicles', component: VehiclesListComponent },
   { path: 'vehicles/:id', component: VehicleDetailComponent},
-  { path: 'vehicle-add', component: VehicleAddComponent}
 ];
 
 @NgModule({

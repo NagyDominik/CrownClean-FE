@@ -1,19 +1,21 @@
-<mat-sidenav-container class="container" style="height: 100%">
+<mat-sidenav-container class="container" style="height: 100%" fxLayout="row">
 
   <mat-sidenav #sidenav mode="over">
     <div fxLayout="column">
-      <button mat-button class="menuopt" style="margin-top: 20px" >Order Management</button>
-      <button mat-button class="menuopt">User Management</button>
+      <button mat-button class="menuopt" style="margin-top: 20px" routerLink="/admin/orders">Order Management</button>
+      <button mat-button class="menuopt" routerLink="/admin/users">User Management</button>
     </div>
   </mat-sidenav>
 
-  <mat-sidenav-content fxLayout="row">
+  <mat-sidenav-content fxLayout="row" fxFlex>
     <div class="sidemenu">
       <button mat-button class="menubtn" (click)="sidenav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
     </div>
-    <router-outlet></router-outlet>
+    <div fxFlex="95vw" fxFlexOffset="1vw">
+      <router-outlet></router-outlet>
+    </div>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

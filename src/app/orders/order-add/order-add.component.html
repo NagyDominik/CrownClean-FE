@@ -1,10 +1,9 @@
-<button routerLink="/orders">Back</button>
+<button routerLink="/admin">Back</button>
 <form [formGroup]="orderForm" (ngSubmit)="save()">
   <label>
-    User <input type="number" formControlName="user">
-  </label>
-  <label>
-   Vehicle: <input type="number" formControlName="vehicle">
+    Vehicle: <select id="vehicle" formControlName="vehicle">
+      <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.id">{{vehicle.uniqueID}}</option>
+    </select>
   </label>
   <label>
     Services: <input type="text" formControlName="services">

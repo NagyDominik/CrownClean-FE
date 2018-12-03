@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../../shared/services/user_service/user.service';
-import {Router} from '@angular/router';
-import {FormControl, FormGroup} from '@angular/forms';
-import {OrderService} from '../../shared/services/order_service/order.service';
+import { UserService } from '../../shared/services/user_service/user.service';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { OrderService } from '../../shared/services/order_service/order.service';
+import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
+import { User } from 'src/app/shared/models/user';
+import { Vehicle } from 'src/app/shared/models/vehicle';
 
 @Component({
   selector: 'app-order-add',
@@ -11,47 +14,46 @@ import {OrderService} from '../../shared/services/order_service/order.service';
 })
 export class OrderAddComponent implements OnInit {
 
-  constructor(private orderService: OrderService,
-              private router: Router) { }
+  vehicles: Vehicle[] ;
 
+  constructor(
+    private orderService: OrderService,
+    private userService: UserService,
+    private vehicleService: VehicleService,
+    private router: Router
+  ) { }
 
   orderForm = new FormGroup({
     user: new FormControl(''),
     vehicle: new FormControl(''),
-    orderDate: new FormControl(''),
     services: new FormControl(''),
     description: new FormControl(''),
-    atAddress: new FormControl(''),
-    isApproved:  new FormControl(''),
-    approveDate: new FormControl(''),
+    atAddress: new FormControl('')
   });
 
   ngOnInit() {
+    
   }
 
   save() {
     const order = this.orderForm.value;
     order.isApproved = false;
-    order.approveDate = null;
-
-    const userID = this.orderForm.get('user').value;
-
-
-    const vehicleID = this.orderForm.get('vehicle').value;
-
-
-    order.orderDate = Date.now();
-    const services = this.orderForm.get('services').value;
-    const description = this.orderForm.get('description').value;
-    const atAdress = this.orderForm.get('atAddress').value;
+    order.approveDate = "02/02/2018";
+    order.orderDate = "02/02/2018";
+    const user = new User();
+    user.id = this.orderForm.get("user").value;
+    order.user = user;
+    const vehicle = new Vehicle();
+    vehicle.id = this.orderForm.get("vehicle").value;
+    order.vehicle = user;
 
     this.orderService.addOrder(order).subscribe(() => {
-        this.router.navigateByUrl('/orders');
-      },
+      this.router.navigateByUrl('/orders');
+    },
       error => {
         debugger;
-        console.log(error.message);
-        alert(error.message);
+        console.log(error);
+        alert(error.error);
       }
     );
   }
