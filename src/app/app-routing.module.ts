@@ -8,6 +8,7 @@ import { AdminComponent } from './admin/admin.component';
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
+import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent, children: [
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent },
   { path: 'user-update/:id', component: UserUpdateComponent },
   { path: 'user-add', component: UserAddComponent },
-  { path: 'vehicles', component: VehiclesListComponent }
+  { path: 'vehicles', component: VehiclesListComponent },
+  { path: 'vehicles/:id', component: VehicleDetailComponent}
 ];
 
 @NgModule({

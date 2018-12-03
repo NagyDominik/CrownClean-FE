@@ -1,3 +1,16 @@
-<p>
-  vehicle-detail works!
-</p>
+<h1>Vehicle details</h1>
+<button routerLink="/vehicles">Back</button>
+<div *ngIf="currentVehicle">
+  <pre>
+    Id: {{currentVehicle.id}}
+    Brand: {{currentVehicle.brand}}
+    Type: {{currentVehicle.type}}
+    Unique ID: {{currentVehicle.uniqueID}}
+    Size: {{currentVehicle.size}}
+    Leather interior: {{currentVehicle.interiorPlus}}
+    User: {{currentVehicle.user.firstName}}
+  </pre>
+</div>
+<div *ngIf="!currentVehicle">
+  <h2>User not found!</h2>
+</div>
