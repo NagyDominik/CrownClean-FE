@@ -17,17 +17,17 @@ export class UserDetailComponent implements OnInit {
   currentUser: User;  
 
   ngOnInit() {
-    this.getCustomer();
+    this.getUser();
   }
 
-  getCustomer()
+  getUser()
   {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserByID(id).subscribe(user => {
       this.currentUser = user;
       },
         error => {
-        console.log(error.message);
+        console.log(error);
         alert(error.message);   
       }
     );
