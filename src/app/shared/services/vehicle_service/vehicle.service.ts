@@ -23,7 +23,8 @@ export class VehicleService {
 
   updateVehicle(vehicle: Vehicle): Observable<any>
   {
-    return this.http.put(environment.apiURL + 'vehicles', vehicle, {responseType: 'text'});
+    const id = vehicle.id;
+    return this.http.put(environment.apiURL + 'vehicles/' + id, vehicle, {responseType: 'text'});
   }
 
   addVehicle(vehicle: Vehicle): Observable<any>

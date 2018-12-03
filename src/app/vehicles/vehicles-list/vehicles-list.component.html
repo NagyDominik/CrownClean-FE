@@ -1,4 +1,4 @@
-<button routerLink="/vehicle-add">Add New user</button>
+<button routerLink="/vehicle-add">Add New Vehicle</button>
 <Ul *ngIf="vehicles">
   <li *ngFor="let vehicle of vehicles"><a routerLink="/vehicles/{{vehicle.id}}">
     {{vehicle.id}}, {{vehicle.brand}}  

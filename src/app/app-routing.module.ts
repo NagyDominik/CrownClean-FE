@@ -7,6 +7,7 @@ import { UserAddComponent } from './users/user-add/user-add.component';
 import { AdminComponent } from './admin/admin.component';
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
 import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
+import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'user-update/:id', component: UserUpdateComponent },
   { path: 'user-add', component: UserAddComponent },
   { path: 'vehicles', component: VehiclesListComponent },
-  { path: 'vehicles/:id', component: VehicleDetailComponent}
+  { path: 'vehicles/:id', component: VehicleDetailComponent},
+  { path: 'vehicle-add', component: VehicleAddComponent}
 ];
 
 @NgModule({
