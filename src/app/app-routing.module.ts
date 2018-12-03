@@ -6,6 +6,9 @@ import { UserUpdateComponent } from './users/user-update/user-update.component';
 import { UserAddComponent } from './users/user-add/user-add.component';
 import { AdminComponent } from './admin/admin.component';
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
+import {OrdersListComponent} from './orders/orders-list/orders-list.component';
+import {OrderDetailComponent} from './orders/order-detail/order-detail.component';
+import {OrderAddComponent} from './orders/order-add/order-add.component';
 
 const routes: Routes = [
   { path: 'admin', component: AdminComponent },
@@ -13,7 +16,10 @@ const routes: Routes = [
   { path: 'users/:id', component: UserDetailComponent },
   { path: 'user-update/:id', component: UserUpdateComponent },
   { path: 'user-add', component: UserAddComponent },
-  { path: 'vehicles', component: VehiclesListComponent }
+  { path: 'vehicles', component: VehiclesListComponent },
+  {path: 'orders', component: OrdersListComponent},
+  {path: 'orders/:id', component: OrderDetailComponent},
+  {path: 'order-add', component: OrderAddComponent}
 ];
 
 @NgModule({
