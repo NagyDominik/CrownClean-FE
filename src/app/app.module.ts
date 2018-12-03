@@ -40,7 +40,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     VehicleUpdateComponent,
     VehicleAddComponent,
     NavbarComponent,
-    AdminComponent
+    AdminComponent,
+    VehiclesListComponent
   ],
   imports: [
     BrowserModule,
