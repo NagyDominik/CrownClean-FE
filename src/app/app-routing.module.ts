@@ -9,7 +9,6 @@ import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.co
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
-import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.component';
 import { OrderAddComponent } from './orders/order-add/order-add.component';
 
 const routes: Routes = [
