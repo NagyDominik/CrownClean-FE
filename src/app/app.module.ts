@@ -9,7 +9,6 @@ import { UserUpdateComponent } from './users/user-update/user-update.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
-import { OrderUpdateComponent } from './orders/order-update/order-update.component';
 import { OrderAddComponent } from './orders/order-add/order-add.component';
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
 import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
@@ -33,7 +32,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrdersListComponent,
     UsersListComponent,
     OrderDetailComponent,
-    OrderUpdateComponent,
     OrderAddComponent,
     VehiclesListComponent,
     VehicleDetailComponent,
