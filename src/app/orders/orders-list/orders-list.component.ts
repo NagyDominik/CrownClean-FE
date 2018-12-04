@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {OrderService} from '../../shared/services/order_service/order.service';
-import {Order} from '../../shared/models/order';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { OrderService } from '../../shared/services/order_service/order.service';
+import { Order } from '../../shared/models/order';
 
 
 @Component({
@@ -19,8 +19,8 @@ export class OrdersListComponent implements OnInit {
 
   refresh() {
     this.orderService.getOrders().subscribe(listOfOrders => {
-        this.orders = listOfOrders;
-      },
+      this.orders = listOfOrders;
+    },
       error => {
         console.log(error);
         alert(error.error);
@@ -30,8 +30,8 @@ export class OrdersListComponent implements OnInit {
 
   delete(id: number) {
     this.orderService.deleteOrder(id).subscribe(message => {
-        this.refresh();
-      },
+      this.refresh();
+    },
       error => {
         console.log(error);
         alert(error.error);
@@ -41,8 +41,8 @@ export class OrdersListComponent implements OnInit {
 
   approve(id: number) {
     this.orderService.approveOrder(id).subscribe(message => {
-        this.refresh();
-      },
+      this.refresh();
+    },
       error => {
         console.log(error);
         alert(error.error);

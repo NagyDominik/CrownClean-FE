@@ -1,0 +1,15 @@
+mat-card {
+    background-color: #EEEEEE;
+}
+
+.info {
+    letter-spacing: 1.5px
+}
+
+.buttons {
+    text-align: center
+}
+
+.body {
+    margin: 1vh 15vw 0;
+}

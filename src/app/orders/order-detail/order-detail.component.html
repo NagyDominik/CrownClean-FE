@@ -1,5 +1,5 @@
 <h1>Order details</h1>
-<button routerLink="/orders">Back</button>
+<button (click)="back()">Back</button>
 <div *ngIf="currentOrder">
   <pre>
     Id: {{currentOrder.id}}
