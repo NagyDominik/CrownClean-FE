@@ -1,11 +1,52 @@
-<button routerLink="/user-add">Add New user</button>
-<Ul *ngIf="users">
-  <li *ngFor="let user of users"><a routerLink="/users/{{user.id}}">
-    {{user.id}}, {{user.firstName}}
-  </a>
-    <button routerLink="/user-update//{{user.id}}">Update</button>
-    <button (click)="approve(user.id)">Approve</button>
-    <button (click)="delete(user.id)">Delete</button>
-  </li>
-</Ul>
-<h4 *ngIf="!users">Loading...</h4>
+<div fxLayout="column" class="body">
+  <div>
+    <H2>Users</H2>
+  </div>
+<!--
+  <div *ngIf="orders" fxFlex="1%">
+    <mat-card *ngFor="let order of orders" fxLayout="row" fxLayoutAlign="space-between">
+      <div routerLink="{{order.id}}" fxLayout="column" fxLayoutAlign="center" class="info">
+        {{order.id}} | {{order.services}} | {{order.orderDate| date:'d MMMM, yyyy'}} 
+      </div>
+      <div>
+        <button mat-raised-button [color]="primary" (click)="approve(order.id)">Approve</button>
+        <button mat-raised-button (click)="delete(order.id)">Delete</button>
+      </div>
+    </mat-card>
+  </div>
+-->
+  <table mat-table [dataSource]="users" class="mat-elevation-z5 info" matSort>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let user"> {{user.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let user" routerLink="{{user.id}}"> {{user.firstName}} {{user.lastName}} </td>
+    </ng-container>
+  
+    <!--Symbol Column-->
+    <ng-container matColumnDef="buttons">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let user" class="buttons" fxLayoutGap="1vw">
+        <button mat-raised-button color="primary" (click)="approve(user.id)">Approve</button>
+        <button mat-raised-button color="warn" (click)="delete(user.id)">Delete</button>
+        <button mat-raised-button color="secondary" routerLink='/user-update/{{user.id}}'>Update</button>
+      </td>
+    </ng-container>
+   
+    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'buttons'], sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'buttons'];"></tr>
+  </table>
+
+  <div *ngIf="!users" fxFlexAlign="center" fxFlexOffset="40vh">
+    <mat-spinner [color]="accent"></mat-spinner>
+  </div>
+</div>

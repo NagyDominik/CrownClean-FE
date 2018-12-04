@@ -33,7 +33,7 @@ export class UsersListComponent implements OnInit {
         this.refresh();
       },
       error => {
-        console.log(error.message);
+        console.log(error);
         alert(error.message);
       }
     );
