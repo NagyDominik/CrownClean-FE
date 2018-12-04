@@ -1,57 +1,51 @@
 <div fxLayout="column" class="body">
-  <div>
-    <H2>Orders</H2>
-  </div>
-<!--
-  <div *ngIf="orders" fxFlex="1%">
-    <mat-card *ngFor="let order of orders" fxLayout="row" fxLayoutAlign="space-between">
-      <div routerLink="{{order.id}}" fxLayout="column" fxLayoutAlign="center" class="info">
-        {{order.id}} | {{order.services}} | {{order.orderDate| date:'d MMMM, yyyy'}} 
-      </div>
-      <div>
-        <button mat-raised-button [color]="primary" (click)="approve(order.id)">Approve</button>
-        <button mat-raised-button (click)="delete(order.id)">Delete</button>
-      </div>
-    </mat-card>
-  </div>
--->
-  <table mat-table [dataSource]="orders" class="mat-elevation-z5 info" matSort>
 
-    <!--- Note that these columns can be defined in any order.
+  <div fxLayoutAlign="center">
+    <H2 fxFlex="75vw">Orders</H2>
+  </div>
+
+  <div fxLayoutAlign="center">
+    <table mat-table [dataSource]="orders" class="mat-elevation-z5 info" matSort fxFlex="75vw">
+
+      <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let order"> {{order.id}} </td>
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> ID </th>
+        <td mat-cell *matCellDef="let order"> {{order.id}} </td>
+      </ng-container>
+
+      <!--UNDER DEVELOPMENT
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let order"> {{order.user.firstName}} {{order.user.lastName}}</td>
     </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="services">
-      <th mat-header-cell *matHeaderCellDef> Services </th>
-      <td mat-cell *matCellDef="let order" routerLink="{{order.id}}"> {{order.services}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="orderDate">
-      <th mat-header-cell *matHeaderCellDef> Order Date </th>
-      <td mat-cell *matCellDef="let order"> {{order.orderDate| date:'d MMMM, yyyy'}} </td>
-    </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="buttons">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let order" class="buttons" fxLayoutGap="1vw">
-        <button mat-raised-button color="primary" (click)="approve(order.id)">Approve</button>
-        <button mat-raised-button color="warn" (click)="delete(order.id)">Delete</button>
-      </td>
-    </ng-container>
-   
-    <tr mat-header-row *matHeaderRowDef="['id', 'services', 'orderDate', 'buttons'], sticky: true"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'buttons'];"></tr>
-  </table>
+    -->
+      <ng-container matColumnDef="services">
+        <th mat-header-cell *matHeaderCellDef> Services </th>
+        <td mat-cell *matCellDef="let order" routerLink="{{order.id}}"> {{order.services}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderDate">
+        <th mat-header-cell *matHeaderCellDef> Order Date </th>
+        <td mat-cell *matCellDef="let order"> {{order.orderDate| date:'d MMMM, yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let order" class="buttons" fxLayoutGap="1vw">
+          <button mat-raised-button color="primary" (click)="approve(order.id)">Approve</button>
+          <button mat-raised-button color="warn" (click)="delete(order.id)">Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id', 'services', 'orderDate', 'buttons'], sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'buttons'];"></tr>
+    </table>
+  </div>
 
   <div *ngIf="!orders" fxFlexAlign="center" fxFlexOffset="40vh">
     <mat-spinner [color]="accent"></mat-spinner>
   </div>
+  
 </div>

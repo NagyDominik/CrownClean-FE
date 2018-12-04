@@ -35,4 +35,15 @@ export class OrderDetailComponent implements OnInit {
       }
     );
   }
+
+  approve(id: number) {
+    this.orderService.approveOrder(id).subscribe(message => {
+      alert("Order has been approved!");
+    },
+      error => {
+        console.log(error);
+        alert(error.error);
+      }
+    );
+  }
 }
