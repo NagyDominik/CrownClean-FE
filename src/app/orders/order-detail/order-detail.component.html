@@ -32,8 +32,8 @@
     </mat-card>
   </div>
 
-  <div *ngIf="!currentOrder">
-    <h2>Order not found!</h2>
+  <div *ngIf="!currentOrder" fxFlexAlign="center" fxFlexOffset="40vh">
+    <mat-spinner [color]="accent"></mat-spinner>
   </div>
 
 </div>

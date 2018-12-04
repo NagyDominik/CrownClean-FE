@@ -37,7 +37,7 @@ export class UsersListComponent implements OnInit {
         alert(error.message);
       }
     );
-  }
+  } 
 
   approve(id: number) {
     this.userService.approveUser(id).subscribe(message => {

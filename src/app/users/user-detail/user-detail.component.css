@@ -1,0 +1,22 @@
+mat-card {
+    background-color: #eeeeee;
+    min-width: 500px;
+}
+
+mat-card-content, .data {
+    margin: 0;
+    background: white;
+}
+
+mat-card-actions {
+    margin: 0;
+}
+
+h2 {
+    min-width: 500px;
+}
+
+p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
