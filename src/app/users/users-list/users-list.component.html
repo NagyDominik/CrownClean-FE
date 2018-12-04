@@ -4,6 +4,7 @@
     {{user.id}}, {{user.firstName}}
   </a>
     <button routerLink="/user-update//{{user.id}}">Update</button>
+    <button (click)="approve(user.id)">Approve</button>
     <button (click)="delete(user.id)">Delete</button>
   </li>
 </Ul>
