@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: 'user-update/:id', component: UserUpdateComponent },
   { path: 'user-add', component: UserAddComponent },
   { path: 'vehicles', component: VehiclesListComponent },
-  { path: 'vehicles/:id', component: VehicleDetailComponent }
+  { path: 'vehicles/:id', component: VehicleDetailComponent},
 ];
 
 @NgModule({

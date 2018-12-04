@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user_service/user.service';
 import { User } from 'src/app/shared/models/user';
-import { error } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-users-list',
@@ -18,21 +17,7 @@ export class UsersListComponent implements OnInit {
     this.refresh();
   }
 
-  delete(id: number)
-  {
-    this.userService.deleteUser(id).subscribe(message => {
-      this.refresh();
-    },
-      error => {
-        console.log(error.message);
-        alert(error.message);
-    }
-    );
-  }
-
-
-  refresh() 
-  {
+  refresh() {
     this.userService.getUsers().subscribe(listOfUsers => {
       this.users = listOfUsers;
     },
@@ -43,4 +28,25 @@ export class UsersListComponent implements OnInit {
     );
   }
 
+  delete(id: number) {
+    this.userService.deleteUser(id).subscribe(message => {
+        this.refresh();
+      },
+      error => {
+        console.log(error.message);
+        alert(error.message);
+      }
+    );
+  }
+
+  approve(id: number) {
+    this.userService.approveUser(id).subscribe(message => {
+        this.refresh();
+      },
+      error => {
+        console.log(error);
+        alert(error.error);
+      }
+    );
+  }
 }

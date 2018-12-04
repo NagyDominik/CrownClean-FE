@@ -9,35 +9,33 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>( environment.apiURL + 'users');
+    return this.http.get<User[]>(environment.apiURL + 'users');
   }
 
   getUserByID(id: number): Observable<User> {
     return this.http.get<User>(environment.apiURL + 'users/' + id);
   }
 
-  updateUser(user: User): Observable<any>
-  {
+  updateUser(user: User): Observable<any> {
     const id = user.id;
     return this.http.put(environment.apiURL + 'users/' + id, user, {responseType: 'text'});
   }
   addUser(user: User): Observable<User> {
     return this.http.post<User>(environment.apiURL + 'users', user);
   }
-
-  deleteCustomer(id: number): Observable<User> {
-    return this.http.delete<User>(environment.apiURL + 'users/' + id);
+  approveUser(id: number): Observable<any> {
+    return this.http.put(environment.apiURL + 'users/approve/' + id, '');
   }
-  addUser(user: User): Observable<any>
-  {
+
+  addUser(user: User): Observable<any> {
     return this.http.post(environment.apiURL + 'users', user, {responseType: 'text'});
   }
 
-  deleteUser(id: number): Observable<any>
-  {
+  deleteUser(id: number): Observable<any> {
     return this.http.delete(environment.apiURL + 'users/' + id, {responseType: 'text'});
   }
 }

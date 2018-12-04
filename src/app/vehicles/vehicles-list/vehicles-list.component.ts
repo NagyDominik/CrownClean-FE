@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
 import { Vehicle } from 'src/app/shared/models/vehicle';
-import { reference } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -35,7 +34,6 @@ export class VehiclesListComponent implements OnInit {
   refresh() 
   {
     this.vehicleService.getVehicles().subscribe(vehicleList => {
-      debugger;
       this.vehicles = vehicleList;
     },
       error => {
