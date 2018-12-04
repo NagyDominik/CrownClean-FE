@@ -12,7 +12,6 @@ import { OrderDetailComponent } from './orders/order-detail/order-detail.compone
 import { OrderAddComponent } from './orders/order-add/order-add.component';
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
 import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
-import { VehicleUpdateComponent } from './vehicles/vehicle-update/vehicle-update.component';
 import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -35,7 +34,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     OrderAddComponent,
     VehiclesListComponent,
     VehicleDetailComponent,
-    VehicleUpdateComponent,
     VehicleAddComponent,
     NavbarComponent,
     AdminComponent,

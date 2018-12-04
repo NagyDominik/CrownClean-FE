@@ -43,7 +43,7 @@ export class UserUpdateComponent implements OnInit {
       });
     },
       error => {
-        console.log(error.message);
+        console.log(error);
         alert(error.message);
       }
     );
@@ -58,10 +58,9 @@ export class UserUpdateComponent implements OnInit {
       this.router.navigateByUrl('/users');
     },
       error => {
-        console.log(error.message);
+        console.log(error);
         alert(error.message);
       }
     );
   }
-
 }
