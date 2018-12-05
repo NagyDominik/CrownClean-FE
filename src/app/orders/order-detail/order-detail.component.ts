@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {OrderService} from '../../shared/services/order_service/order.service';
-import {ActivatedRoute} from '@angular/router';
-import {Order} from '../../shared/models/order';
-
+import { OrderService } from '../../shared/services/order_service/order.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Order } from '../../shared/models/order';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-order-detail',
@@ -12,7 +12,7 @@ import {Order} from '../../shared/models/order';
 export class OrderDetailComponent implements OnInit {
 
   constructor(private orderService: OrderService,
-              private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private router: Router, private location: Location) { }
 
   currentOrder: Order;
 
@@ -20,15 +20,29 @@ export class OrderDetailComponent implements OnInit {
     this.getOrder();
   }
 
-  getOrder()
-  {
+  back() {
+    this.location.back();
+  }
+
+  getOrder() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.orderService.getOrderByID(id).subscribe(user => {
-        this.currentOrder = user;
-      },
+      this.currentOrder = user;
+    },
       error => {
         console.log(error.message);
         alert(error.message);
+      }
+    );
+  }
+
+  approve(id: number) {
+    this.orderService.approveOrder(id).subscribe(message => {
+      alert("Order has been approved!");
+    },
+      error => {
+        console.log(error);
+        alert(error.error);
       }
     );
   }

@@ -15,7 +15,6 @@ import { OrderAddComponent } from './orders/order-add/order-add.component';
 const routes: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: '', component: OrdersListComponent },
       { path: 'orders', component: OrdersListComponent },
       { path: 'orders/:id', component: OrderDetailComponent },
       { path: 'users', component: UsersListComponent },

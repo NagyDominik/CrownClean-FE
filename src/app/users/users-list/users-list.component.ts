@@ -33,11 +33,11 @@ export class UsersListComponent implements OnInit {
         this.refresh();
       },
       error => {
-        console.log(error.message);
+        console.log(error);
         alert(error.message);
       }
     );
-  }
+  } 
 
   approve(id: number) {
     this.userService.approveUser(id).subscribe(message => {
