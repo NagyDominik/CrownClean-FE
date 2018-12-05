@@ -1,6 +1,7 @@
 .navbar {
     background-color: #3d5c99;
     color: white;
+    min-width: 600px;
 }
 
 .login {
@@ -9,4 +10,11 @@
 
 button {
     font-size: 21px;
+}
+
+img {
+    min-width: 100px;
+    min-height: 40px;
+    width: 75%;
+    height: 100%;
 }
