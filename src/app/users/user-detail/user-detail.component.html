@@ -37,7 +37,10 @@
           <button mat-raised-button fxFlex="80" color="" routerLink='/user-update/{{currentUser.id}}'>Update</button>
         </div>
         <div fxLayoutAlign="center">
-          <button mat-raised-button (click)="back()" fxFlexFill>Back</button>
+            <mat-divider></mat-divider>
+          </div>
+        <div fxLayoutAlign="center">
+          <button mat-button (click)="back()" fxFlexFill>Back</button>
         </div>
       </mat-card-actions>
     </mat-card>
