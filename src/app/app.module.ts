@@ -16,12 +16,16 @@ import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.componen
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule, 
-        MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule, 
-        MatTableModule, MatSortModule, MatExpansionModule } from '@angular/material';
+import {
+  MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule,
+  MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
+  MatTableModule, MatSortModule, MatExpansionModule, MatMenuModule
+} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CarsComponent } from './information_pages/cars/cars.component';
+import { BoatsComponent } from './information_pages/boats/boats.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     VehicleAddComponent,
     NavbarComponent,
     AdminComponent,
-    VehiclesListComponent
+    VehiclesListComponent,
+    CarsComponent,
+    BoatsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSortModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

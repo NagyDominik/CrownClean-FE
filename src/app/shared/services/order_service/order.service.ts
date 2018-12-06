@@ -24,11 +24,6 @@ export class OrderService {
     return this.http.put<Order>(environment.apiURL + 'users/' + id, order);
   }
 
-  updateOrder(order: Order): Observable<Order> {
-    const id = order.id;
-    return this.http.put<Order>(environment.apiURL + 'orders/' + id, order);
-  }
-
   approveOrder(id: number): Observable<any> {
     return this.http.put(environment.apiURL + 'orders/approve/' + id, "");
   }

@@ -32,10 +32,6 @@ export class UserService {
     return this.http.put(environment.apiURL + 'users/approve/' + id, '');
   }
 
-  addUser(user: User): Observable<any> {
-    return this.http.post(environment.apiURL + 'users', user, {responseType: 'text'});
-  }
-
   deleteUser(id: number): Observable<any> {
     return this.http.delete(environment.apiURL + 'users/' + id, {responseType: 'text'});
   }
