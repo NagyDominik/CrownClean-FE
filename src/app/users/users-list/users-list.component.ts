@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user_service/user.service';
 import { User } from 'src/app/shared/models/user';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-users-list',
@@ -9,7 +10,7 @@ import { User } from 'src/app/shared/models/user';
 })
 export class UsersListComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public snackBar: MatSnackBar) { }
 
   users: User[];
 
@@ -30,19 +31,19 @@ export class UsersListComponent implements OnInit {
 
   delete(id: number) {
     this.userService.deleteUser(id).subscribe(message => {
-        this.refresh();
-      },
+      this.refresh();
+    },
       error => {
         console.log(error);
         alert(error.message);
       }
     );
-  } 
+  }
 
   approve(id: number) {
     this.userService.approveUser(id).subscribe(message => {
-        this.refresh();
-      },
+      this.refresh();
+    },
       error => {
         console.log(error);
         alert(error.error);

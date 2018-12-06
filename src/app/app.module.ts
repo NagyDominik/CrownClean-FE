@@ -18,7 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule, 
         MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule, 
-        MatTableModule, MatSortModule, MatExpansionModule } from '@angular/material';
+        MatTableModule, MatSortModule, MatExpansionModule, MatSnackBarModule } from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -56,9 +56,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDividerModule,
     MatTableModule,
     MatSortModule,
+    MatExpansionModule,
+    MatSnackBarModule,
     HttpClientModule,
     ReactiveFormsModule,
-    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]
