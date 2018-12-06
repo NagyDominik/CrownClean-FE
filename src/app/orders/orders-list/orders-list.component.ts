@@ -17,14 +17,13 @@ export class OrdersListComponent implements OnInit {
   ngOnInit() {
     this.refresh();
   }
-
-  refresh() {
+  refresh(){
     this.orderService.getOrders().subscribe(listOfOrders => {
       this.orders = listOfOrders;
     },
       error => {
-        console.log(error);
-        alert(error.error);
+        console.log(error.message);
+        alert(error.message);
       }
     );
   }
@@ -40,7 +39,6 @@ export class OrdersListComponent implements OnInit {
       }
     );
   }
-
   approve(id: number) {
     this.orderService.approveOrder(id).subscribe(message => {
       this.refresh();

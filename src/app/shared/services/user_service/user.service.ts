@@ -25,13 +25,11 @@ export class UserService {
     const id = user.id;
     return this.http.put(environment.apiURL + 'users/' + id, user, {responseType: 'text'});
   }
-
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(environment.apiURL + 'users', user);
+  }
   approveUser(id: number): Observable<any> {
     return this.http.put(environment.apiURL + 'users/approve/' + id, '');
-  }
-
-  addUser(user: User): Observable<any> {
-    return this.http.post(environment.apiURL + 'users', user, {responseType: 'text'});
   }
 
   deleteUser(id: number): Observable<any> {

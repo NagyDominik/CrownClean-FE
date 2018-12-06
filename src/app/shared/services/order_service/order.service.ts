@@ -16,12 +16,12 @@ export class OrderService {
   }
 
   getOrderByID(id: number): Observable<Order> {
-    return this.http.get<Order>(environment.apiURL + 'orders/' + id);
-  }
 
+    return this.http.get<Order>(environment.apiURL + 'orders/' + id, );
+  }
   updateOrder(order: Order): Observable<Order> {
     const id = order.id;
-    return this.http.put<Order>(environment.apiURL + 'orders/' + id, order);
+    return this.http.put<Order>(environment.apiURL + 'users/' + id, order);
   }
 
   approveOrder(id: number): Observable<any> {

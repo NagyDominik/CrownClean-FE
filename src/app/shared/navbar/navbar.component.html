@@ -1,9 +1,13 @@
 <div class="row" fxLayout="row" class="navbar">
-  <div fxLayoutAlign="end" fxFlex="1 0 7%">
-    <img src="assets/vectorpaint.png" alt="logo" routerLink="/">
+  <div fxLayoutAlign="end" fxFlex="7%">
+    <img src="assets/vectorpaint.png" alt="logo" width="75%" height="100%" routerLink="/welcome">
   </div>
   <div fxLayoutGap="20px" fxFlex="68%" fxLayoutAlign="end">
-    <button mat-button>Services</button>
+    <button mat-button [matMenuTriggerFor]="menu">Services</button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/services/cars">Cars</button>
+      <button mat-menu-item routerLink="/services/boats">Boats</button>
+    </mat-menu>
     <button mat-button>About us</button>
     <button mat-button>Contact</button>
   </div>
