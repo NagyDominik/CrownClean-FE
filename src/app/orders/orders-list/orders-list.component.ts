@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from '../../shared/services/order_service/order.service';
 import { Order } from '../../shared/models/order';
+import { MatSnackBar } from '@angular/material';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Order } from '../../shared/models/order';
 })
 export class OrdersListComponent implements OnInit {
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, public snackBar: MatSnackBar) { }
   orders: Order[];
 
   ngOnInit() {
@@ -30,21 +31,29 @@ export class OrdersListComponent implements OnInit {
   delete(id: number) {
     this.orderService.deleteOrder(id).subscribe(message => {
       this.refresh();
+      this.openSnackBar("Order has been deleted!");
     },
       error => {
         console.log(error);
-        alert(error.error);
+        this.openSnackBar(error.error);
       }
     );
   }
   approve(id: number) {
     this.orderService.approveOrder(id).subscribe(message => {
       this.refresh();
+      this.openSnackBar("Order has been approved!");
     },
       error => {
         console.log(error);
-        alert(error.error);
+        this.openSnackBar(error.error);
       }
     );
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message,'OK', {
+      duration: 1500,
+    })
   }
 }

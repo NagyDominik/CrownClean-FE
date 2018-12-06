@@ -33,24 +33,33 @@
         <td mat-cell *matCellDef="let order"> {{order.orderDate| date:'d MMMM, yyyy'}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="buttons">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let order" class="buttons" fxLayoutGap="1vw">
-          <button mat-raised-button color="primary" (click)="approve(order.id)">Approve</button>
-          <button mat-raised-button color="warn" (click)="delete(order.id)">Delete</button>
+      <ng-container matColumnDef="approved">
+        <th mat-header-cell *matHeaderCellDef> Approved </th>
+        <td mat-cell *matCellDef="let order">
+          <span *ngIf="order.isApproved"> Approved </span>
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="['id', 'services', 'orderDate', 'buttons'], sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'buttons'];"></tr>
+      <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let order" class="buttons">
+          <div fxLayoutGap="1vw" fxLayoutAlign="end">
+            <button mat-raised-button color="primary" (click)="approve(order.id)">Approve</button>
+            <button mat-raised-button color="warn" (click)="delete(order.id)">Delete</button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['id', 'services', 'orderDate', 'approved', 'buttons'], sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'approved', 'buttons'];"></tr>
     </table>
   </div>
 
   <div *ngIf="!orders" fxFlexAlign="center" fxFlexOffset="40vh">
     <mat-spinner [color]="accent"></mat-spinner>
   </div>
-
 </div>
   
 </div>
 </div>
+

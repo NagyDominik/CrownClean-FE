@@ -16,11 +16,9 @@ import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.componen
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {
-  MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule,
-  MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
-  MatTableModule, MatSortModule, MatExpansionModule, MatMenuModule
-} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule,
+        MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
+        MatTableModule, MatSortModule, MatExpansionModule, MatSnackBarModule, MatMenuModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -62,6 +60,8 @@ import { BoatsComponent } from './information_pages/boats/boats.component';
     MatDividerModule,
     MatTableModule,
     MatSortModule,
+    MatExpansionModule,
+    MatSnackBarModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatExpansionModule,

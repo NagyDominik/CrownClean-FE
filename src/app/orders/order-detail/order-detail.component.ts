@@ -3,6 +3,7 @@ import { OrderService } from '../../shared/services/order_service/order.service'
 import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../../shared/models/order';
 import { Location } from '@angular/common';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-order-detail',
@@ -12,7 +13,7 @@ import { Location } from '@angular/common';
 export class OrderDetailComponent implements OnInit {
 
   constructor(private orderService: OrderService,
-    private route: ActivatedRoute, private router: Router, private location: Location) { }
+    private route: ActivatedRoute, private router: Router, private location: Location, public snackBar: MatSnackBar) { }
 
   currentOrder: Order;
 
@@ -38,12 +39,18 @@ export class OrderDetailComponent implements OnInit {
 
   approve(id: number) {
     this.orderService.approveOrder(id).subscribe(message => {
-      alert("Order has been approved!");
+      this.openSnackBar("Order has been approved!");
     },
       error => {
         console.log(error);
-        alert(error.error);
+        this.openSnackBar(error.error);
       }
     );
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message,'OK', {
+      duration: 1500,
+    })
   }
 }
