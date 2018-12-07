@@ -6,12 +6,11 @@
     <button mat-button [matMenuTriggerFor]="menu">Services</button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item routerLink="/services/cars">Cars</button>
-      <button mat-menu-item routerLink="/services/boats">Boats</button>
     </mat-menu>
     <button mat-button>About us</button>
     <button mat-button>Contact</button>
   </div>
   <div fxLayoutAlign="end" fxFlex="25%">
-    <button mat-button class="login">Login</button>
+    <button mat-button class="login" routerLink="login">Login</button>
   </div>
 </div>
