@@ -1,14 +1,14 @@
-<div class="row" fxLayout="row" class="navbar">
-  <div fxLayoutAlign="end" fxFlex="7%">
-    <img src="assets/vectorpaint.png" alt="logo" width="75%" height="100%" routerLink="/welcome">
+<div fxFlex="60vw" class="row" fxLayout="row" class="navbar" fxLayoutAlign="center" fxLayoutGap="50px">
+  <div fxLayoutAlign="center" fxFlex="13vw">
+    <img src="assets/vectorpaint.png" alt="logo" width="100%" height="100%" routerLink="/welcome">
   </div>
-  <div fxLayoutGap="20px" fxFlex="68%" fxLayoutAlign="end">
-    <button mat-button [matMenuTriggerFor]="menu">Services</button>
-    <button mat-button>About us</button>
-    <button mat-button>Contact</button>
+  <div fxLayoutGap="20px" fxFlex="60vw" fxLayoutAlign="end">
+    <button mat-button [matMenuTriggerFor]="menu" class="navBarButton">Services</button>
+    <button mat-button class="navBarButton">About us</button>
+    <button mat-button class="navBarButton">Contact</button>
   </div>
-  <div fxLayoutAlign="end" fxFlex="25%">
-    <button mat-button class="login">Login</button>
+  <div fxLayoutAlign="end" fxFlex="25vw">
+    <button mat-button class="login navBarButton">Login</button>
   </div>
 </div>
 

@@ -18,7 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule,
         MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
-        MatTableModule, MatSortModule, MatExpansionModule, MatSnackBarModule, MatMenuModule} from '@angular/material';
+        MatTableModule, MatSortModule, MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -65,7 +65,8 @@ import { BoatsComponent } from './information_pages/boats/boats.component';
     HttpClientModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatMenuModule
+    MatMenuModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

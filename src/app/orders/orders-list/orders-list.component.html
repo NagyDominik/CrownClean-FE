@@ -1,9 +1,7 @@
-<div fxLayout="column">
-  <div>
-  <div fxLayout="column" class="body">
+<div fxLayout="column" class="body">
 
   <div fxLayoutAlign="center">
-    <H2 fxFlex="75vw">Orders</H2>
+    <H2 fxFlex="75vw" class="mat-display-1 title">Orders</H2>
   </div>
 
   <div fxLayoutAlign="center">
@@ -56,10 +54,7 @@
   </div>
 
   <div *ngIf="!orders" fxFlexAlign="center" fxFlexOffset="40vh">
-    <mat-spinner [color]="accent"></mat-spinner>
+    <mat-spinner color="accent"></mat-spinner>
   </div>
-</div>
   
 </div>
-</div>
-
