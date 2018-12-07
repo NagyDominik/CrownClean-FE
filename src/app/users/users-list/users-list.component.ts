@@ -32,22 +32,30 @@ export class UsersListComponent implements OnInit {
   delete(id: number) {
     this.userService.deleteUser(id).subscribe(message => {
       this.refresh();
+      this.openSnackBar("User has been deleted!");
     },
       error => {
         console.log(error);
-        alert(error.message);
+        this.openSnackBar(error.error);
       }
     );
   }
 
   approve(id: number) {
     this.userService.approveUser(id).subscribe(message => {
+      this.openSnackBar("User has been approved!");
       this.refresh();
     },
       error => {
         console.log(error);
-        alert(error.error);
+        this.openSnackBar(error.error);
       }
     );
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message,'OK', {
+      duration: 1500,
+    })
   }
 }
