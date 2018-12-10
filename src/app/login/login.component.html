@@ -1,0 +1,42 @@
+
+<mat-card class="example-card"  fxLayout="column" fxLayoutAlign="end center" style="margin: 30px 700px 0px 700px;">
+  <div>
+  <mat-card-header style="place-content: center">
+    <mat-card-title >Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content  style="margin-left: 10px">
+    <form [formGroup]="loginForm" class="example-form" >
+      <table class="example-full-width">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" >
+              <input matInput placeholder="Email" type="text" formControlName="Email" required  >
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-form-field class="example-full-width" >
+            <input matInput placeholder="Password"   type="password" formControlName="Password" required>
+          </mat-form-field></td>
+        </tr></table>
+    </form>
+    </mat-card-content>
+    <mat-card-actions style=" text-align: center">
+      <button mat-raised-button (click)="login()" color="primary" >Login</button>
+    </mat-card-actions>
+      <mat-card-footer style="margin-left: 10px;margin-bottom: 5px">
+        <table class="example-full-width">
+          <tr>
+            <td>
+        Don't have an account? <a  style=" color: aliceblue" routerLink="">Register</a>
+            </td>
+          </tr>
+          <tr>
+            <tr>
+          Forgot your password?<a style="color: coral" routerLink="">Create new</a>
+           </tr>
+        </table>
+      </mat-card-footer>
+  </div>
+    </mat-card>
+

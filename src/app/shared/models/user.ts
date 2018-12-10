@@ -6,6 +6,8 @@ export class User {
     firstName: string;
     lastName: string;
     email: string;
+    passwordHash: string;
+    passwordSalt: string;
     phoneNumber: string;
     addresses: string[];
     vehicles: Vehicle[];

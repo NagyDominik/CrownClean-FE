@@ -18,12 +18,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule,
         MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
-        MatTableModule, MatSortModule, MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+        MatTableModule, MatSortModule} from '@angular/material';
+import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CarsComponent } from './information_pages/cars/cars.component';
-import { BoatsComponent } from './information_pages/boats/boats.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -42,8 +43,9 @@ import { BoatsComponent } from './information_pages/boats/boats.component';
     NavbarComponent,
     AdminComponent,
     VehiclesListComponent,
-    CarsComponent,
-    BoatsComponent
+    LoginComponent,
+    RegisterComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,9 @@ import { BoatsComponent } from './information_pages/boats/boats.component';
     ReactiveFormsModule,
     MatExpansionModule,
     MatMenuModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
     MatToolbarModule,
   ],
   providers: [],

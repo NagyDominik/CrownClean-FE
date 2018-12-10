@@ -11,9 +11,9 @@ import { OrdersListComponent } from './orders/orders-list/orders-list.component'
 import { OrderDetailComponent } from './orders/order-detail/order-detail.component';
 import { VehicleDetailComponent } from './vehicles/vehicle-detail/vehicle-detail.component';
 import { OrderAddComponent } from './orders/order-add/order-add.component';
-import {CarsComponent} from './information_pages/cars/cars.component';
-import {BoatsComponent} from './information_pages/boats/boats.component';
 import {WelcomeComponent} from './welcome/welcome.component';
+import {LoginComponent} from './login/login.component';
+import {RegisterComponent} from './register/register.component';
 
 const routes: Routes = [
   {
@@ -34,9 +34,9 @@ const routes: Routes = [
   { path: 'user-add', component: UserAddComponent },
   { path: 'vehicles', component: VehiclesListComponent },
   { path: 'vehicles/:id', component: VehicleDetailComponent},
-  {path: 'services/cars', component: CarsComponent},
-  {path: 'services/boats', component: BoatsComponent},
-  {path: 'welcome', component: WelcomeComponent}
+  {path: 'welcome', component: WelcomeComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({
