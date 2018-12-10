@@ -16,10 +16,10 @@ import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.componen
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatCheckboxModule, MatRippleModule, MatSidenavModule,
+import { MatButtonModule, MatRippleModule, MatSidenavModule,
         MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
         MatTableModule, MatSortModule} from '@angular/material';
-import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatCheckboxModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -53,7 +53,6 @@ import { RegisterComponent } from './register/register.component';
     FlexLayoutModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatCheckboxModule,
     MatRippleModule,
     MatSidenavModule,
     MatIconModule,
@@ -72,6 +71,7 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     MatInputModule,
     MatToolbarModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
