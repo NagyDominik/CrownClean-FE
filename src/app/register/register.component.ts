@@ -23,13 +23,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  register() {
+ /* register() {
     const userSignUpData = this.signUpForm.value;
     this.authenticationService.login(this.loginForm.controls['Email'].value, this.loginForm.controls['Password'].value)
       .subscribe(
         success => {
           this.router.navigate([this.authenticationService.redirectURL]);
         });
-  }
+  }*/
 
 }
