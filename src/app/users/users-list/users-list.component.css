@@ -9,3 +9,7 @@
 table, h2 {
     min-width: 600px;
 }
+
+.tableContainer {
+    margin-bottom: 1.5vw;
+}

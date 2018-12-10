@@ -2,11 +2,10 @@
     padding-top: 15px;
     padding-bottom: 15px;
     min-width: 725px;
-    min-height: 130px;
-    max-height: 200px;
     background-color: #3d5c99;
 }
 
 .content-area{
     min-width: 725px;
+    min-height: 65vh;
 }

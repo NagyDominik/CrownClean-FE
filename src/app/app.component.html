@@ -1,16 +1,16 @@
-<div fxFill fxLayout="column" class="mat-app-background">
+<div fxLayout="column" class="mat-app-background">
 
-  <div fxFlex="1 1 10vw" class="navbar" fxLayout="column" fxLayoutAlign="center">
+  <div fxFlex="200px" fxFlex.md="165px" fxFlex.sm="130px" class="navbar" fxLayout="column" fxLayoutAlign="center">
     <app-navbar fxLayoutAlign="center"></app-navbar>
   </div>
 
-  <div fxFlex fxLayout="column" class="content-area">
+  <div fxLayout="column" class="content-area">
 
-    <div class="content-area" style="height: 94%">
+    <div class="content-area">
       <router-outlet></router-outlet>
     </div>
 
-    <footer fxLayout="column" fxFlex style="height: 5%;" class="mat-app-background">
+    <footer fxFlex="25vh" fxLayout="column" class="mat-app-background">
       <div fxLayout="row">
         <mat-divider fxFlex="100"></mat-divider>
       </div>
