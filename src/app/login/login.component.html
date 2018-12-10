@@ -4,13 +4,13 @@
   <mat-card-header style="place-content: center">
     <mat-card-title >Login</mat-card-title>
   </mat-card-header>
-  <mat-card-content  style="margin-left: 10px">
+  <mat-card-content>
     <form [formGroup]="loginForm" class="example-form" >
       <table class="example-full-width">
         <tr>
           <td>
-            <mat-form-field class="example-full-width" >
-              <input matInput placeholder="Email" type="text" formControlName="Email" required  >
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Email" type="text" formControlName="Email" required >
             </mat-form-field>
           </td>
         </tr>
@@ -28,7 +28,7 @@
         <table class="example-full-width">
           <tr>
             <td>
-        Don't have an account? <a  style=" color: aliceblue" routerLink="/register">Register</a>
+        Don't have an account? <a  style=" color: coral" routerLink="/register">Register</a>
             </td>
           </tr>
           <tr>
