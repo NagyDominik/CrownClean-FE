@@ -25,18 +25,25 @@ const routes: Routes = [
       { path: 'user-update/:id', component: UserUpdateComponent },
     ]
   },
+
   { path: 'orders', component: OrdersListComponent },
   { path: 'orders/:id', component: OrderDetailComponent },
   { path: 'order-add', component: OrderAddComponent },
+
   { path: 'users', component: UsersListComponent },
   { path: 'users/:id', component: UserDetailComponent },
   { path: 'user-update/:id', component: UserUpdateComponent },
   { path: 'user-add', component: UserAddComponent },
+
   { path: 'vehicles', component: VehiclesListComponent },
   { path: 'vehicles/:id', component: VehicleDetailComponent},
+
   {path: 'welcome', component: WelcomeComponent},
+
   {path: 'login', component: LoginComponent},
+
   {path: 'register', component: RegisterComponent}
+
 ];
 
 @NgModule({
