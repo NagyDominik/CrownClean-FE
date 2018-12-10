@@ -3,6 +3,10 @@ mat-card {
     min-width: 500px;
 }
 
+.blackT {
+    color: black;
+}
+
 mat-card-content, .data {
     margin: 0;
     background: white;

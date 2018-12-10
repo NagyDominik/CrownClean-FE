@@ -4,7 +4,7 @@
     <H2 fxFlex="75vw" class="mat-display-1 title">Orders</H2>
   </div>
 
-  <div fxLayoutAlign="center">
+  <div fxLayoutAlign="center" class="tableContainer">
     <table mat-table [dataSource]="orders" class="mat-elevation-z5 info" matSort fxFlex="75vw">
 
       <!--- Note that these columns can be defined in any order.
@@ -56,5 +56,5 @@
   <div *ngIf="!orders" fxFlexAlign="center" fxFlexOffset="40vh">
     <mat-spinner color="accent"></mat-spinner>
   </div>
-  
+
 </div>
