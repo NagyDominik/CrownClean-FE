@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user_service/user.service';
-import { User } from 'src/app/shared/models/user';
+import { User } from 'src/app/shared/models/User/user';
 import { MatSnackBar } from '@angular/material';
 
 @Component({
@@ -13,6 +13,7 @@ export class UsersListComponent implements OnInit {
   constructor(private userService: UserService, public snackBar: MatSnackBar) { }
 
   users: User[];
+  count: number;
 
   ngOnInit() {
     this.refresh();
@@ -20,7 +21,9 @@ export class UsersListComponent implements OnInit {
 
   refresh() {
     this.userService.getUsers().subscribe(listOfUsers => {
-      this.users = listOfUsers;
+      debugger;
+      this.users = listOfUsers.list;
+      this.count = listOfUsers.count;
     },
       error => {
         console.log(error);

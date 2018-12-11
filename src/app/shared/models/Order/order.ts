@@ -1,5 +1,5 @@
-import {User} from './user';
-import {Vehicle} from './vehicle';
+import {User} from '../User/user';
+import {Vehicle} from '../Vehicle/vehicle';
 
 export class Order {
   id: number;

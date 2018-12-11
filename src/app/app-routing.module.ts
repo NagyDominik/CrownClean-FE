@@ -14,6 +14,7 @@ import { OrderAddComponent } from './orders/order-add/order-add.component';
 import {WelcomeComponent} from './welcome/welcome.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
+import {PrivacyPolicyComponent} from './information_pages/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {
@@ -42,8 +43,9 @@ const routes: Routes = [
 
   {path: 'login', component: LoginComponent},
 
-  {path: 'register', component: RegisterComponent}
+  {path: 'register', component: RegisterComponent},
 
+  {path: 'privacyPolicy', component: PrivacyPolicyComponent}
 ];
 
 @NgModule({

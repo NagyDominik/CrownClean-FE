@@ -18,12 +18,16 @@ export class RegisterComponent implements OnInit {
     IsCompany: new FormControl(''),
     Address: new FormControl('')
   });
+
+  enabled = false;
+
   constructor( private router: Router,
               private authenticationService: AuthenticationService
     ) { }
 
   ngOnInit() {
     this.signUpForm.get('IsCompany').setValue(false);
+
   }
 
 

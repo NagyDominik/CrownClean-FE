@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from '../../shared/services/order_service/order.service';
-import { Order } from '../../shared/models/order';
+import { Order } from '../../shared/models/Order/order';
 import { MatSnackBar } from '@angular/material';
 
 
@@ -12,7 +12,9 @@ import { MatSnackBar } from '@angular/material';
 export class OrdersListComponent implements OnInit {
 
   constructor(private orderService: OrderService, public snackBar: MatSnackBar) { }
+  
   orders: Order[];
+  count: number;
 
   ngOnInit() {
     this.refresh();
@@ -20,7 +22,8 @@ export class OrdersListComponent implements OnInit {
 
   refresh(){
     this.orderService.getOrders().subscribe(listOfOrders => {
-      this.orders = listOfOrders;
+      this.orders = listOfOrders.list;
+      this.count = listOfOrders.count;
     },
       error => {
         console.log(error.message);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
-import { Vehicle } from 'src/app/shared/models/vehicle';
+import { Vehicle } from 'src/app/shared/models/Vehicle/vehicle';
 
 @Component({
   selector: 'app-vehicles-list',
@@ -10,9 +10,9 @@ import { Vehicle } from 'src/app/shared/models/vehicle';
 export class VehiclesListComponent implements OnInit {
 
   constructor(private vehicleService: VehicleService) { }
-
-
+ 
   vehicles: Vehicle[];
+  count: number;
 
   ngOnInit() {
     this.refresh();
@@ -34,7 +34,8 @@ export class VehiclesListComponent implements OnInit {
   refresh() 
   {
     this.vehicleService.getVehicles().subscribe(vehicleList => {
-      this.vehicles = vehicleList;
+      this.vehicles = vehicleList.vehicles;
+      this.count = vehicleList.count;
     },
       error => {
         console.log(error);

@@ -19,12 +19,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatRippleModule, MatSidenavModule,
         MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
         MatTableModule, MatSortModule} from '@angular/material';
-import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule, MatFormFieldModule, MatInputModule, MatCheckboxModule} from '@angular/material';
+import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule,
+        MatFormFieldModule, MatInputModule, MatCheckboxModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { PrivacyPolicyComponent } from './information_pages/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,7 @@ import { RegisterComponent } from './register/register.component';
     VehiclesListComponent,
     LoginComponent,
     RegisterComponent,
-
+    PrivacyPolicyComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,8 @@ import { RegisterComponent } from './register/register.component';
     MatCardModule,
     MatInputModule,
     MatToolbarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
