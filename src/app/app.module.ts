@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { PrivacyPolicyComponent } from './information_pages/privacy-policy/privacy-policy.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { RegisterComponent } from './register/register.component';
     VehiclesListComponent,
     LoginComponent,
     RegisterComponent,
+    PrivacyPolicyComponent,
 
   ],
   imports: [

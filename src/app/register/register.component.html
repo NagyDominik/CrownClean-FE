@@ -36,9 +36,12 @@
             </td>
           </tr>
           <tr>
-            <td>
-              Are you a company?<mat-checkbox  formControlName="IsCompany"></mat-checkbox>
-            </td>
+              <td id="asd">
+              <label for="isCompany">Are you a company?</label>
+              </td>
+              <td>
+                <mat-checkbox id ="isCompany" formControlName="IsCompany"></mat-checkbox>
+              </td>
           </tr>
           <tr>
             <td>
@@ -57,8 +60,12 @@
         </table>
       </form>
     </mat-card-content>
-    <mat-card-actions style=" text-align: center">
-      <button mat-raised-button (click)="register()" style="background-color: #3d5c99;" >Sign Up</button>
+    <mat-card-footer style="margin-left: 10px;margin-bottom: 5px">
+      <mat-checkbox  id="accept" ></mat-checkbox>&nbsp;I have read and agree to the <a routerLink="/privacyPolicy">Privacy Policy</a>
+    </mat-card-footer>
+    <mat-card-actions  style=" text-align: center">
+      <button [disabled]="!checked"
+        mat-raised-button class="registerSubmit" (click)="register()" style="background-color: #3d5c99;" >Sign Up</button>
     </mat-card-actions>
   </div>
 </mat-card>

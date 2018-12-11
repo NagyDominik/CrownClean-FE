@@ -2,7 +2,7 @@
   width: 300px;
 }
 table, tr, td{
-  width: 100%;
+  width: auto;
 }
 .content-of-card{
   width: 100%;
