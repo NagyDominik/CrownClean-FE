@@ -1,7 +1,6 @@
 <div fxLayout="column" class="mat-app-background">
 
-  <div fxFlex="200px" fxFlex.md="165px" fxFlex.sm="130px" fxFlex.xs="130px" class="navbar" fxLayout="column"
-    fxLayoutAlign="center">
+  <div fxFlex="200px" fxFlex.md="165px" fxFlex.sm="130px" class="navbar" fxLayout="column" fxLayoutAlign="center">
     <app-navbar fxLayoutAlign="center"></app-navbar>
   </div>
 
@@ -11,54 +10,13 @@
       <router-outlet></router-outlet>
     </div>
 
-    <footer fxFlex="240px" fxFlex.md="240px" fxFlex.sm="240px" fxFlex.xs="240px" fxLayout="column" fxLayoutGap="3vh"
-      class="mat-app-background">
-
+    <footer fxFlex="25vh" fxLayout="column" class="mat-app-background">
       <div fxLayout="row">
         <mat-divider fxFlex="100"></mat-divider>
       </div>
-
-      <div class="mat-body-2" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10vw">
-
-        <div fxLayout="column" fxFlex="10">
-          <h1><img src="assets/vectorpaint.png" alt="logo" width="20%"></h1>
-          <p>© 2018 CrownClean Kft.</p>
-          <p>All Rights Reserved.</p>
-        </div>
-
-        <div fxLayout="column" fxFlex="13">
-          <h1>Contact Us</h1>
-          <div>
-            <p class="subtitle">CrownClean Kft.</p>
-            <div class="thin">
-              <p>Vitéz Street 11</p>
-              <p>Hungary, 2161 Csomád</p>
-              <p>Tel.: +36 30 931 7888</p>
-              <p>Email: crownclean.hu@gmail.com</p>
-            </div>
-          </div>
-        </div>
-
-        <div fxLayout="column" fxFlex="10">
-          <h1>Follow Us</h1>
-          <div>
-            <a href="mailto:crownclean.hu@gmail.com" target="_blank">
-              <button mat-icon-button>
-                <mat-icon>mail_outline</mat-icon>
-              </button>
-            </a>
-            <a>
-            <button mat-icon-button>
-              <mat-icon>people</mat-icon>
-            </button>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
+      <p class="mat-body-2" fxFlexAlign="center">Copyright © 2018 CrownClean Kft.</p>
     </footer>
-
+    
   </div>
 
 </div>

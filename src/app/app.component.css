@@ -5,38 +5,7 @@
     background-color: #3d5c99;
 }
 
-.content-area {
+.content-area{
     min-width: 725px;
     min-height: 65vh;
-}
-
-img {
-    min-width: 100px;
-}
-
-p {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.8px;
-}
-
-h1 {
-    text-transform: uppercase;
-    font-size: 30px;
-    font-weight: 200;
-}
-
-.subtitle {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.thin {
-    font-weight: lighter;
-}
-
-a:link, a:visited, a:hover, a:active {
-    color: whitesmoke;
 }
