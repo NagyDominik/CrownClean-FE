@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
 import { ActivatedRoute } from '@angular/router';
-import { Vehicle } from 'src/app/shared/models/vehicle';
+import { Vehicle } from 'src/app/shared/models/Vehicle/vehicle';
 
 @Component({
   selector: 'app-vehicle-detail',

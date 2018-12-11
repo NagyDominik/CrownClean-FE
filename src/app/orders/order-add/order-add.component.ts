@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { OrderService } from '../../shared/services/order_service/order.service';
 import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
-import { User } from 'src/app/shared/models/user';
-import { Vehicle } from 'src/app/shared/models/vehicle';
+import { User } from 'src/app/shared/models/User/user';
+import { Vehicle } from 'src/app/shared/models/Vehicle/vehicle';
 
 @Component({
   selector: 'app-order-add',
