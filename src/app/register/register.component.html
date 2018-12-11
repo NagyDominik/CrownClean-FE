@@ -61,10 +61,10 @@
       </form>
     </mat-card-content>
     <mat-card-footer style="margin-left: 10px;margin-bottom: 5px">
-      <mat-checkbox  id="accept" ></mat-checkbox>&nbsp;I have read and agree to the <a routerLink="/privacyPolicy">Privacy Policy</a>
+      <mat-checkbox [(ngModel)]="enabled" id="accept" ></mat-checkbox>&nbsp;I have read and agree to the <a routerLink="/privacyPolicy">Privacy Policy</a>
     </mat-card-footer>
     <mat-card-actions  style=" text-align: center">
-      <button [disabled]="!checked"
+      <button [disabled]="!enabled"
         mat-raised-button class="registerSubmit" (click)="register()" style="background-color: #3d5c99;" >Sign Up</button>
     </mat-card-actions>
   </div>

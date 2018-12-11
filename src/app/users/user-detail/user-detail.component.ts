@@ -15,9 +15,9 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private userService: UserService,
               private route: ActivatedRoute, private location: Location, public snackBar: MatSnackBar) { }
-
-  currentUser: User;  
-
+  
+  currentUser: User;
+  
   ngOnInit() {
     this.getUser();
   }
