@@ -16,10 +16,12 @@ export class RegisterComponent implements OnInit {
     Email: new FormControl(''),
     Password: new FormControl(''),
     IsCompany: new FormControl(''),
-    Address: new FormControl('')
+    Address: new FormControl(''),
+    TaxNumber: new FormControl('')
   });
 
   enabled = false;
+  asd = false;
 
   constructor( private router: Router,
               private authenticationService: AuthenticationService

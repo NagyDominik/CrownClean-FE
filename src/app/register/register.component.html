@@ -40,13 +40,20 @@
               <label for="isCompany">Are you a company?</label>
               </td>
               <td>
-                <mat-checkbox id ="isCompany" formControlName="IsCompany"></mat-checkbox>
+                <mat-checkbox [ngModel]="asd"  id ="isCompany" formControlName="IsCompany"></mat-checkbox>
               </td>
           </tr>
           <tr>
             <td>
               <mat-form-field class="example-full-width" >
-                <input matInput placeholder="Email" type="text" formControlName="Email" required>
+                <input [disabled]="!asd" matInput placeholder="Tax number" type="text" formControlName="TaxNumber">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width" >
+                <input disabled matInput placeholder="Email" type="text" formControlName="Email" >
               </mat-form-field>
             </td>
           </tr>
