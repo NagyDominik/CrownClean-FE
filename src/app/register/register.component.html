@@ -1,78 +1,52 @@
-<mat-card class="example-card"  fxLayout="column" fxLayoutAlign="end center" style="margin: 30px 700px 0px 700px; ">
-  <div>
-    <mat-card-header style="place-content: center">
-      <mat-card-title >Sign up</mat-card-title>
-    </mat-card-header>
-    <mat-card-content class="content-of-card" style="margin-left: 10px">
-      <form [formGroup]="signUpForm" class="example-form" >
-        <table class="example-full-width">
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width" >
-                <input matInput placeholder="First name" type="text" formControlName="FirstName" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width" >
-                <input matInput placeholder="Last name" type="text" formControlName="LastName" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width" >
-                <input matInput placeholder="Phone number" type="text" formControlName="PhoneNumber" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width" >
-                <input matInput placeholder="Address" type="text" formControlName="Address" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width" >
-                <input matInput placeholder="Email" type="text" formControlName="Email" >
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <mat-form-field class="example-full-width">
-                <input matInput placeholder="Password"   type="password" formControlName="Password" required>
-              </mat-form-field>
-            </td>
-          </tr>
-          <tr>
-            <td>
-            <label for="isCompany">Are you a company?</label>
-            </td>
-            <td>
-              <mat-checkbox (change)="changeCompanySelection()" id ="isCompany" formControlName="IsCompany"></mat-checkbox>
-            </td>
-        </tr>
-        <tr>
-          <td>
-            <mat-form-field class="example-full-width" >
-              <input matInput placeholder="Tax number" type="text" formControlName="TaxNumber">
-            </mat-form-field>
-          </td>
-        </tr>
-        </table>
-      </form>
-    </mat-card-content>
-    <mat-card-footer style="margin-left: 10px;margin-bottom: 5px">
-      <mat-checkbox [(ngModel)]="enabled" id="accept" ></mat-checkbox>&nbsp;I have read and agree to the <a routerLink="/privacyPolicy">Privacy Policy</a>
-    </mat-card-footer>
-    <mat-card-actions  style=" text-align: center">
-      <button [disabled]="!enabled"
-        mat-raised-button class="registerSubmit" (click)="register()" style="background-color: #3d5c99;" >Sign Up</button>
-    </mat-card-actions>
-  </div>
-</mat-card>
+<div fxFill fxLayoutAlign="center center" class="content-area">
+  <mat-card fxLayout="column" fxLayoutAlign="end center">
+    <div>
+      <mat-card-header style="place-content: center">
+        <mat-card-title>Sign up</mat-card-title>
+      </mat-card-header>
+      <mat-card-content class="content-of-card" style="margin-left: 10px">
+        <form [formGroup]="signUpForm" class="example-form" fxLayout="column">
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="First name" type="text" formControlName="FirstName" required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Last name" type="text" formControlName="LastName" required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Phone number" type="text" formControlName="PhoneNumber" required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Address" type="text" formControlName="Address" required>
+          </mat-form-field>
+
+          <label for="isCompany">Are you a company?</label>
+
+          <mat-checkbox id="isCompany" formControlName="IsCompany"></mat-checkbox>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Email" type="text" formControlName="Email" required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Password" type="password" formControlName="Password" required>
+          </mat-form-field>
+
+        </form>
+      </mat-card-content>
+
+      <mat-card-footer style="margin-left: 10px;margin-bottom: 5px">
+        <mat-checkbox [(ngModel)]="enabled" id="accept"></mat-checkbox>&nbsp;I have read and agree to the <a routerLink="/privacyPolicy">Privacy
+          Policy</a>
+      </mat-card-footer>
+
+      <mat-card-actions style=" text-align: center">
+        <button [disabled]="!enabled" mat-raised-button class="registerSubmit" (click)="register()" color="accent">Sign Up</button>
+      </mat-card-actions>
+
+    </div>
+  </mat-card>
+</div>
