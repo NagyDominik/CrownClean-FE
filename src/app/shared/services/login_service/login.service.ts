@@ -17,13 +17,10 @@ export class LoginService {
     .pipe(map(response => {
         const token = response && response.token;
         if (token) {
-        Observable.create(obs => {
             this.tokenService.setToken(token);
-            obs.next(token);
-        });
-        return true;
+            return true;
         } else {
-        return false;
+            return false;
         }
     }));
     }
@@ -34,9 +31,9 @@ export class LoginService {
             const token = response && response.token;
             if (token) {
                 this.tokenService.setToken(token);
-            return true;
+                return true;
             } else {
-            return false;
+                return false;
             }
         }));
     }

@@ -8,7 +8,8 @@
     <button mat-button class="navBarButton">Contact</button>
   </div>
   <div fxLayoutAlign="end" fxFlex="25vw">
-    <button mat-button class="login navBarButton" routerLink="login">Login</button>
+    <button *ngIf="!loggedIn" mat-button class="login navBarButton" routerLink="login">Login</button>
+    <button *ngIf="loggedIn" mat-button class="login navBarButton" routerLink="/">Logged in as {{emailAddr}}! </button>
   </div>
 </div>
 

@@ -32,7 +32,7 @@ export class TokenService {
     });
   }
 
-  public getUserFromToken(): Observable<User> {
+  public getUserFromToken(): Observable<any> {
     return Observable.create(obs => {
       const token = this.getToken();
       let decoded: User;
