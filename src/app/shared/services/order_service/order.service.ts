@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../../environments/environment';
-import {Order} from '../../models/order';
+import {Order} from '../../models/Order/order';
+import { FilteredOrderList } from '../../models/Order/FilteredOrderList';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class OrderService {
 
   constructor(private http: HttpClient) { }
 
-  getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>( environment.apiURL + 'orders');
+  getOrders(): Observable<FilteredOrderList> {
+    return this.http.get<FilteredOrderList>( environment.apiURL + 'orders');
   }
 
   getOrderByID(id: number): Observable<Order> {

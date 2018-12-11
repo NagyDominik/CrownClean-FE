@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../shared/services/order_service/order.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Order } from '../../shared/models/order';
+import { Order } from '../../shared/models/Order/order';
 import { Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material';
 

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Vehicle } from '../../models/vehicle';
+import { Vehicle } from '../../models/Vehicle/vehicle';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { FilteredVehicleList } from '../../models/Vehicle/FilteredVehicleList';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
-  getVehicles(): Observable<Vehicle[]>
+  getVehicles(): Observable<FilteredVehicleList>
   {
-    return this.http.get<Vehicle[]>(environment.apiURL + 'vehicles');
+    return this.http.get<FilteredVehicleList>(environment.apiURL + 'vehicles');
   }
 
   getVehicleByID(id: number): Observable<Vehicle>
