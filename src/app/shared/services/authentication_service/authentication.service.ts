@@ -17,7 +17,7 @@ export class AuthenticationService {
   login(email: string, password: string): Observable<boolean> {
     const tokenLT = Date.now() + 600_000;
 
-    return this.http.post<any>(this.apiURL + 'login', { email, password })
+    return this.http.post<any>(environment.apiURL + 'login/login', { email, password })
       .pipe(map(response => {
         const token = response && response.token;
         if (token) {
