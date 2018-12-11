@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
+import { AuthenticationService } from '../shared/services/authentication_service/authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -8,7 +9,6 @@ import {Router} from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
   signUpForm = new FormGroup({
     FirstName: new FormControl(''),
     LastName: new FormControl(''),
@@ -18,18 +18,30 @@ export class RegisterComponent implements OnInit {
     IsCompany: new FormControl(''),
     Address: new FormControl('')
   });
-  constructor( private router: Router) { }
+  constructor( private router: Router,
+              private authenticationService: AuthenticationService
+    ) { }
 
   ngOnInit() {
+    this.signUpForm.get('IsCompany').setValue(false);
   }
 
- /* register() {
-    const userSignUpData = this.signUpForm.value;
-    this.authenticationService.login(this.loginForm.controls['Email'].value, this.loginForm.controls['Password'].value)
-      .subscribe(
-        success => {
-          this.router.navigate([this.authenticationService.redirectURL]);
-        });
-  }*/
+
+  register() {
+    const user = this.signUpForm.value;
+    user.IsCompany = this.signUpForm.get('IsCompany').value;
+    this.authenticationService.register(user).subscribe(response => {
+      if (response) {
+        console.log('Successfull registration');
+        this.router.navigateByUrl('/');
+      } else {
+        console.log('Registration failed');
+      }},
+      error => {
+        alert(error.message);
+        console.log(error);
+      }
+    );
+  }
 
 }
