@@ -3,6 +3,10 @@ mat-sidenav {
     width: 300px;
 }
 
+mat-sidenav-container {
+    min-height: 65vh;
+}
+
 .sidemenu {
     background-color: #eeeeee;
 }

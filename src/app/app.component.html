@@ -1,4 +1,4 @@
-<div fxLayout="column" class="mat-app-background">
+<div fxLayout="column" class="mat-app-background" fxFlex>
 
   <div fxFlex="200px" fxFlex.md="165px" fxFlex.sm="130px" fxFlex.xs="130px" class="navbar" fxLayout="column" fxLayoutAlign="center">
     <app-navbar fxLayoutAlign="center"></app-navbar>
@@ -6,7 +6,7 @@
 
   <div fxLayout="column" class="content-area">
 
-    <div class="content-area">
+    <div fxFlex="auto" class="content-area">
       <router-outlet></router-outlet>
     </div>
 
@@ -18,13 +18,13 @@
 
       <div class="mat-body-2" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10vw">
 
-        <div fxLayout="column" fxFlex="10">
+        <div fxLayout="column" fxFlex="10" class="footercell-s">
           <h1><img src="assets/vectorpaint.png" alt="logo" width="20%"></h1>
           <p>© 2018 CrownClean Kft.</p>
           <p>All Rights Reserved.</p>
         </div>
 
-        <div fxLayout="column" fxFlex="13">
+        <div fxLayout="column" fxFlex="13" class="footercell-l">
           <h1>Contact Us</h1>
           <div>
             <p class="subtitle">CrownClean Kft.</p>
@@ -37,7 +37,7 @@
           </div>
         </div>
 
-        <div fxLayout="column" fxFlex="10">
+        <div fxLayout="column" fxFlex="10" class="footercell-s">
           <h1>Follow Us</h1>
           <div>
             <a href="mailto:crownclean.hu@gmail.com" target="_blank">
