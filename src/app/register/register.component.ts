@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.signUpForm.get('IsCompany').setValue(false);
   }
 
 
