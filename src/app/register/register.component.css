@@ -3,8 +3,14 @@ mat-card {
   margin-bottom: 50px;
 }
 
+mat-card-footer {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+
 .full-width{
-  width: 300px;
+  width: 320px;
 }
 
 table, tr, td{
