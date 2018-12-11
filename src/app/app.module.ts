@@ -27,6 +27,8 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PrivacyPolicyComponent } from './information_pages/privacy-policy/privacy-policy.component';
+import { LoginService } from './shared/services/login_service/login.service';
+import { TokenService } from './shared/services/token_service/token.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,7 @@ import { PrivacyPolicyComponent } from './information_pages/privacy-policy/priva
     VehiclesListComponent,
     LoginComponent,
     RegisterComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,10 @@ import { PrivacyPolicyComponent } from './information_pages/privacy-policy/priva
     MatCheckboxModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    TokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
