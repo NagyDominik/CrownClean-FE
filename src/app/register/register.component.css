@@ -1,26 +1,24 @@
 mat-card {
   margin-top: 50px;
   margin-bottom: 50px;
+  min-width: 350px;
+}
+
+mat-card-header {
+  margin-bottom: 15px;
 }
 
 mat-card-footer {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: 5px;
+  margin-bottom: 20px;
+}
+mat-card-actions{
+  text-align: center;
+}
+a:link, a:active, a:visited {
+  color: coral;
 }
 
-.full-width{
-  width: 320px;
+a:hover {
+  color: rgb(255, 99, 42);
 }
 
-table, tr, td{
-  width: auto;
-}
-
-.content-of-card{
-  width: 100%;
-}
-
-form{
-  width: 100%;
-}

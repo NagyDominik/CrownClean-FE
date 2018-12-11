@@ -1,0 +1,16 @@
+h1{
+  color: #af804f;
+}
+
+mat-card {
+  min-width: 350px;
+  margin-left: 10%;
+}
+
+mat-card-header {
+  margin-bottom: 15px;
+}
+
+mat-card-footer {
+  margin-bottom: 20px;
+}
