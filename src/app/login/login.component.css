@@ -1,6 +1,20 @@
-table, tr, td{
-  width: 100%;
+mat-card {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
-.example-full-width{
-  width: 300px;
+
+mat-card-header {
+  margin-bottom: 15px;
+}
+
+mat-card-footer {
+  margin-bottom: 20px;
+}
+
+a:link, a:active, a:visited {
+  color: coral;
+}
+
+a:hover {
+  color: rgb(255, 99, 42);
 }

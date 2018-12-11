@@ -17,6 +17,7 @@ export class OrdersListComponent implements OnInit {
   ngOnInit() {
     this.refresh();
   }
+
   refresh(){
     this.orderService.getOrders().subscribe(listOfOrders => {
       this.orders = listOfOrders;
@@ -39,6 +40,7 @@ export class OrdersListComponent implements OnInit {
       }
     );
   }
+
   approve(id: number) {
     this.orderService.approveOrder(id).subscribe(message => {
       this.refresh();
