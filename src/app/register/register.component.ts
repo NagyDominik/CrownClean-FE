@@ -29,6 +29,17 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.signUpForm.get('IsCompany').setValue(false);
+
+    this.signUpForm.patchValue({
+      FirstName: 'John',
+      LastName: 'Johnson',
+      PhoneNumber: '+45552521130',
+      Email: 'john.hohnson@mail.dk',
+      Password: 'Password123',
+      IsCompany: false,
+      Address: 'Address str 1'
+    });
+
   }
 
   changeCompanySelection() {
@@ -44,6 +55,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    debugger;
     const user = this.signUpForm.value;
     user.IsCompany = this.signUpForm.get('IsCompany').value;
     this.loginService.register(user).subscribe(response => {
