@@ -13,16 +13,19 @@ export class LoginService {
               private tokenService: TokenService) { }
 
     register(userDTO: User): Observable<boolean> {
-    return this.http.post<any>(environment.apiURL + 'login/register', userDTO)
-    .pipe(map(response => {
-        const token = response && response.token;
-        if (token) {
-            this.tokenService.setToken(token);
-            return true;
-        } else {
-            return false;
-        }
-    }));
+    return this.http.post<any>(environment.apiURL + 'login/register', userDTO, {responseType: 'text' as 'json'})
+    .pipe(map(res => {
+        debugger;
+            if (res) {
+                if (res === 'USER_ADDED') {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }));
     }
 
     login(email: Text, password: Text): Observable<boolean> {

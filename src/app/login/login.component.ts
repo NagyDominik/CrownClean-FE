@@ -24,12 +24,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    debugger;
-    const userLoginData = this.loginForm.value;
     this.loginService.login(this.loginForm.controls['Email'].value, this.loginForm.controls['Password'].value)
       .subscribe(
         success => {
-          debugger;
           this.router.navigateByUrl('/');
         });
   }

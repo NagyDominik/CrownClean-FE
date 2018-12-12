@@ -26,7 +26,6 @@ export class NavbarComponent implements OnInit, OnDestroy{
           return this.tokenService.getUserFromToken();
         })
       ).subscribe(user => {
-        debugger;
           this.emailAddr = user ? user.emailAddress : '';
       });
   }
