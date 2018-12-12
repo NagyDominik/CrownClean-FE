@@ -40,7 +40,7 @@ export class AuthenticationService {
       obs.next(this.getToken());
     });
   }
-  
+
   getUsername(): string {
     const currentUser = JSON.parse(localStorage.getItem('CleanAppUser'));
     return currentUser && currentUser.username;

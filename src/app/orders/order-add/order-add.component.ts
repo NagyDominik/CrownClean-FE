@@ -32,7 +32,6 @@ export class OrderAddComponent implements OnInit {
   });
 
   ngOnInit() {
-    
   }
 
   save() {
