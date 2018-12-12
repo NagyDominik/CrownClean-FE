@@ -34,14 +34,14 @@ export class UserDetailComponent implements OnInit {
       },
         error => {
         console.log(error);
-        this.openSnackBar(error.error);  
+        this.openSnackBar(error.error);
       }
     );
   }
 
   approve(id: number) {
     this.userService.approveUser(id).subscribe(message => {
-      this.openSnackBar("User has been approved!");
+      this.openSnackBar('User has been approved!');
     },
       error => {
         console.log(error);
