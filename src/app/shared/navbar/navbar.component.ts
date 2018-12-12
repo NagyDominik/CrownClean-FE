@@ -3,6 +3,8 @@ import { LoginService } from '../services/login_service/login.service';
 import { TokenService } from '../services/token_service/token.service';
 import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
+import { throwMatDuplicatedDrawerError } from '@angular/material';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +13,17 @@ import { switchMap, take } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  subscription: Subscription;
+  subscriptionIsLoggedIn: Subscription;
+  subscriptionIsAdmin: Subscription;
   loggedIn: boolean;
+  isAdmin: boolean;
   firstName: string;
 
   constructor(private loginService: LoginService,
               private tokenService: TokenService) { }
 
   ngOnInit() {
-    this.subscription = this.tokenService.isLoggedIn
+    this.subscriptionIsLoggedIn = this.tokenService.isLoggedIn
       .pipe(
         switchMap(isLoggedIn => {
           this.loggedIn = isLoggedIn;
@@ -28,10 +32,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
       ).subscribe(user => {
           this.firstName = user ? user.firstName : '';
       });
+      this.subscriptionIsAdmin = this.tokenService.isAdmin
+        .pipe(
+          switchMap(userIsAdmin => {
+              this.isAdmin = userIsAdmin;
+              return this.tokenService.getToken();
+          })
+        ).subscribe();
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptionIsLoggedIn.unsubscribe();
+    this.subscriptionIsAdmin.unsubscribe();
   }
 
   onLogout(event) {
