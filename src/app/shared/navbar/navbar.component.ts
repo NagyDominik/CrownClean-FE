@@ -32,18 +32,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       ).subscribe(user => {
           this.firstName = user ? user.firstName : '';
       });
-      this.subscriptionIsAdmin = this.tokenService.isAdmin
-        .pipe(
-          switchMap(userIsAdmin => {
-              this.isAdmin = userIsAdmin;
-              return this.tokenService.getToken();
-          })
-        ).subscribe();
+      this.tokenService.isAdmin.subscribe(admin => {
+        this.isAdmin = admin;
+      });
   }
 
   ngOnDestroy(): void {
     this.subscriptionIsLoggedIn.unsubscribe();
-    this.subscriptionIsAdmin.unsubscribe();
   }
 
   onLogout(event) {

@@ -33,7 +33,6 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/');
         },
           error => {
-            console.log(error);
             if (error.status === 400) {
               this.openSnackBar('Bad Request, please enter a pair of valid email address and password!');
             } else if (error.status === 401) {
