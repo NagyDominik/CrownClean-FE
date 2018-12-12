@@ -9,11 +9,11 @@ import { switchMap, take } from 'rxjs/operators';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit, OnDestroy{
+export class NavbarComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   loggedIn: boolean;
-  emailAddr: string;
+  firstName: string;
 
   constructor(private loginService: LoginService,
               private tokenService: TokenService) { }
@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
           return this.tokenService.getUserFromToken();
         })
       ).subscribe(user => {
-          this.emailAddr = user ? user.emailAddress : '';
+          this.firstName = user ? user.firstName : '';
       });
   }
 

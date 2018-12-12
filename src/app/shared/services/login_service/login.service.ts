@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable, observable} from 'rxjs';
-import {switchMap, map} from 'rxjs/operators';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { TokenService } from '../token_service/token.service';
 import { environment } from 'src/environments/environment';
 import { User } from '../../models/User/user';
@@ -15,7 +15,6 @@ export class LoginService {
     register(userDTO: User): Observable<boolean> {
     return this.http.post<any>(environment.apiURL + 'login/register', userDTO, {responseType: 'text' as 'json'})
     .pipe(map(res => {
-        debugger;
             if (res) {
                 if (res === 'USER_ADDED') {
                     return true;

@@ -18,6 +18,8 @@ import {PrivacyPolicyComponent} from './information_pages/privacy-policy/privacy
 import { CleaningServicesComponent } from './information_pages/cleaning-services/cleaning-services.component';
 import { AboutusComponent } from './information_pages/aboutus/aboutus.component';
 import { ContactComponent } from './information_pages/contact/contact.component';
+import {VehicleAddComponent} from './vehicles/vehicle-add/vehicle-add.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -41,6 +43,7 @@ const routes: Routes = [
 
   { path: 'vehicles', component: VehiclesListComponent },
   { path: 'vehicles/:id', component: VehicleDetailComponent},
+  { path: 'vehicle-add', component: VehicleAddComponent},
 
   {path: 'welcome', component: WelcomeComponent},
 
@@ -55,6 +58,8 @@ const routes: Routes = [
   {path: 'about-us', component: AboutusComponent},
 
   {path: 'contact', component: ContactComponent},
+
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

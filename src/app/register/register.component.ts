@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router} from '@angular/router';
 import { LoginService } from '../shared/services/login_service/login.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-register',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
     LastName: new FormControl(''),
     PhoneNumber: new FormControl(''),
     Email: new FormControl(''),
-    Password: new FormControl(''),
+    Password: new FormControl(Validators.required, Validators.minLength(6)),
     IsCompany: new FormControl(''),
     Address: new FormControl(''),
     TaxNumber: new FormControl({value: '', disabled: true})
@@ -23,8 +24,9 @@ export class RegisterComponent implements OnInit {
   enabled = false;
   userIsCompany = false;
 
-  constructor( private router: Router,
-              private loginService: LoginService
+  constructor(private router: Router,
+              private loginService: LoginService,
+              private snackBar: MatSnackBar
     ) { }
 
   ngOnInit() {
@@ -55,21 +57,29 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    debugger;
     const user = this.signUpForm.value;
     user.IsCompany = this.signUpForm.get('IsCompany').value;
     this.loginService.register(user).subscribe(response => {
       if (response) {
         console.log('Successfull registration');
+        this.openSnackBar('Successfull registration');
         this.router.navigateByUrl('/');
       } else {
         console.log('Registration failed');
+        this.openSnackBar('Registration failed');
+
       }},
       error => {
         alert(error.message);
         console.log(error);
       }
     );
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'OK', {
+      duration: 1500,
+    });
   }
 
 }
