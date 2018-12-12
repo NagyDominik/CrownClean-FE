@@ -15,6 +15,13 @@
             <input matInput placeholder="Last name" type="text" formControlName="LastName" required>
           </mat-form-field>
 
+          <label for="isCompany">Do you represent a company?</label>
+          <mat-checkbox (change)="changeCompanySelection()" id ="isCompany" formControlName="IsCompany"></mat-checkbox>
+
+          <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Tax number" type="text" formControlName="TaxNumber">
+          </mat-form-field>
+
           <mat-form-field class="full-width">
             <input matInput placeholder="Phone number" type="text" formControlName="PhoneNumber" required>
           </mat-form-field>
@@ -23,10 +30,6 @@
             <input matInput placeholder="Address" type="text" formControlName="Address" required>
           </mat-form-field>
 
-          <label for="isCompany">Do you represent a company?</label>
-
-          <mat-checkbox id="isCompany" formControlName="IsCompany"></mat-checkbox>
-
           <mat-form-field class="full-width">
             <input matInput placeholder="Email" type="text" formControlName="Email" required>
           </mat-form-field>
@@ -34,6 +37,8 @@
           <mat-form-field class="full-width">
             <input matInput placeholder="Password" type="password" formControlName="Password" required>
           </mat-form-field>
+
+
 
         </form>
       </mat-card-content>
