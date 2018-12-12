@@ -41,7 +41,6 @@ export class RegisterComponent implements OnInit {
       IsCompany: false,
       Address: 'Address str 1'
     });
-
   }
 
   changeCompanySelection() {
@@ -53,7 +52,6 @@ export class RegisterComponent implements OnInit {
       console.log('User is not a company!');
       this.signUpForm.get('TaxNumber').disable();
     }
-
   }
 
   register() {
