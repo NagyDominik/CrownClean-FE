@@ -21,7 +21,6 @@ export class UsersListComponent implements OnInit {
 
   refresh() {
     this.userService.getUsers().subscribe(listOfUsers => {
-      debugger;
       this.users = listOfUsers.list;
       this.count = listOfUsers.count;
     },
@@ -35,7 +34,7 @@ export class UsersListComponent implements OnInit {
   delete(id: number) {
     this.userService.deleteUser(id).subscribe(message => {
       this.refresh();
-      this.openSnackBar("User has been deleted!");
+      this.openSnackBar('User has been deleted!');
     },
       error => {
         console.log(error);
@@ -46,7 +45,7 @@ export class UsersListComponent implements OnInit {
 
   approve(id: number) {
     this.userService.approveUser(id).subscribe(message => {
-      this.openSnackBar("User has been approved!");
+      this.openSnackBar('User has been approved!');
       this.refresh();
     },
       error => {
@@ -57,8 +56,8 @@ export class UsersListComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this.snackBar.open(message,'OK', {
+    this.snackBar.open(message, 'OK', {
       duration: 1500,
-    })
+    });
   }
 }
