@@ -15,6 +15,8 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {PrivacyPolicyComponent} from './information_pages/privacy-policy/privacy-policy.component';
+import {VehicleAddComponent} from './vehicles/vehicle-add/vehicle-add.component';
+import {ProfileComponent} from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -38,6 +40,7 @@ const routes: Routes = [
 
   { path: 'vehicles', component: VehiclesListComponent },
   { path: 'vehicles/:id', component: VehicleDetailComponent},
+  { path: 'vehicle-add', component: VehicleAddComponent},
 
   {path: 'welcome', component: WelcomeComponent},
 
@@ -45,7 +48,9 @@ const routes: Routes = [
 
   {path: 'register', component: RegisterComponent},
 
-  {path: 'privacyPolicy', component: PrivacyPolicyComponent}
+  {path: 'privacyPolicy', component: PrivacyPolicyComponent},
+
+  {path: 'profile', component: ProfileComponent}
 ];
 
 @NgModule({

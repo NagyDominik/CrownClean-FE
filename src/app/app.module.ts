@@ -29,6 +29,7 @@ import { RegisterComponent } from './register/register.component';
 import { PrivacyPolicyComponent } from './information_pages/privacy-policy/privacy-policy.component';
 import { LoginService } from './shared/services/login_service/login.service';
 import { TokenService } from './shared/services/token_service/token.service';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { TokenService } from './shared/services/token_service/token.service';
     LoginComponent,
     RegisterComponent,
     PrivacyPolicyComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
