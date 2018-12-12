@@ -7,6 +7,7 @@ import { User } from '../../models/User/user';
 export class TokenService {
   // public isLoggedIn = new Subject<string>();
   public isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
+  public isAdmin = new BehaviorSubject<boolean>(this.getAdminPrivilages());
 
   constructor() {}
 
@@ -15,7 +16,6 @@ export class TokenService {
   }
 
   public setToken(token: string) {
-    console.log(token);
     localStorage.setItem('token', token);
     this.isLoggedIn.next(!!token);
   }
@@ -39,10 +39,28 @@ export class TokenService {
       if (token) {
         const jwt = new JwtHelperService();
         decoded = jwt.decodeToken(token);
-        console.log(jwt.decodeToken(token));
       }
       obs.next(decoded);
     });
 
+  }
+
+  private getAdminPrivilages(): boolean {
+    const token = this.getToken();
+    if (token) {
+      const jwt = new JwtHelperService();
+      const decoded = jwt.decodeToken(token);
+      if (decoded) {
+        if (decoded.role && decoded.role === 'Administrator') {
+          console.log('User is admin!');
+          return true;
+        } else {
+          console.log('User is not admin!');
+          return false;
+        }
+      }
+    } else {
+      return false;
+    }
   }
 }

@@ -55,7 +55,7 @@ const routes: Routes = [
   
   {path: 'services', component: CleaningServicesComponent},
   
-  {path: 'about-us', component: AboutusComponent},
+  {path: 'about', component: AboutusComponent},
 
   {path: 'contact', component: ContactComponent},
 
