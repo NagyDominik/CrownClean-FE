@@ -21,6 +21,7 @@ export class TokenService {
   }
 
   public clearToken() {
+    debugger;
     localStorage.removeItem('token');
     this.isLoggedIn.next(undefined);
   }
