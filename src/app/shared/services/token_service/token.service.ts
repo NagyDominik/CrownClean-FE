@@ -18,10 +18,10 @@ export class TokenService {
   public setToken(token: string) {
     localStorage.setItem('token', token);
     this.isLoggedIn.next(!!token);
+    this.isAdmin.next(this.getAdminPrivilages());
   }
 
   public clearToken() {
-    debugger;
     localStorage.removeItem('token');
     this.isLoggedIn.next(undefined);
   }
