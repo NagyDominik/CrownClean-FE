@@ -15,6 +15,9 @@ import {WelcomeComponent} from './welcome/welcome.component';
 import {LoginComponent} from './login/login.component';
 import {RegisterComponent} from './register/register.component';
 import {PrivacyPolicyComponent} from './information_pages/privacy-policy/privacy-policy.component';
+import { CleaningServicesComponent } from './information_pages/cleaning-services/cleaning-services.component';
+import { AboutusComponent } from './information_pages/aboutus/aboutus.component';
+import { ContactComponent } from './information_pages/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -45,7 +48,13 @@ const routes: Routes = [
 
   {path: 'register', component: RegisterComponent},
 
-  {path: 'privacyPolicy', component: PrivacyPolicyComponent}
+  {path: 'privacyPolicy', component: PrivacyPolicyComponent},
+  
+  {path: 'services', component: CleaningServicesComponent},
+  
+  {path: 'about-us', component: AboutusComponent},
+
+  {path: 'contact', component: ContactComponent},
 ];
 
 @NgModule({

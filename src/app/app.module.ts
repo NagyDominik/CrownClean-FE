@@ -27,6 +27,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { PrivacyPolicyComponent } from './information_pages/privacy-policy/privacy-policy.component';
+import { CleaningServicesComponent } from './information_pages/cleaning-services/cleaning-services.component';
+import { AboutusComponent } from './information_pages/aboutus/aboutus.component';
+import { ContactComponent } from './information_pages/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +50,10 @@ import { PrivacyPolicyComponent } from './information_pages/privacy-policy/priva
     VehiclesListComponent,
     LoginComponent,
     RegisterComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    CleaningServicesComponent,
+    AboutusComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
