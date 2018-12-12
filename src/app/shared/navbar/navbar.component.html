@@ -22,8 +22,8 @@
 
     <button mat-button *ngIf="loggedIn && isAdmin"  id="adminMenu" [matMenuTriggerFor]="adminMenu" class="adminMenu" ><i class="material-icons  md-36">person</i></button>
     <mat-menu #adminMenu="matMenu">
-      <button mat-menu-item routerLink="/">Manage Users</button>
-      <button mat-menu-item routerLink="/">Manage Orders</button>
+      <button mat-menu-item routerLink="admin/users">Manage Users</button>
+      <button mat-menu-item routerLink="admin/orders">Manage Orders</button>
       <button mat-menu-item (click)="onLogout()">Logout</button>
     </mat-menu>
   </div>
