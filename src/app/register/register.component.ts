@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
-import { AuthenticationService } from '../shared/services/authentication_service/authentication.service';
-import { DISABLED } from '@angular/forms/src/model';
+import { LoginService } from '../shared/services/login_service/login.service';
 
 @Component({
   selector: 'app-register',
@@ -25,11 +24,22 @@ export class RegisterComponent implements OnInit {
   userIsCompany = false;
 
   constructor( private router: Router,
-              private authenticationService: AuthenticationService
+              private loginService: LoginService
     ) { }
 
   ngOnInit() {
     this.signUpForm.get('IsCompany').setValue(false);
+
+    this.signUpForm.patchValue({
+      FirstName: 'John',
+      LastName: 'Johnson',
+      PhoneNumber: '+45552521130',
+      Email: 'john.hohnson@mail.dk',
+      Password: 'Password123',
+      IsCompany: false,
+      Address: 'Address str 1'
+    });
+
   }
 
   changeCompanySelection() {
@@ -45,9 +55,10 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    debugger;
     const user = this.signUpForm.value;
     user.IsCompany = this.signUpForm.get('IsCompany').value;
-    this.authenticationService.register(user).subscribe(response => {
+    this.loginService.register(user).subscribe(response => {
       if (response) {
         console.log('Successfull registration');
         this.router.navigateByUrl('/');

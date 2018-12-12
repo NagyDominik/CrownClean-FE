@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../../models/User/user';
 import { environment } from 'src/environments/environment';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -12,41 +13,32 @@ export class AuthenticationService {
   apiURL = '';
   redirectURL = '';
 
+  public isLoggedIn = new BehaviorSubject<boolean>(!!this.getToken());
+
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Observable<boolean> {
-    const tokenLT = Date.now() + 600_000;
-
-    return this.http.post<any>(environment.apiURL + 'login/login', { email, password })
-      .pipe(map(response => {
-        const token = response && response.token;
-        if (token) {
-          localStorage.setItem('CleanAppUser', JSON.stringify({ email: email, token: token, logintime:  tokenLT}));
-          return true;
-        } else {
-          return false;
-        }
-      }));
-  }
-
-  register(userDTO: User): Observable<boolean> {
-    const tokenLT = Date.now() + 600_00;
-
-    return this.http.post<any>(environment.apiURL + 'login/register', userDTO)
-    .pipe(map(response => {
-      const token = response && response.token;
-      if (token) {
-        localStorage.setItem('CleanAppUser', JSON.stringify({email: userDTO.email, token: token, logintime: tokenLT}));
-        return true;
-      } else {
-        return false;
-      }
-    }));
-  }
 
   getToken(): string {
-    const currentUser = JSON.parse(localStorage.getItem('CleanAppUser'));
-    return currentUser && currentUser.token;
+    /* const currentUser = JSON.parse(localStorage.getItem('CleanAppUser'));
+    return currentUser && currentUser.token;*/
+    return localStorage.getItem('token');
+  }
+
+  public setToken(token: string) {
+    localStorage.setItem('token', token);
+    this.isLoggedIn.next(!!token);
+  }
+
+  public clearToken() {
+    localStorage.removeItem('token');
+    this.isLoggedIn.next(undefined);
+  }
+
+  public isAuthenticated(): Observable<boolean> {
+    // get the token aand notify listeners!
+    return Observable.create(obs => {
+      obs.next(this.getToken());
+    });
   }
 
   getUsername(): string {
@@ -57,6 +49,21 @@ export class AuthenticationService {
   getLoginTime(): number {
     const currentUser = JSON.parse(localStorage.getItem('CleanAppUser'));
     return currentUser && currentUser.logintime;
+  }
+
+
+  public getUserFromToken(): Observable<User> {
+    return Observable.create(obs => {
+      const token = this.getToken();
+      let decoded: User;
+      if (token) {
+        const jwt = new JwtHelperService();
+        decoded = jwt.decodeToken(token);
+        console.log(jwt.decodeToken(token));
+      }
+      obs.next(decoded);
+    });
+
   }
 
   logout(): void {

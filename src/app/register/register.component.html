@@ -1,5 +1,5 @@
 <div fxFill fxLayoutAlign="center center" class="content-area">
-  <mat-card fxLayout="column" fxLayoutAlign="end center">
+  <mat-card fxFlex="30" fxLayout="column " fxLayoutAlign=" center">
     <div>
       <mat-card-header style="place-content: center">
         <mat-card-title>Sign up</mat-card-title>
@@ -15,6 +15,13 @@
             <input matInput placeholder="Last name" type="text" formControlName="LastName" required>
           </mat-form-field>
 
+          <label for="isCompany">Do you represent a company?</label>
+          <mat-checkbox (change)="changeCompanySelection()" id ="isCompany" formControlName="IsCompany"></mat-checkbox>
+
+          <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Tax number" type="text" formControlName="TaxNumber">
+          </mat-form-field>
+
           <mat-form-field class="full-width">
             <input matInput placeholder="Phone number" type="text" formControlName="PhoneNumber" required>
           </mat-form-field>
@@ -22,10 +29,6 @@
           <mat-form-field class="full-width">
             <input matInput placeholder="Address" type="text" formControlName="Address" required>
           </mat-form-field>
-
-          <label for="isCompany">Are you a company?</label>
-
-          <mat-checkbox id="isCompany" formControlName="IsCompany"></mat-checkbox>
 
           <mat-form-field class="full-width">
             <input matInput placeholder="Email" type="text" formControlName="Email" required>
@@ -40,7 +43,7 @@
 
       <mat-card-footer style="margin-left: 10px;margin-bottom: 5px">
         <mat-checkbox [(ngModel)]="enabled" id="accept"></mat-checkbox>&nbsp;I have read and agree to the <a routerLink="/privacyPolicy">Privacy
-          Policy</a>
+        Policy</a>
       </mat-card-footer>
 
       <mat-card-actions style=" text-align: center">

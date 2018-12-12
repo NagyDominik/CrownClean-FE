@@ -30,6 +30,8 @@ import { PrivacyPolicyComponent } from './information_pages/privacy-policy/priva
 import { CleaningServicesComponent } from './information_pages/cleaning-services/cleaning-services.component';
 import { AboutusComponent } from './information_pages/aboutus/aboutus.component';
 import { ContactComponent } from './information_pages/contact/contact.component';
+import { LoginService } from './shared/services/login_service/login.service';
+import { TokenService } from './shared/services/token_service/token.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,10 @@ import { ContactComponent } from './information_pages/contact/contact.component'
     MatCheckboxModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    LoginService,
+    TokenService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
