@@ -39,6 +39,7 @@ export class RegisterComponent implements OnInit {
       Email: 'john.hohnson@mail.dk',
       Password: 'Password123',
       IsCompany: false,
+      IsAdmin: true,
       Address: 'Address str 1'
     });
 

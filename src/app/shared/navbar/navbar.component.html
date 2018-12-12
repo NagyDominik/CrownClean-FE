@@ -10,7 +10,7 @@
   <div fxLayoutAlign="end" fxFlex="25vw">
     <button *ngIf="!loggedIn" mat-button class="login navBarButton" routerLink="login">Login</button>
     <!--<button *ngIf="loggedIn" mat-button class="login navBarButton" routerLink="/">Logged in as {{emailAddr}}! </button>-->
-    <button mat-button *ngIf="loggedIn"  id="userMenu" [matMenuTriggerFor]="userProfile" class="profileMenu" ><i class="material-icons  md-36">person</i></button>
+    <button mat-button *ngIf="loggedIn && isAdmin === false"  id="userMenu" [matMenuTriggerFor]="userProfile" class="profileMenu" ><i class="material-icons  md-36">person</i></button>
     <mat-menu #userProfile="matMenu">
       <button mat-menu-item routerLink="profile">My profile</button>
       <button mat-menu-item routerLink="/">Manage Vehicles</button>
@@ -18,9 +18,9 @@
       <button mat-menu-item (click)="onLogout()">Logout</button>
     </mat-menu>
 
-    <button mat-button *ngIf="loggedIn"  id="adminMenu" [matMenuTriggerFor]="adminMenu" class="adminMenu" ><i class="material-icons  md-36">person</i></button>
+    <button mat-button *ngIf="loggedIn && isAdmin === true"  id="adminMenu" [matMenuTriggerFor]="adminMenu" class="adminMenu" ><i class="material-icons  md-36">person</i></button>
     <mat-menu #adminMenu="matMenu">
-      <button mat-menu-item routerLink="/"></button>
+      <button mat-menu-item routerLink="/">Manage Users</button>
       <button mat-menu-item routerLink="/">Manage Orders</button>
       <button mat-menu-item (click)="onLogout()">Logout</button>
     </mat-menu>
