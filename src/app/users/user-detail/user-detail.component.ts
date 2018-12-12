@@ -51,8 +51,8 @@ export class UserDetailComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this.snackBar.open(message,'OK', {
+    this.snackBar.open(message, 'OK', {
       duration: 1500,
-    })
+    });
   }
 }
