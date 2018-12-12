@@ -1,3 +1,45 @@
-<p>
-  vehicle-add works!
-</p>
+<div fxFill fxLayoutAlign="center center" class="content-area">
+  <mat-card fxFlex="30" fxLayout="column" fxLayoutAlign="space-around center">
+
+      <mat-card-header style="place-content: center">
+        <mat-card-title>Add new vehicle</mat-card-title>
+      </mat-card-header>
+      <div fxLayout="row" fxFill fxLayoutAlign="center">
+        <mat-card-content fxFlex="70">
+        <form [formGroup]="newVehicleForm" class="example-form" fxLayout="column">
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Brand" type="text" formControlName="Brand" required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Type of the vehicle" formControlName="Type"required >
+              <mat-option *ngFor="let vehicle of typeList" [value]="vehicle">
+                {{vehicle}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <label for="boat">Is this vehicle a boat?</label>
+          <mat-checkbox (change)="changeBoatSelection()" id ="boat"></mat-checkbox>
+
+          <mat-form-field class="example-full-width" >
+            <input matInput placeholder="Size of the boat" type="text" formControlName="Size">
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="UniqueID" type="text" formControlName="UniqueID" required>
+          </mat-form-field>
+
+          <mat-checkbox id="internalPlusOption" formControlName="InternalPlus">Vehicle has leather interior</mat-checkbox>
+
+        </form>
+      </mat-card-content>
+      </div>
+
+      <mat-card-actions style=" text-align: center">
+        <button mat-raised-button class="registerSubmit" (click)="save()" color="accent">Save</button>
+      </mat-card-actions>
+
+  </mat-card>
+</div>
