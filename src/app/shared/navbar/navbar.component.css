@@ -5,7 +5,7 @@
 }
 
 .login {
-    margin-right: 20px
+    margin-right: 21px
 }
 
 .navBarButton {
@@ -26,4 +26,11 @@ img {
 
 #userMenu{
   border-radius: 100%;
+}
+#adminMenu{
+  border-radius: 100%;
+}
+
+#firstNameLbl {
+  font-size: 20px;
 }

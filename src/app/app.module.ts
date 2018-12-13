@@ -37,7 +37,6 @@ import { TokenService } from './shared/services/token_service/token.service';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
-
 @NgModule({
   declarations: [
     AppComponent,
