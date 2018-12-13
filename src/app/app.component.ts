@@ -10,7 +10,7 @@ import { LoginService } from './shared/services/login_service/login.service';
 export class AppComponent implements OnInit {
   title = 'CrownClean-FE';
 
-  public constructor(private loginService: LoginService) {}
+  public constructor() {}
 
   ngOnInit() {
     const context = this;
