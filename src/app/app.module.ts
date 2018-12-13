@@ -35,6 +35,8 @@ import { ContactComponent } from './information_pages/contact/contact.component'
 import { LoginService } from './shared/services/login_service/login.service';
 import { TokenService } from './shared/services/token_service/token.service';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,9 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   providers: [
     LoginService,
-    TokenService
+    TokenService,
+    AuthGuard,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
