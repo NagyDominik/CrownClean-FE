@@ -46,12 +46,20 @@ export class TokenService {
 
   }
 
-  getLoginTime(): number {
+  public isTokenExpired(): boolean {
     const token = this.getToken();
-    const jwt = new JwtHelperService();
-    const decoded = jwt.decodeToken(token);
+    if (token) {
+      const jwt = new JwtHelperService();
+      const date = jwt.getTokenExpirationDate(token);
+      console.log(date);
+      if (date === undefined) {
+        return false;
+      }
+      return !(date.valueOf() > new Date().valueOf());
+    } else {
+      return false;
+    }
 
-    return decoded && decoded.loginTime;
   }
 
   private getAdminPrivilages(): boolean {
