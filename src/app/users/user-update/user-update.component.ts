@@ -4,6 +4,7 @@ import { UserService } from 'src/app/shared/services/user_service/user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import {User} from '../../shared/models/User/user';
 import {MatSnackBar} from '@angular/material';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-user-update',
@@ -15,9 +16,12 @@ export class UserUpdateComponent implements OnInit {
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private router: Router,
-              public snackBar: MatSnackBar) { }
+              public snackBar: MatSnackBar,
+              private location: Location) { }
 
-  id: number; 
+  id: number;
+
+
 
   userForm = new FormGroup({
     firstName: new FormControl(''),
@@ -52,13 +56,17 @@ export class UserUpdateComponent implements OnInit {
     );
   }
 
+  back() {
+    this.location.back();
+  }
+
   save()
   {
     const user = this.userForm.value;
     user.id = this.id;
 
     this.userService.updateUser(user).subscribe(() => {
-      this.router.navigateByUrl('/users');
+      this.back();
     },
       error => {
         console.log(error);

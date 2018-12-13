@@ -1,4 +1,4 @@
-<button routerLink="/admin/users">Back</button>
+
 <form [formGroup]="userForm" (ngSubmit)="save()">
     <label>
        First Name: <input type="text" formControlName="firstName">
@@ -26,3 +26,4 @@
     </label>
     <button type="submit">Save</button>
 </form>
+<button mat-button (click)="back()" fxFlexFill>Back</button>

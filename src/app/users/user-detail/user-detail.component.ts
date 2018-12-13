@@ -22,7 +22,7 @@ export class UserDetailComponent implements OnInit {
     this.getUser();
   }
 
-  back() {
+  backToList() {
     this.router.navigateByUrl('admin/users');
   }
 
