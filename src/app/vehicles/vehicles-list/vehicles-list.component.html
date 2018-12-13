@@ -1,9 +1,21 @@
-<button routerLink="/vehicle-add">Add New Vehicle</button>
+<!--<button routerLink="/vehicle-add">Add New Vehicle</button>
 <Ul *ngIf="vehicles">
-  <li *ngFor="let vehicle of vehicles"><a routerLink="/vehicles/{{vehicle.id}}">
-    {{vehicle.id}}, {{vehicle.brand}}  
-    </a>
+  <li  *ngFor="let vehicle of vehicles"><a routerLink="/vehicles/{{vehicle.id}}">
+    {{vehicle.id}}, {{vehicle.brand}}
+  </a>
     <button (click)="delete(vehicle.id)">Delete</button>
   </li>
 </Ul>
 <h4 *ngIf="!vehicles">Loading...</h4>
+-->
+
+<button routerLink="/vehicle-add">Add New Vehicle</button>
+<Ul *ngIf="list">
+  <li  *ngFor="let vehicle of list">
+    {{vehicle.id}}, {{vehicle.brand}}
+
+    <button (click)="delete(vehicle.id)">Delete</button>
+  </li>
+</Ul>
+<h4 *ngIf="!filteredList">Loading...</h4>
+

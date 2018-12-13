@@ -38,6 +38,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -103,6 +104,11 @@ import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
       useClass: JwtInterceptor,
       multi: true
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
