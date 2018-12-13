@@ -33,19 +33,19 @@ const routes: Routes = [
     ], canActivate: [AdminAuthGuard]
   },
 
-  /*{ path: 'orders', component: OrdersListComponent },
-
+/*
   { path: 'users', component: UsersListComponent }
   { path: 'users/:id', component: UserDetailComponent },
   { path: 'user-add', component: UserAddComponent },*/
 
+  { path: 'orders', component: OrdersListComponent },
   { path: 'user-update/:id', component: UserUpdateComponent },
   { path: 'orders/:id', component: OrderDetailComponent },
   { path: 'order-add', component: OrderAddComponent },
   { path: 'vehicles', component: VehiclesListComponent },
   { path: 'vehicles/:id', component: VehicleDetailComponent },
   { path: 'vehicle-add', component: VehicleAddComponent },
-  { path: 'welcome', component: WelcomeComponent },
+  { path: '', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'privacyPolicy', component: PrivacyPolicyComponent },
