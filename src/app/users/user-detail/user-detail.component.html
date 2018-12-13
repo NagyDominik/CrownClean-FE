@@ -1,10 +1,10 @@
 <div fxLayout="column" class="body">
-  
+
   <div fxLayoutAlign="center">
     <H2 fxFlex="30vw">User details</H2>
   </div>
 
-  <div *ngIf="currentUser"   fxLayoutAlign="center">
+  <div *ngIf="currentUser" fxLayoutAlign="center">
     <mat-card class="mat-elevation-z4" fxFlex="30vw" fxLayout="column">
       <mat-card-header>
         <mat-card-title>{{currentUser.firstName}} {{currentUser.lastName}}</mat-card-title>
@@ -37,8 +37,8 @@
           <button mat-raised-button fxFlex="80" color="" routerLink='/user-update/{{currentUser.id}}'>Update</button>
         </div>
         <div fxLayoutAlign="center">
-            <mat-divider></mat-divider>
-          </div>
+          <mat-divider></mat-divider>
+        </div>
         <div fxLayoutAlign="center">
           <button mat-button (click)="back()" fxFlexFill>Back</button>
         </div>
