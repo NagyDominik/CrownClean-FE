@@ -39,9 +39,9 @@ export class RegisterComponent implements OnInit {
       Email: 'john.hohnson@mail.dk',
       Password: 'Password123',
       IsCompany: false,
+      IsAdmin: true,
       Address: 'Address str 1'
     });
-
   }
 
   changeCompanySelection() {
@@ -53,7 +53,6 @@ export class RegisterComponent implements OnInit {
       console.log('User is not a company!');
       this.signUpForm.get('TaxNumber').disable();
     }
-
   }
 
   register() {

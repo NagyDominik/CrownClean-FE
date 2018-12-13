@@ -3,6 +3,7 @@ import { LoginService } from '../services/login_service/login.service';
 import { TokenService } from '../services/token_service/token.service';
 import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,15 +12,18 @@ import { switchMap, take } from 'rxjs/operators';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
 
-  subscription: Subscription;
+  subscriptionIsLoggedIn: Subscription;
+  subscriptionIsAdmin: Subscription;
   loggedIn: boolean;
+  isAdmin: boolean;
   firstName: string;
 
   constructor(private loginService: LoginService,
-              private tokenService: TokenService) { }
+              private tokenService: TokenService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.subscription = this.tokenService.isLoggedIn
+    this.subscriptionIsLoggedIn = this.tokenService.isLoggedIn
       .pipe(
         switchMap(isLoggedIn => {
           this.loggedIn = isLoggedIn;
@@ -28,10 +32,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
       ).subscribe(user => {
           this.firstName = user ? user.firstName : '';
       });
+      this.tokenService.isAdmin.subscribe(admin => {
+        this.isAdmin = admin;
+      });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptionIsLoggedIn.unsubscribe();
   }
 
   onLogout(event) {
@@ -40,7 +47,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
         take(1)
       ).subscribe(() => {
         this.loggedIn = false;
+      this.router.navigateByUrl('welcome');
     });
+    this.router.navigateByUrl('/');
   }
 
 }

@@ -16,9 +16,11 @@ import { VehicleAddComponent } from './vehicles/vehicle-add/vehicle-add.componen
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatRippleModule, MatSidenavModule,
-        MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
-        MatTableModule, MatSortModule} from '@angular/material';
+import {
+  MatButtonModule, MatRippleModule, MatSidenavModule,
+  MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
+  MatTableModule, MatSortModule, MatSelectModule, MatOptionModule
+} from '@angular/material';
 import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule,
         MatFormFieldModule, MatInputModule, MatCheckboxModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
@@ -33,6 +35,8 @@ import { ContactComponent } from './information_pages/contact/contact.component'
 import { LoginService } from './shared/services/login_service/login.service';
 import { TokenService } from './shared/services/token_service/token.service';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './shared/guard/auth.guard';
+import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
 
 @NgModule({
   declarations: [
@@ -84,11 +88,15 @@ import { ProfileComponent } from './profile/profile.component';
     MatInputModule,
     MatToolbarModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatOptionModule,
   ],
   providers: [
     LoginService,
-    TokenService
+    TokenService,
+    AuthGuard,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
