@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
               private tokenService: TokenService) { }
 
   ngOnInit() {
+    this.loginForm.patchValue({
+      Email: 'john@mail.dk',
+      Password: 'Password123'
+    });
     // reset login status
     this.loginService.logout();
   }
@@ -33,7 +37,7 @@ export class LoginComponent implements OnInit {
         success => {
           this.openSnackBar('Successfull login!', 1500);
           if (this.tokenService.isAdmin.getValue()) {
-            this.router.navigateByUrl('admin');
+            this.router.navigateByUrl('admin/orders');
           } else {
             this.router.navigateByUrl('profile');
           }

@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material';
 export class OrdersListComponent implements OnInit {
 
   constructor(private orderService: OrderService, public snackBar: MatSnackBar) { }
-  
+
   orders: Order[];
   count: number;
 
@@ -20,7 +20,7 @@ export class OrdersListComponent implements OnInit {
     this.refresh();
   }
 
-  refresh(){
+  refresh() {
     this.orderService.getOrders().subscribe(listOfOrders => {
       this.orders = listOfOrders.list;
       this.count = listOfOrders.count;
@@ -57,7 +57,7 @@ export class OrdersListComponent implements OnInit {
   }
 
   openSnackBar(message: string) {
-    this.snackBar.open(message,'OK', {
+    this.snackBar.open(message, 'OK', {
       duration: 1500,
     })
   }

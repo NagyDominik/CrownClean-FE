@@ -1,7 +1,7 @@
 <div fxLayout="column" class="content-area">
 
   <div *ngIf="currentUser" fxLayoutAlign="center">
-    <mat-card class="mat-elevation-z3" fxFlex="30vw" fxLayout="column">
+    <mat-card class="mat-elevation-z3" fxFlex="30vw" fxLayout="column" fxLayoutGap="10px">
       <mat-card-header fxLayoutAlign="center">
         <div class="mat-display-1">My Profile</div>
       </mat-card-header>
@@ -34,9 +34,9 @@
             </mat-expansion-panel>
         </div>
       </form>
-      
+      <button mat-raised-button color="primary" (click)="save()">Save Changes</button>
 
-      <button mat-raised-button id="addVehicle" color="accent" routerLink="/vehicle-add">Add New Vehicle</button>
+      <button mat-raised-button color="accent" routerLink="/vehicle-add">Add New Vehicle</button>
     </mat-card>
   </div>
 

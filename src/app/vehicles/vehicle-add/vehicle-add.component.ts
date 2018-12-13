@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service'; import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import { User } from 'src/app/shared/models/User/user';
+import { Location } from '@angular/common';
+import { TokenService } from 'src/app/shared/services/token_service/token.service';
 
 @Component({
   selector: 'app-vehicle-add',
@@ -10,28 +13,38 @@ import { MatSnackBar } from '@angular/material';
 })
 export class VehicleAddComponent implements OnInit {
 
+  currentUser: User;
+
   newVehicleForm = new FormGroup({
     Brand: new FormControl(''),
     UniqueID: new FormControl(''),
     Type: new FormControl(''),
-    Size: new FormControl({value: '', disabled: true}),
+    Size: new FormControl({ value: '', disabled: true }),
     InternalPlus: new FormControl(''),
   });
 
   typeList: string[] =
     ['Small',
-    'Midsize',
-    'Large/Wagon',
-    'MPV',
-    'Boat'];
+      'Midsize',
+      'Large/Wagon',
+      'MPV',
+      'Boat'];
   vehicleIsBoat = false;
 
   constructor(private vehicleService: VehicleService,
-              private snackBar: MatSnackBar,
-              private router: Router) { }
+    private tokenService: TokenService,
+    private snackBar: MatSnackBar,
+    private location: Location,) { }
 
   ngOnInit() {
-
+    this.tokenService.getUserFromToken().subscribe(user => {
+      this.currentUser = user;
+    },
+      error => {
+        console.log(error);
+        this.openSnackBar(error.message, 1500);
+      }
+    );
   }
 
   changeBoatSelection() {
@@ -47,14 +60,15 @@ export class VehicleAddComponent implements OnInit {
   }
   save() {
     const vehicle = this.newVehicleForm.value;
-    this.vehicleService.addVehicle(vehicle).subscribe(success => {
-      this.openSnackBar('Vehicle added!', 1500);
-      this.router.navigateByUrl('/'); // User should be redirected to the previous page
-    }, err => {
+    vehicle.user = this.currentUser;
+      this.vehicleService.addVehicle(vehicle).subscribe(success => {
+        this.openSnackBar('Vehicle added!', 1500);
+        this.location.back(); // User should be redirected to the previous page
+      }, err => {
         console.log(err);
         this.openSnackBar('Failed to add vehicle! ' + err.error, 1500);
       }
-    );
+      );
   }
 
   openSnackBar(message: string, duration: number) {

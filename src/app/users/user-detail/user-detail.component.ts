@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
 export class UserDetailComponent implements OnInit {
 
   constructor(private userService: UserService,
-              private route: ActivatedRoute, private router: Router, public snackBar: MatSnackBar) { }
+              private route: ActivatedRoute, private router: Router, private location: Location, public snackBar: MatSnackBar) { }
 
   currentUser: User;
 
@@ -23,7 +23,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   backToList() {
-    this.router.navigateByUrl('admin/users');
+    this.location.back();
   }
 
   getUser() {

@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material';
 export class OrderDetailComponent implements OnInit {
 
   constructor(private orderService: OrderService,
-    private route: ActivatedRoute, private router: Router, private location: Location, public snackBar: MatSnackBar) { }
+    private route: ActivatedRoute, private location: Location, public snackBar: MatSnackBar) { }
 
   currentOrder: Order;
 
@@ -22,7 +22,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   back() {
-    this.router.navigateByUrl('admin/orders');
+    this.location.back();
   }
 
   getOrder() {
