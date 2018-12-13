@@ -32,15 +32,15 @@ const routes: Routes = [
     ]
   },
 
-  { path: 'orders', component: OrdersListComponent },
-  { path: 'orders/:id', component: OrderDetailComponent },
-  { path: 'order-add', component: OrderAddComponent },
+  /*{ path: 'orders', component: OrdersListComponent },
 
   { path: 'users', component: UsersListComponent },
   { path: 'users/:id', component: UserDetailComponent },
-  { path: 'user-update/:id', component: UserUpdateComponent },
-  { path: 'user-add', component: UserAddComponent },
+  { path: 'user-add', component: UserAddComponent },*/
 
+  { path: 'user-update/:id', component: UserUpdateComponent },
+  { path: 'orders/:id', component: OrderDetailComponent },
+  { path: 'order-add', component: OrderAddComponent },
   { path: 'vehicles', component: VehiclesListComponent },
   { path: 'vehicles/:id', component: VehicleDetailComponent},
   { path: 'vehicle-add', component: VehicleAddComponent},
@@ -52,9 +52,9 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
 
   {path: 'privacyPolicy', component: PrivacyPolicyComponent},
-  
+
   {path: 'services', component: CleaningServicesComponent},
-  
+
   {path: 'about', component: AboutusComponent},
 
   {path: 'contact', component: ContactComponent},

@@ -22,7 +22,7 @@ export class OrderDetailComponent implements OnInit {
   }
 
   back() {
-    this.location.back();
+    this.router.navigateByUrl('admin/orders');
   }
 
   getOrder() {
