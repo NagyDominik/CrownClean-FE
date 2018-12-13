@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatRippleModule, MatSidenavModule,
   MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
-  MatTableModule, MatSortModule, MatSelectModule, MatOptionModule
+  MatTableModule, MatSortModule, MatSelectModule, MatOptionModule, MatSnackBar
 } from '@angular/material';
 import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule,
         MatFormFieldModule, MatInputModule, MatCheckboxModule} from '@angular/material';
@@ -102,7 +102,7 @@ import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
-    }
+    },
   ],
   bootstrap: [AppComponent]
 })

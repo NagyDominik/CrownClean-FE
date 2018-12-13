@@ -12,7 +12,7 @@ export class JwtInterceptor implements HttpInterceptor {
         return next.handle(request)
         .pipe(
             tap((event: HttpEvent<any>) => {
-                if (event instanceof HttpResponse) {
+                if (event instanceof HttpResponse || event instanceof HttpRequest) {
                     console.log(event);
                 }
             }, err => {
