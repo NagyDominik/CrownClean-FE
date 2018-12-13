@@ -36,8 +36,7 @@ export class UserUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.userService.getUserByID(this.id).subscribe(user =>
-    {
+    this.userService.getUserByID(this.id).subscribe(user => {
       this.userForm.patchValue({
         firstName: user.firstName,
         lastName: user.lastName,
@@ -60,8 +59,7 @@ export class UserUpdateComponent implements OnInit {
     this.location.back();
   }
 
-  save()
-  {
+  save() {
     const user = this.userForm.value;
     user.id = this.id;
 
