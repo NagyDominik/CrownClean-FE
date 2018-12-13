@@ -10,12 +10,12 @@
 -->
 
 <button routerLink="/vehicle-add">Add New Vehicle</button>
-<Ul *ngIf="list">
-  <li  *ngFor="let vehicle of list">
+<Ul *ngIf="vehicles">
+  <li  *ngFor="let vehicle of vehicles">
     {{vehicle.id}}, {{vehicle.brand}}
 
     <button (click)="delete(vehicle.id)">Delete</button>
   </li>
 </Ul>
-<h4 *ngIf="!filteredList">Loading...</h4>
+<h4 *ngIf="!vehicles">Loading...</h4>
 
