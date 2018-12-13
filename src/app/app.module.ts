@@ -24,7 +24,7 @@ import {
 import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule,
         MatFormFieldModule, MatInputModule, MatCheckboxModule} from '@angular/material';
 import { AdminComponent } from './admin/admin.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -37,6 +37,7 @@ import { TokenService } from './shared/services/token_service/token.service';
 import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
+import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -96,7 +97,12 @@ import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
     LoginService,
     TokenService,
     AuthGuard,
-    AdminAuthGuard
+    AdminAuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

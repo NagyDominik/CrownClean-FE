@@ -15,9 +15,9 @@ export class UserDetailComponent implements OnInit {
 
   constructor(private userService: UserService,
               private route: ActivatedRoute, private router: Router, public snackBar: MatSnackBar) { }
-  
+
   currentUser: User;
-  
+
   ngOnInit() {
     this.getUser();
   }
@@ -26,15 +26,14 @@ export class UserDetailComponent implements OnInit {
     this.router.navigateByUrl('admin/users');
   }
 
-  getUser()
-  {
+  getUser() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.userService.getUserByID(id).subscribe(user => {
       this.currentUser = user;
       },
-        error => {
-        console.log(error);
-        this.openSnackBar(error.error);
+        err => {
+        console.log(err);
+        this.openSnackBar(err.error);
       }
     );
   }
@@ -43,9 +42,9 @@ export class UserDetailComponent implements OnInit {
     this.userService.approveUser(id).subscribe(message => {
       this.openSnackBar('User has been approved!');
     },
-      error => {
-        console.log(error);
-        this.openSnackBar(error.error);
+        err => {
+        console.log(err);
+        this.openSnackBar(err.error);
       }
     );
   }
