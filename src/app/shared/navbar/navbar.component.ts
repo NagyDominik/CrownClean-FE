@@ -3,9 +3,7 @@ import { LoginService } from '../services/login_service/login.service';
 import { TokenService } from '../services/token_service/token.service';
 import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
-import { throwMatDuplicatedDrawerError } from '@angular/material';
-import { ThrowStmt } from '@angular/compiler';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -51,6 +49,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.loggedIn = false;
       this.router.navigateByUrl('welcome');
     });
+    this.router.navigateByUrl('/');
   }
 
 }

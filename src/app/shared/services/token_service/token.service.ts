@@ -46,6 +46,14 @@ export class TokenService {
 
   }
 
+  getLoginTime(): number {
+    const token = this.getToken();
+    const jwt = new JwtHelperService();
+    const decoded = jwt.decodeToken(token);
+
+    return decoded && decoded.loginTime;
+  }
+
   private getAdminPrivilages(): boolean {
     const token = this.getToken();
     if (token) {
