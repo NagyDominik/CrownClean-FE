@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 import { throwMatDuplicatedDrawerError } from '@angular/material';
 import { ThrowStmt } from '@angular/compiler';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -20,7 +21,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   firstName: string;
 
   constructor(private loginService: LoginService,
-              private tokenService: TokenService) { }
+              private tokenService: TokenService,
+              private router: Router) { }
 
   ngOnInit() {
     this.subscriptionIsLoggedIn = this.tokenService.isLoggedIn
@@ -48,6 +50,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       ).subscribe(() => {
         this.loggedIn = false;
     });
+    this.router.navigateByUrl('/');
   }
 
 }

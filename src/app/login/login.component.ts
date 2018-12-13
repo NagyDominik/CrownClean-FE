@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
 import { LoginService } from '../shared/services/login_service/login.service';
 import { MatSnackBar } from '@angular/material';
+import { TokenService } from '../shared/services/token_service/token.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private router: Router,
               private loginService: LoginService,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar,
+              private tokenService: TokenService) { }
 
   ngOnInit() {
     // reset login status
@@ -30,7 +32,11 @@ export class LoginComponent implements OnInit {
       .subscribe(
         success => {
           this.openSnackBar('Successfull login!');
-          this.router.navigateByUrl('/');
+          if (this.tokenService.isAdmin.getValue()) {
+            this.router.navigateByUrl('admin');
+          } else {
+            this.router.navigateByUrl('profile');
+          }
         },
           error => {
             if (error.status === 400) {
