@@ -13,6 +13,7 @@ export class AdminAuthGuard implements CanActivate {
   constructor(private router: Router, private tokenService: TokenService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): any {
+    if (!this.tokenService.isTokenExpired()) {
     return this.tokenService.getUserFromToken().pipe(
         first(),
             map(user => {
@@ -24,5 +25,9 @@ export class AdminAuthGuard implements CanActivate {
             }
         })
     );
+    } else {
+        this.router.navigateByUrl('/login');
+        return false;
+    }
   }
 }

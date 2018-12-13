@@ -25,11 +25,11 @@ import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
 const routes: Routes = [
   {
     path: 'admin', component: AdminComponent, children: [
-      { path: 'orders', component: OrdersListComponent },
-      { path: 'orders/:id', component: OrderDetailComponent },
-      { path: 'users', component: UsersListComponent },
-      { path: 'users/:id', component: UserDetailComponent },
-      { path: 'user-update/:id', component: UserUpdateComponent },
+      { path: 'orders', component: OrdersListComponent, canActivate: [AdminAuthGuard] },
+      { path: 'orders/:id', component: OrderDetailComponent, canActivate: [AdminAuthGuard] },
+      { path: 'users', component: UsersListComponent, canActivate: [AdminAuthGuard] },
+      { path: 'users/:id', component: UserDetailComponent, canActivate: [AdminAuthGuard] },
+      { path: 'user-update/:id', component: UserUpdateComponent, canActivate: [AdminAuthGuard] },
     ], canActivate: [AdminAuthGuard]
   },
 

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
+import { DISABLED } from '@angular/forms/src/model';
+import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
+import { CustomSnackbar } from 'src/app/shared/snackbar/sncakbar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-add',
@@ -12,7 +16,7 @@ export class VehicleAddComponent implements OnInit {
     Brand: new FormControl(''),
     UniqueID: new FormControl(''),
     Type: new FormControl(''),
-    Size: new FormControl(''),
+    Size: new FormControl({value: '', disabled: true}),
     InternalPlus: new FormControl(''),
   });
 
@@ -24,7 +28,9 @@ export class VehicleAddComponent implements OnInit {
     'Boat'];
   vehicleIsBoat = false;
 
-  constructor() { }
+  constructor(private vehicleService: VehicleService,
+              private snackBar: CustomSnackbar,
+              private router: Router) { }
 
   ngOnInit() {
 
@@ -43,6 +49,14 @@ export class VehicleAddComponent implements OnInit {
   }
   save() {
     const vehicle = this.newVehicleForm.value;
+    this.vehicleService.addVehicle(vehicle).subscribe(success => {
+      this.snackBar.openSnackBar('Vehicle added!', 1500);
+      this.router.navigateByUrl('/'); // User should be redirected to the previous page
+    }, err => {
+        console.log(err);
+        this.snackBar.openSnackBar('Failed to add vehicle! ' + err.error, 1500);
+      }
+    );
   }
 
 }
