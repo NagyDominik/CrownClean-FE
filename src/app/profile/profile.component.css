@@ -1,0 +1,16 @@
+mat-card{
+  margin-top: 30px;
+}
+#exp1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+}
+#exp1, #exp2 {
+  width: 250px;
+}
+
+#exp2
+{
+  margin-bottom: 30px;
+}
