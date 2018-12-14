@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { User } from 'src/app/shared/models/User/user';
 import { Location } from '@angular/common';
 import { TokenService } from 'src/app/shared/services/token_service/token.service';
+import {fakeAsync} from '@angular/core/testing';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { TokenService } from 'src/app/shared/services/token_service/token.servic
   styleUrls: ['./vehicle-add.component.css']
 })
 export class VehicleAddComponent implements OnInit {
-  
+
 
   newVehicleForm = new FormGroup({
     Brand: new FormControl(''),
@@ -31,6 +32,7 @@ export class VehicleAddComponent implements OnInit {
       'Boat'];
   vehicleIsBoat = false;
   currentUser = User;
+  internalPlusDef = false;
 
   constructor(private vehicleService: VehicleService,
     private tokenService: TokenService,
@@ -60,19 +62,17 @@ export class VehicleAddComponent implements OnInit {
 
   }
   save() {
-    if (this.newVehicleForm.get('InternalPlus').value == "") {
-      this.newVehicleForm.patchValue({ InternalPlus: false });
-    }
     const vehicle = this.newVehicleForm.value;
     vehicle.user = this.currentUser;
-    this.vehicleService.addVehicle(vehicle).subscribe(success => {
-      this.openSnackBar('Vehicle added!', 1500);
-      this.location.back(); // User should be redirected to the previous page
-    }, err => {
-      console.log(err);
-      this.openSnackBar('Failed to add vehicle! ' + err.error, 1500);
-    }
-    );
+    vehicle.internalPlus = this.newVehicleForm.get('InternalPlus').value;
+      this.vehicleService.addVehicle(vehicle).subscribe(success => {
+        this.openSnackBar('Vehicle added!', 1500);
+        this.location.back(); // User should be redirected to the previous page
+      }, err => {
+        console.log(err);
+        this.openSnackBar('Failed to add vehicle! ' + err.error, 1500);
+      }
+      );
   }
 
   openSnackBar(message: string, duration: number) {
