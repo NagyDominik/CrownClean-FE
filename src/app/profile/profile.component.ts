@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
           lastname: userById.lastName,
           phone: userById.phoneNumber,
           email: userById.email
-        })
+        });
       },
         error => {
           console.log(error);

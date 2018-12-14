@@ -30,7 +30,7 @@
             <input matInput placeholder="UniqueID" type="text" formControlName="UniqueID" required>
           </mat-form-field>
 
-          <mat-checkbox id="internalPlusOption" formControlName="InternalPlus">Vehicle has leather interior</mat-checkbox>
+          <mat-checkbox [(ngModel)]="internalPlusDef" id="internalPlusOption" formControlName="InternalPlus">Vehicle has leather interior</mat-checkbox>
 
         </form>
       </mat-card-content>
