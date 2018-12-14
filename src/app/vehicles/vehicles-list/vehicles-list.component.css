@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-table, h2 {
+table, h2, mat-paginator {
     min-width: 600px;
 }
 
