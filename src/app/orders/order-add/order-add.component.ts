@@ -42,10 +42,10 @@ export class OrderAddComponent implements OnInit {
     this.cleaningAddress = !this.cleaningAddress;
     if (this.cleaningAddress) {
       console.log('Cleaning At Address!');
-      this.orderForm.get('AtAddress').value;
+      console.log(this.orderForm.get('AtAddress').value);
     } else {
       console.log('Not Cleaning AtAddress');
-      this.orderForm.get('AtAddress').value;
+      console.log(this.orderForm.get('AtAddress').value);
     }
   }
   ngOnInit() {

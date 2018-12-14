@@ -25,8 +25,12 @@ export class OrdersListComponent implements OnInit {
   datasource: Order[];
   pageEvent: PageEvent;
   length: number;
+  itemsPrPage: number;
+  currentPage: number;
 
   ngOnInit() {
+    this.itemsPrPage = 5;
+    this.currentPage = 1;
     this.refresh();
   }
 
@@ -34,27 +38,32 @@ export class OrdersListComponent implements OnInit {
     this.tokenService.isAdmin.subscribe(admin => {
       this.isAdmin = admin;
     });
+    const filter = new OrderFilter();
+    filter.currentPage = this.currentPage;
+    filter.itemsPerPage = this.itemsPrPage;
     if (this.isAdmin) {
-      const filter = new OrderFilter();
-      filter.currentPage = 1;
-      filter.itemsPerPage = 5;
       this.orderService.getFilteredOrders(filter).subscribe(result => {
         this.datasource = result.list;
         this.length = result.count;
       },
         error => {
           console.log(error.message);
-          alert(error.message);
+          this.openSnackBar(error.message);
         }
       );
     } else {
       this.tokenService.getUserFromToken().subscribe(user => {
-        this.userService.getUserByID(user.id).subscribe(userbyid => {
-          this.datasource = userbyid.orders;
-        });
+        filter.userId = user.id;
+        this.orderService.getFilteredOrders(filter).subscribe(result => {
+          this.datasource = result.list;
+          this.length = result.count;
+        }, error => {
+          console.log(error);
+          this.openSnackBar(error.message);
+        }
+        );
       });
     }
-
   }
 
   delete(id: number) {
@@ -85,6 +94,8 @@ export class OrdersListComponent implements OnInit {
     const filter = new OrderFilter();
     filter.currentPage = event.pageIndex + 1;
     filter.itemsPerPage = event.pageSize;
+    this.itemsPrPage = event.pageSize;
+    this.currentPage = event.pageIndex + 1;
     this.orderService.getFilteredOrders(filter).subscribe(result => {
       this.datasource = result.list;
       this.length = result.count;
