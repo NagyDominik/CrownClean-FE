@@ -6,14 +6,14 @@ import { User } from 'src/app/shared/models/User/user';
 import { Location } from '@angular/common';
 import { TokenService } from 'src/app/shared/services/token_service/token.service';
 
+
 @Component({
   selector: 'app-vehicle-add',
   templateUrl: './vehicle-add.component.html',
   styleUrls: ['./vehicle-add.component.css']
 })
 export class VehicleAddComponent implements OnInit {
-
-  currentUser: User;
+  
 
   newVehicleForm = new FormGroup({
     Brand: new FormControl(''),
@@ -30,11 +30,12 @@ export class VehicleAddComponent implements OnInit {
       'MPV',
       'Boat'];
   vehicleIsBoat = false;
+  currentUser = User;
 
   constructor(private vehicleService: VehicleService,
     private tokenService: TokenService,
     private snackBar: MatSnackBar,
-    private location: Location, ) { }
+    private location: Location ) { }
 
   ngOnInit() {
     this.tokenService.getUserFromToken().subscribe(user => {
