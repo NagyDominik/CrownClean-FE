@@ -1,6 +1,6 @@
 import { Vehicle } from './vehicle';
 
 export interface FilteredVehicleList {
-    vehicles: Vehicle[];
+    list: Vehicle[];
     count: number;
 }
