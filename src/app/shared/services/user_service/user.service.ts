@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from '../../models/User/user';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { FilteredUserList } from '../../models/User/FilteredUserList';
+import { FilteredList } from '../../models/FilteredList/FilteredList';
+import { UserFilter } from '../../models/User/UserFilter';
 
 
 @Injectable({
@@ -14,8 +15,15 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(): Observable<FilteredUserList> {
-    return this.http.get<FilteredUserList>(environment.apiURL + 'users');
+  getUsers(): Observable<FilteredList> {
+    return this.http.get<FilteredList>(environment.apiURL + 'users');
+  }
+
+  getFilteredUsers(userFilter: UserFilter): Observable<FilteredList> {
+    const httpParams = new HttpParams()
+    .set('currentPage', userFilter.currentPage.toString())
+    .set('itemsPerPage', userFilter.itemsPerPage.toString());
+    return this.http.get<FilteredList>(environment.apiURL + 'users', {params: httpParams});
   }
 
   getUserByID(id: number): Observable<User> {
