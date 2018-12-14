@@ -3,7 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Vehicle } from '../../models/Vehicle/vehicle';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { FilteredVehicleList } from '../../models/Vehicle/FilteredVehicleList';
+import { FilteredList } from '../../models/FilteredList/FilteredList';
 import { VehicleFilter } from '../../models/Vehicle/VehicleFilter';
 
 @Injectable({
@@ -13,15 +13,15 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
-  getVehicles(): Observable<FilteredVehicleList> {
-    return this.http.get<FilteredVehicleList>(environment.apiURL + 'vehicles');
+  getVehicles(): Observable<FilteredList> {
+    return this.http.get<FilteredList>(environment.apiURL + 'vehicles');
   }
 
-  getFilteredVehicles(vehicleFilter: VehicleFilter): Observable<FilteredVehicleList> {
+  getFilteredVehicles(vehicleFilter: VehicleFilter): Observable<FilteredList> {
     const params = new HttpParams()
     .set('currentPage', vehicleFilter.currentPage.toString())
     .set('itemsPerPage', vehicleFilter.itemsPerPage.toString());
-    return this.http.get<FilteredVehicleList>(environment.apiURL + 'vehicles', {params: params});
+    return this.http.get<FilteredList>(environment.apiURL + 'vehicles', {params: params});
   }
 
   getVehicleByID(id: number): Observable<Vehicle> {
