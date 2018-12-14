@@ -1,4 +1,4 @@
-<div fxFill fxLayoutAlign="center center" class="content-area">
+<div fxFill fxLayoutAlign="center center">
   <mat-card fxFlex="30" fxLayout="column" fxLayoutAlign="space-around center">
 
     <mat-card-header style="place-content: center">
@@ -8,21 +8,31 @@
       <mat-card-content fxFlex="70">
         <form [formGroup]="orderForm" class="example-form" fxLayout="column">
 
-          <mat-form-field class="full-width">
+          <mat-form-field>
             <mat-select placeholder="Vehicle" formControlName="Vehicle" required>
-              <mat-option *ngFor="let vehicle of currentUser.vehicles" [value]="vehicle" >
+              <mat-option *ngFor="let vehicle of currentUser.vehicles" [value]="vehicle">
                 {{vehicle.uniqueID}}&nbsp;-&nbsp;{{vehicle.brand}}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <p>Services comes here</p>
+          <mat-form-field>
+            <mat-select placeholder="Protection" formControlName="Protection" multiple>
+              <mat-option *ngFor="let prot of protectionList" [value]="prot">{{prot}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Cleaning" formControlName="Cleaning" multiple>
+              <mat-option *ngFor="let clean of cleaningList" [value]="clean">{{clean}}</mat-option>
+            </mat-select>
+          </mat-form-field>
 
           <mat-form-field>
             <textarea matInput placeholder="Description" formControlName="Description"></textarea>
           </mat-form-field>
 
-          <mat-checkbox (change)="atAddressChange()" id="cleanAtAddress" formControlName="AtAddress">Do you request to clean your vehicle at your address?</mat-checkbox>
+          <mat-checkbox formControlName="AtAddress">Cleaning at own address</mat-checkbox>
 
         </form>
       </mat-card-content>

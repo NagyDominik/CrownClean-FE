@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/services/user_service/user.service';
 import { User } from 'src/app/shared/models/User/user';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, PageEvent } from '@angular/material';
+import { UserFilter } from 'src/app/shared/models/User/UserFilter';
 
 @Component({
   selector: 'app-users-list',
@@ -12,23 +13,26 @@ export class UsersListComponent implements OnInit {
 
   constructor(private userService: UserService, public snackBar: MatSnackBar) { }
 
-  users: User[];
-  count: number;
+  currentUser: User;
+  datasource: User[];
+  pageEvent: PageEvent;
+  length: number;
 
   ngOnInit() {
     this.refresh();
   }
 
   refresh() {
-    this.userService.getUsers().subscribe(listOfUsers => {
-      this.users = listOfUsers.list;
-      this.count = listOfUsers.count;
-    },
-      error => {
-        console.log(error);
-        alert(error.message);
-      }
-    );
+    const filter = new UserFilter();
+    filter.currentPage = 1;
+    filter.itemsPerPage = 5;
+    this.userService.getFilteredUsers(filter).subscribe(result => {
+      this.datasource = result.list;
+      this.length = result.count;
+    }, err => {
+      console.log(err);
+      this.openSnackBar('Unable to retrieve vehicles: ' + err.error);
+    });
   }
 
   delete(id: number) {
@@ -53,6 +57,19 @@ export class UsersListComponent implements OnInit {
         this.openSnackBar(error.error);
       }
     );
+  }
+
+  getData(event: PageEvent) {
+    const filter = new UserFilter();
+    filter.currentPage = event.pageIndex + 1;
+    filter.itemsPerPage = event.pageSize;
+    this.userService.getFilteredUsers(filter).subscribe(result => {
+      this.datasource = result.list;
+      this.length = result.count;
+    }, err => {
+      console.log(err);
+      this.openSnackBar('Unable to retrieve vehicles: ' + err.error);
+    });
   }
 
   openSnackBar(message: string) {

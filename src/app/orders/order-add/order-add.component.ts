@@ -3,12 +3,13 @@ import { UserService } from '../../shared/services/user_service/user.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { OrderService } from '../../shared/services/order_service/order.service';
-import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
 import { User } from 'src/app/shared/models/User/user';
 import { Vehicle } from 'src/app/shared/models/Vehicle/vehicle';
-import {Location} from '@angular/common';
-import {TokenService} from '../../shared/services/token_service/token.service';
-import {MatSnackBar} from '@angular/material';
+import { Location } from '@angular/common';
+import { TokenService } from '../../shared/services/token_service/token.service';
+import { MatSnackBar } from '@angular/material';
+import { Order } from 'src/app/shared/models/Order/order';
+import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-order-add',
@@ -20,7 +21,6 @@ export class OrderAddComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private userService: UserService,
-    private vehicleService: VehicleService,
     private router: Router,
     private location: Location,
     private tokenService: TokenService,
@@ -29,30 +29,24 @@ export class OrderAddComponent implements OnInit {
 
   orderForm = new FormGroup({
     Vehicle: new FormControl(''),
-    Services: new FormControl(''),
+    Protection: new FormControl(''),
+    Cleaning: new FormControl(''),
     Description: new FormControl(''),
     AtAddress: new FormControl('')
   });
 
-  vehicles: Vehicle[] ;
-  cleaningAddress = false;
+  protectionList: string[] = ['Glass Protection', 'Ceramic Coating', 'Wheel Nano Protection', 'Leather/Textil Protection',
+    'Interior Plastic Coating', 'New Car Protection'];
+  cleaningList: string[] = ['Interior & Exterior Cleaning', 'Interior Cleaning', 'Headlight Waxing',
+    'Waxing', 'Ozone Treatment', 'Engine Cleaning'];
+  vehicles: Vehicle[];
   currentUser: User;
 
-  atAddressChange() {
-    this.cleaningAddress = !this.cleaningAddress;
-    if (this.cleaningAddress) {
-      console.log('Cleaning At Address!');
-      this.orderForm.get('AtAddress').value;
-    } else {
-      console.log('Not Cleaning AtAddress');
-      this.orderForm.get('AtAddress').value;
-    }
-  }
   ngOnInit() {
-    this.tokenService.getUserFromToken().subscribe( userID => this.currentUser = userID);
+    this.tokenService.getUserFromToken().subscribe(userID => this.currentUser = userID);
     this.userService.getUserByID(this.currentUser.id).subscribe(user => {
-     this.currentUser = user;
-     console.log(this.currentUser);
+      this.currentUser = user;
+      console.log(this.currentUser);
     },
       error => {
         console.log(error);
@@ -66,15 +60,31 @@ export class OrderAddComponent implements OnInit {
   }
 
   save() {
-    const order = this.orderForm.value;
+    const order = new Order();
     order.user = this.currentUser;
-    order.vehicle = this.orderForm.get('Vehicle').value;
-    order.atAddress = this.cleaningAddress;
+    order.vehicle = this.orderForm.get('Vehicle').value
+    order.services = "";
+    if (!!this.orderForm.get('Protection').value) {
+      this.orderForm.get('Protection').value.forEach(x => {
+        order.services += x + ', ';
+      });
+    }
+    if (!!this.orderForm.get('Cleaning').value) {
+      this.orderForm.get('Cleaning').value.forEach(x => {
+        order.services += x + ', ';
+      });
+    }
+    
+    if (this.orderForm.get('AtAddress').value == "") {
+      order.atAddress = false;
+    } else {
+      order.atAddress = this.orderForm.get('AtAddress').value;
+    }
+
     this.orderService.addOrder(order).subscribe(() => {
       this.router.navigateByUrl('/orders');
     },
       error => {
-        debugger;
         console.log(error);
         alert(error.error);
       }

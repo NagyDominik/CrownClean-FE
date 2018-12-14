@@ -19,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatRippleModule, MatSidenavModule,
   MatIconModule, MatProgressSpinnerModule, MatCardModule, MatDividerModule,
-  MatTableModule, MatSortModule, MatSelectModule, MatOptionModule, MatSnackBar, MatPaginatorModule
+  MatTableModule, MatSortModule, MatSelectModule, MatOptionModule, MatSnackBar, MatPaginatorModule, MatListModule
 } from '@angular/material';
 import {MatExpansionModule, MatSnackBarModule, MatMenuModule, MatToolbarModule,
         MatFormFieldModule, MatInputModule, MatCheckboxModule} from '@angular/material';
@@ -93,7 +93,8 @@ import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
     FormsModule,
     MatSelectModule,
     MatOptionModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatListModule
   ],
   providers: [
     LoginService,

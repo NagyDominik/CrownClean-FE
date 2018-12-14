@@ -1,9 +1,9 @@
 .info {
-    letter-spacing: 1.5px
+    letter-spacing: 1.5px;
 }
 
 .buttons {
-    text-align: center
+    text-align: center;
 }
 
 table, h2 {
@@ -14,6 +14,6 @@ table, h2 {
     margin: 20px;
 }
 
-.tableContainer {
-    margin-bottom: 1.5vw;
+mat-paginator {
+    margin-bottom: 30px;
 }
