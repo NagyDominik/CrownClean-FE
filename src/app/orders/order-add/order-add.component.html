@@ -1,18 +1,37 @@
-<button routerLink="/admin">Back</button>
-<form [formGroup]="orderForm" (ngSubmit)="save()">
-  <label>
-    Vehicle: <select id="vehicle" formControlName="vehicle">
-      <option *ngFor="let vehicle of vehicles" [ngValue]="vehicle.id">{{vehicle.uniqueID}}</option>
-    </select>
-  </label>
-  <label>a
-    Services: <input type="text" formControlName="services">
-  </label>
-  <label>
-    Description: <input type="text" formControlName="description">
-  </label>
-  <label>
-    Cleaning at address: <input type="checkbox" formControlName="atAddress">
-  </label>
-  <button type="submit">Save</button>
-</form>
+<div fxFill fxLayoutAlign="center center" class="content-area">
+  <mat-card fxFlex="30" fxLayout="column" fxLayoutAlign="space-around center">
+
+    <mat-card-header style="place-content: center">
+      <mat-card-title>Request new order</mat-card-title>
+    </mat-card-header>
+    <div fxLayout="row" fxFill fxLayoutAlign="center">
+      <mat-card-content fxFlex="70">
+        <form [formGroup]="orderForm" class="example-form" fxLayout="column">
+
+          <mat-form-field class="full-width">
+            <mat-select placeholder="Vehicle" formControlName="Vehicle" required>
+              <mat-option *ngFor="let vehicle of currentUser.vehicles" [value]="vehicle" >
+                {{vehicle.uniqueID}}&nbsp;-&nbsp;{{vehicle.brand}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <p>Services comes here</p>
+
+          <mat-form-field>
+            <textarea matInput placeholder="Description" formControlName="Description"></textarea>
+          </mat-form-field>
+
+          <mat-checkbox (change)="atAddressChange()" id="cleanAtAddress" formControlName="AtAddress">Do you request to clean your vehicle at your address?</mat-checkbox>
+
+        </form>
+      </mat-card-content>
+    </div>
+
+    <mat-card-actions style=" text-align: center">
+      <button mat-raised-button class="orderSubmit" (click)="save()" color="accent">Save</button>
+      <button mat-raised-button (click)="back()">Back</button>
+    </mat-card-actions>
+
+  </mat-card>
+</div>

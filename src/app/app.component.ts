@@ -13,12 +13,12 @@ export class AppComponent implements OnInit {
   public constructor() {}
 
   ngOnInit() {
-    const context = this;
+    /*const context = this;
     window.addEventListener('beforeunload', function (e) {
         this.console.log('User closed the window!');
         context.logout();
       }
-    );
+    );*/
   }
 
   logout() {

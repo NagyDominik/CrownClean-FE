@@ -52,6 +52,9 @@
       <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'approved', 'buttons'];"></tr>
     </table>
   </div>
+  <div fxLayoutAlign="center">
+    <button mat-fab color="primary" routerLink="/order-add"><mat-icon>add</mat-icon></button>
+  </div>
 
   <div *ngIf="!orders" fxFlexAlign="center" fxFlexOffset="40vh">
     <mat-spinner color="accent"></mat-spinner>
