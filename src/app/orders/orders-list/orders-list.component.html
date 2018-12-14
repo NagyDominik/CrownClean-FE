@@ -31,6 +31,11 @@
         <td mat-cell *matCellDef="let order"> {{order.orderDate| date:'d MMMM, yyyy'}} </td>
       </ng-container>
 
+      <ng-container matColumnDef="approveDate">
+        <th mat-header-cell *matHeaderCellDef> Approve Date </th>
+        <td mat-cell *matCellDef="let order"> {{order.approveDate| date:'d MMMM, yyyy'}} </td>
+      </ng-container>
+
       <ng-container matColumnDef="approved">
         <th mat-header-cell *matHeaderCellDef> Approved </th>
         <td mat-cell *matCellDef="let order">
@@ -42,14 +47,20 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let order" class="buttons">
           <div fxLayoutGap="1vw" fxLayoutAlign="end">
-            <button mat-raised-button color="primary" (click)="approve(order.id)">Approve</button>
+            <button *ngIf="isAdmin" mat-raised-button color="primary" (click)="approve(order.id)">Approve</button>
             <button mat-raised-button color="warn" (click)="delete(order.id)">Delete</button>
           </div>
         </td>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="['id', 'services', 'orderDate', 'approved', 'buttons'], sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'approved', 'buttons'];"></tr>
+      <div *ngIf="isAdmin">
+        <tr mat-header-row *matHeaderRowDef="['id', 'services', 'orderDate', 'approved', 'buttons'], sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'approved', 'buttons'];"></tr>
+      </div>
+      <div *ngIf="!isAdmin">
+        <tr mat-header-row *matHeaderRowDef="['id', 'services', 'orderDate', 'approveDate', 'approved', 'buttons'], sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['id', 'services', 'orderDate', 'approveDate', 'approved', 'buttons'];"></tr>
+      </div>
     </table>
   </div>
   <div fxLayoutAlign="center">

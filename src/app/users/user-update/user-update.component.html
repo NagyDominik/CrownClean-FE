@@ -1,29 +1,54 @@
+<div fxLayout="column" class="content-area">
 
-<form [formGroup]="userForm" (ngSubmit)="save()">
-    <label>
-       First Name: <input type="text" formControlName="firstName">
-    </label>
-    <label>
-        Last Name: <input type="text" formControlName="lastName">
-    </label>
-    <label>
-        Addresses: <input type="text" formControlName="addresses">
-    </label>
-    <label>
-        Email: <input type="text" formControlName="email">
-    </label>
-    <label>
-        Phone Number: <input type="text" formControlName="phoneNumber">
-    </label>
-    <label>
-      Company: <input type="checkbox" formControlName="isCompany">
-    </label>
-    <label>
-      Admin: <input type="checkbox" formControlName="isAdmin">
-    </label>
-    <label>
-      Approved: <input type="checkbox" formControlName="isApproved">
-    </label>
-    <button type="submit">Save</button>
-</form>
-<button mat-button (click)="back()" fxFlexFill>Back</button>
+  <div *ngIf="currentUser" fxLayoutAlign="center">
+    <mat-card class="mat-elevation-z3" fxFlex="30vw" fxLayout="column" fxLayoutGap="10px">
+      <mat-card-header fxLayoutAlign="center">
+        <div class="mat-display-1">User Update</div>
+      </mat-card-header>
+      <form [formGroup]="userForm" fxLayoutAlign="center">
+        <div fxLayout="column" fxLayoutAlign="center" fxFlex="90%">
+          <div>
+            <div>First Name: </div>
+            <mat-form-field><input matInput formControlName="firstName"></mat-form-field>
+          </div>
+          <div>
+            <div>Last Name: </div>
+            <mat-form-field><input matInput formControlName="lastName"></mat-form-field>
+          </div>
+          <div>
+            <div>Phone Number: </div>
+            <mat-form-field><input matInput formControlName="phoneNumber"></mat-form-field>
+          </div>
+          <div>
+            <div>Email: </div>
+            <mat-form-field><input matInput formControlName="email"></mat-form-field>
+          </div>
+
+          <mat-checkbox formControlName="isAdmin">Admin</mat-checkbox>
+          <mat-checkbox formControlName="isCompany">Company</mat-checkbox>
+          <div>
+            <div>Approved: 
+              <span *ngIf="userUpdate.isApproved"> Yes </span>
+              <span *ngIf="!userUpdate.isApproved"> No </span>
+            </div>
+          </div>
+        </div>
+      </form>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Addresses
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p *ngFor="let addr of userUpdate.addresses">{{addr}}</p>
+      </mat-expansion-panel>
+      <button mat-raised-button color="primary" (click)="approve(userUpdate.id)">Approve</button>
+      <button mat-raised-button color="accent" (click)="save()">Save Changes</button>
+      <button mat-button (click)="back()">Back</button>
+    </mat-card>
+  </div>
+
+  <div *ngIf="!currentUser" fxFlexAlign="center" fxFlexOffset="40vh">
+    <mat-spinner [color]="accent"></mat-spinner>
+  </div>
+</div>
