@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Order } from '../../shared/models/Order/order';
 import { Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material';
+import { TokenService } from 'src/app/shared/services/token_service/token.service';
 
 @Component({
   selector: 'app-order-detail',
@@ -13,11 +14,15 @@ import { MatSnackBar } from '@angular/material';
 export class OrderDetailComponent implements OnInit {
 
   constructor(private orderService: OrderService,
-    private route: ActivatedRoute, private location: Location, public snackBar: MatSnackBar) { }
+    private route: ActivatedRoute, private location: Location, private tokenService: TokenService, public snackBar: MatSnackBar) { }
 
   currentOrder: Order;
-
+  isAdmin: boolean;
+  
   ngOnInit() {
+    this.tokenService.isAdmin.subscribe(admin => {
+      this.isAdmin = admin;
+    });
     this.getOrder();
   }
 

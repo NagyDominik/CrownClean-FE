@@ -4,7 +4,8 @@
     <H2 fxFlex="75vw" class="mat-display-1 title">Vehicles</H2>
   </div>
 
-  <div fxLayoutAlign="center" class="tableContainer">
+  <div fxLayoutAlign=" center" class="tableContainer" fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="center" fxFill>
     <table mat-table [dataSource]="datasource" class="mat-elevation-z5 info" matSort fxFlex="75vw">
 
       <!--- Note that these columns can be defined in any order.
@@ -42,10 +43,12 @@
       <tr mat-header-row *matHeaderRowDef="['uid', 'brand', 'type', 'size', 'buttons'], sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: ['uid', 'brand', 'type', 'size', 'buttons'];"></tr>
     </table>
-    <mat-paginator [length]=length [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = getData($event)">> 
-    </mat-paginator>
-  
   </div>
+  <div fxLayout="row" fxLayoutAlign="center" fxFill>
+    <mat-paginator fxFlex="75vw" [length]=length [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageEvent = getData($event)"></mat-paginator>
+  </div>
+  </div>
+  
   <div fxLayoutAlign="center">
     <button mat-fab color="primary" routerLink="/vehicle-add"><mat-icon>add</mat-icon></button>
   </div>

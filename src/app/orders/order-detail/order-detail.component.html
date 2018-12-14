@@ -23,7 +23,7 @@
       </mat-card-content>
       <mat-card-actions fxLayout="column" fxLayoutGap="1vh" fxLayoutAlign="center">
         <div fxLayoutAlign="center">
-          <button mat-raised-button fxFlex="80" color="accent" (click)="approve(currentOrder.id)">Approve</button>
+          <button *ngIf="isAdmin" mat-raised-button fxFlex="80" color="accent" (click)="approve(currentOrder.id)">Approve</button>
         </div>
         <div fxLayoutAlign="center">
           <mat-divider></mat-divider>
