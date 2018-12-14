@@ -20,7 +20,8 @@ export class OrderService {
   getFilteredOrders(filter: OrderFilter): Observable<FilteredList> {
     const httpParams = new HttpParams()
     .set('currentPage', filter.currentPage.toString())
-    .set('itemsPerPage', filter.itemsPerPage.toString());
+    .set('itemsPerPage', filter.itemsPerPage.toString())
+    .set('UserID', filter.UserID.toString());
     return this.http.get<FilteredList>(environment.apiURL + 'orders', {params: httpParams});
   }
 

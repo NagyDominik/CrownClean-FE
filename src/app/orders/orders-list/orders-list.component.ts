@@ -53,7 +53,8 @@ export class OrdersListComponent implements OnInit {
       );
     } else {
       this.tokenService.getUserFromToken().subscribe(user => {
-        filter.userId = user.id;
+        debugger;
+        filter.UserID = user.id;
         this.orderService.getFilteredOrders(filter).subscribe(result => {
           this.datasource = result.list;
           this.length = result.count;

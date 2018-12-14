@@ -1,5 +1,5 @@
 export class OrderFilter {
     itemsPerPage: number;
     currentPage: number;
-    userId: number;
+    UserID: number = 0;
 }
