@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { OrderService } from '../../shared/services/order_service/order.service';
 import { Order } from '../../shared/models/Order/order';
 import { MatSnackBar } from '@angular/material';
+import { TokenService } from 'src/app/shared/services/token_service/token.service';
+import { UserService } from 'src/app/shared/services/user_service/user.service';
 
 
 @Component({
@@ -11,8 +13,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class OrdersListComponent implements OnInit {
 
-  constructor(private orderService: OrderService, public snackBar: MatSnackBar) { }
+  constructor(private orderService: OrderService, private userService: UserService, private tokenService: TokenService, public snackBar: MatSnackBar) { }
 
+  isAdmin: boolean;
   orders: Order[];
   count: number;
 
@@ -21,15 +24,27 @@ export class OrdersListComponent implements OnInit {
   }
 
   refresh() {
-    this.orderService.getOrders().subscribe(listOfOrders => {
-      this.orders = listOfOrders.list;
-      this.count = listOfOrders.count;
-    },
-      error => {
-        console.log(error.message);
-        alert(error.message);
-      }
-    );
+    this.tokenService.isAdmin.subscribe(admin => {
+      this.isAdmin = admin;
+    });
+    if (this.isAdmin) {
+      this.orderService.getOrders().subscribe(listOfOrders => {
+        this.orders = listOfOrders.list;
+        this.count = listOfOrders.count;
+      },
+        error => {
+          console.log(error.message);
+          alert(error.message);
+        }
+      );
+    } else {
+      this.tokenService.getUserFromToken().subscribe(user => {
+        this.userService.getUserByID(user.id).subscribe(userbyid => {
+          this.orders = userbyid.orders;
+        })
+      })
+    }
+
   }
 
   delete(id: number) {
