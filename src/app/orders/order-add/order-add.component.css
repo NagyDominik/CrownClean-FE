@@ -11,14 +11,17 @@ mat-card-header {
 mat-card-footer {
   margin-bottom: 20px;
 }
-mat-card-actions{
+
+mat-card-actions {
   text-align: center;
 }
-a:link, a:active, a:visited {
+
+a:link,
+a:active,
+a:visited {
   color: coral;
 }
 
 a:hover {
   color: rgb(255, 99, 42);
 }
-

@@ -33,7 +33,7 @@
 
       <ng-container matColumnDef="approveDate">
         <th mat-header-cell *matHeaderCellDef> Approve Date </th>
-        <td mat-cell *matCellDef="let order"> {{order.approveDate| date:'d MMMM, yyyy'}} </td>
+        <td mat-cell *matCellDef="let order"> {{order.approveDate | date:'d MMMM, yyyy'}} </td>
       </ng-container>
 
       <ng-container matColumnDef="approved">
@@ -66,7 +66,7 @@
   <div fxLayout="row" fxLayoutAlign="center" fxFill>
       <mat-paginator fxFlex="75vw" [length]=length [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="itemsPrPage" (page)="pageEvent = getData($event)"></mat-paginator>
   </div>
-  <div fxLayoutAlign="center">
+  <div fxLayoutAlign="center" class="addbtn">
     <button mat-fab color="primary" routerLink="/order-add"><mat-icon>add</mat-icon></button>
   </div>
 
