@@ -34,7 +34,7 @@ export class VehicleAddComponent implements OnInit {
   constructor(private vehicleService: VehicleService,
     private tokenService: TokenService,
     private snackBar: MatSnackBar,
-    private location: Location,) { }
+    private location: Location, ) { }
 
   ngOnInit() {
     this.tokenService.getUserFromToken().subscribe(user => {
@@ -59,16 +59,19 @@ export class VehicleAddComponent implements OnInit {
 
   }
   save() {
+    if (this.newVehicleForm.get('InternalPlus').value == "") {
+      this.newVehicleForm.patchValue({ InternalPlus: false });
+    }
     const vehicle = this.newVehicleForm.value;
     vehicle.user = this.currentUser;
-      this.vehicleService.addVehicle(vehicle).subscribe(success => {
-        this.openSnackBar('Vehicle added!', 1500);
-        this.location.back(); // User should be redirected to the previous page
-      }, err => {
-        console.log(err);
-        this.openSnackBar('Failed to add vehicle! ' + err.error, 1500);
-      }
-      );
+    this.vehicleService.addVehicle(vehicle).subscribe(success => {
+      this.openSnackBar('Vehicle added!', 1500);
+      this.location.back(); // User should be redirected to the previous page
+    }, err => {
+      console.log(err);
+      this.openSnackBar('Failed to add vehicle! ' + err.error, 1500);
+    }
+    );
   }
 
   openSnackBar(message: string, duration: number) {
