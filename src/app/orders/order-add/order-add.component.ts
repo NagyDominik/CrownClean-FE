@@ -6,9 +6,9 @@ import { OrderService } from '../../shared/services/order_service/order.service'
 import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
 import { User } from 'src/app/shared/models/User/user';
 import { Vehicle } from 'src/app/shared/models/Vehicle/vehicle';
-import {Location} from '@angular/common';
-import {TokenService} from '../../shared/services/token_service/token.service';
-import {MatSnackBar} from '@angular/material';
+import { Location } from '@angular/common';
+import { TokenService } from '../../shared/services/token_service/token.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-order-add',
@@ -30,11 +30,17 @@ export class OrderAddComponent implements OnInit {
   orderForm = new FormGroup({
     Vehicle: new FormControl(''),
     Services: new FormControl(''),
+    Protection: new FormControl(''),
+    Cleaning: new FormControl(''),
     Description: new FormControl(''),
     AtAddress: new FormControl('')
   });
 
-  vehicles: Vehicle[] ;
+  protectionList: string[] = ['Glass Protection', 'Ceramic Coating', 'Wheel Nano Protection', 'Leather/Textil Protection',
+  'Interior Plastic Coating', 'New Car Protection'];
+  cleaningList: string[] = ['Interior & Exterior Cleaning', 'Interior Cleaning', 'Headlight Waxing',
+    'Waxing', 'Ozone Treatment', 'Engine Cleaning'];
+  vehicles: Vehicle[];
   cleaningAddress = false;
   currentUser: User;
 
@@ -49,10 +55,10 @@ export class OrderAddComponent implements OnInit {
     }
   }
   ngOnInit() {
-    this.tokenService.getUserFromToken().subscribe( userID => this.currentUser = userID);
+    this.tokenService.getUserFromToken().subscribe(userID => this.currentUser = userID);
     this.userService.getUserByID(this.currentUser.id).subscribe(user => {
-     this.currentUser = user;
-     console.log(this.currentUser);
+      this.currentUser = user;
+      console.log(this.currentUser);
     },
       error => {
         console.log(error);
