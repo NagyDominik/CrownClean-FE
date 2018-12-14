@@ -54,6 +54,8 @@ export class VehiclesListComponent implements OnInit {
     const filter = new VehicleFilter();
     filter.currentPage = 1;
     filter.itemsPerPage = 5;
+    filter.userID = this.currentUser.id;
+
     this.vehicleService.getFilteredVehicles(filter).subscribe(result => {
       this.datasource = result.list;
       this.length = result.count;
@@ -67,6 +69,7 @@ export class VehiclesListComponent implements OnInit {
     const filter = new VehicleFilter();
     filter.currentPage = event.pageIndex + 1;
     filter.itemsPerPage = event.pageSize;
+    filter.userID = this.currentUser.id;
     this.vehicleService.getFilteredVehicles(filter).subscribe(result => {
       this.datasource = result.list;
       this.length = result.count;

@@ -25,13 +25,6 @@ export class OrderService {
     return this.http.get<FilteredList>(environment.apiURL + 'orders', {params: httpParams});
   }
 
-  getOrdersOfACustomer(filter: OrderFilter, id: number): Observable<FilteredList> {
-    const httpParams = new HttpParams()
-    .set('currentPage', filter.currentPage.toString())
-    .set('itemsPerPage', filter.itemsPerPage.toString());
-    return this.http.get<FilteredList>(environment.apiURL + 'orders/' + id, {params: httpParams});
-  }
-
   getOrderByID(id: number): Observable<Order> {
     return this.http.get<Order>(environment.apiURL + 'orders/' + id);
   }

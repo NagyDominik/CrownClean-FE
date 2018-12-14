@@ -3,7 +3,6 @@ import { OrderService } from '../../shared/services/order_service/order.service'
 import { Order } from '../../shared/models/Order/order';
 import { MatSnackBar, PageEvent } from '@angular/material';
 import { TokenService } from 'src/app/shared/services/token_service/token.service';
-import { UserService } from 'src/app/shared/services/user_service/user.service';
 import { User } from 'src/app/shared/models/User/user';
 import { OrderFilter } from 'src/app/shared/models/Order/OrderFilter';
 
@@ -16,7 +15,6 @@ import { OrderFilter } from 'src/app/shared/models/Order/OrderFilter';
 export class OrdersListComponent implements OnInit {
 
   constructor(private orderService: OrderService,
-              private userService: UserService,
               private tokenService: TokenService,
               public snackBar: MatSnackBar) { }
 
@@ -38,6 +36,7 @@ export class OrdersListComponent implements OnInit {
     this.tokenService.isAdmin.subscribe(admin => {
       this.isAdmin = admin;
     });
+    
     const filter = new OrderFilter();
     filter.currentPage = this.currentPage;
     filter.itemsPerPage = this.itemsPrPage;
@@ -53,7 +52,7 @@ export class OrdersListComponent implements OnInit {
       );
     } else {
       this.tokenService.getUserFromToken().subscribe(user => {
-        debugger;
+        this.currentUser = user;
         filter.UserID = user.id;
         this.orderService.getFilteredOrders(filter).subscribe(result => {
           this.datasource = result.list;
@@ -93,8 +92,11 @@ export class OrdersListComponent implements OnInit {
 
   getData(event: PageEvent) {
     const filter = new OrderFilter();
+    
     filter.currentPage = event.pageIndex + 1;
     filter.itemsPerPage = event.pageSize;
+    filter.UserID = this.currentUser.id;
+
     this.itemsPrPage = event.pageSize;
     this.currentPage = event.pageIndex + 1;
     this.orderService.getFilteredOrders(filter).subscribe(result => {

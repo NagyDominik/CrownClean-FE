@@ -20,7 +20,8 @@ export class VehicleService {
   getFilteredVehicles(vehicleFilter: VehicleFilter): Observable<FilteredList> {
     const params = new HttpParams()
     .set('currentPage', vehicleFilter.currentPage.toString())
-    .set('itemsPerPage', vehicleFilter.itemsPerPage.toString());
+    .set('itemsPerPage', vehicleFilter.itemsPerPage.toString())
+    .set('userID', vehicleFilter.userID.toString());
     return this.http.get<FilteredList>(environment.apiURL + 'vehicles', {params: params});
   }
 
