@@ -32,7 +32,7 @@ export class VehicleAddComponent implements OnInit {
       'Boat'];
   vehicleIsBoat = false;
   currentUser = User;
-  internalPlusDef = false;
+  internalDef = false;
 
   constructor(private vehicleService: VehicleService,
     private tokenService: TokenService,
