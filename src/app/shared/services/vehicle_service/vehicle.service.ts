@@ -30,6 +30,6 @@ export class VehicleService {
   }
 
   deleteVehicle(id: number): Observable<any> {
-    return this.http.delete(environment.apiURL + 'vehicles/' + id);
+    return this.http.delete(environment.apiURL + 'vehicles/' + id, {responseType: 'text'});
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';
 import { Vehicle } from 'src/app/shared/models/Vehicle/vehicle';
-import {MatSnackBar} from '@angular/material';
-import {UserService} from '../../shared/services/user_service/user.service';
-import {ActivatedRoute, Router} from '@angular/router';
+import { MatSnackBar } from '@angular/material';
+import { UserService } from '../../shared/services/user_service/user.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/shared/models/User/user';
 import { TokenService } from 'src/app/shared/services/token_service/token.service';
 
@@ -15,17 +15,15 @@ import { TokenService } from 'src/app/shared/services/token_service/token.servic
 export class VehiclesListComponent implements OnInit {
 
   constructor(private vehicleService: VehicleService,
-              public snackBar: MatSnackBar,
-              private userService: UserService,
-              private route: ActivatedRoute,
-              private router: Router,
-              private tokenService: TokenService
-              ) { }
+    public snackBar: MatSnackBar,
+    private userService: UserService,
+    private router: Router,
+    private tokenService: TokenService
+  ) { }
 
-currentUser: User;
-vehicles: Vehicle[];
-count: number;
-
+  currentUser: User;
+  vehicles: Vehicle[];
+  count: number;
 
   ngOnInit() {
     this.tokenService.getUserFromToken().subscribe(user => {
@@ -64,8 +62,8 @@ count: number;
   refresh() {
     const id = this.currentUser.id;
     this.userService.getUserByID(id).subscribe(user => {
-       this.vehicles = user.vehicles;
-      },
+      this.vehicles = user.vehicles;
+    },
       err => {
         console.log(err);
         this.openSnackBar(err.error);

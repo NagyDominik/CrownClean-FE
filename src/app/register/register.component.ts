@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       FirstName: 'John',
       LastName: 'Johnson',
       PhoneNumber: '+45552521130',
-      Email: 'john.hohnson@mail.dk',
+      Email: 'john.johnson@mail.dk',
       Password: 'Password123',
       IsCompany: false,
       IsAdmin: true,

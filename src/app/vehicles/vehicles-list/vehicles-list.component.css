@@ -1,0 +1,19 @@
+.info {
+    letter-spacing: 1.5px;
+}
+
+.buttons {
+    text-align: center;
+}
+
+table, h2 {
+    min-width: 600px;
+}
+
+.title {
+    margin: 20px;
+}
+
+.tableContainer {
+    margin-bottom: 1.5vw;
+}

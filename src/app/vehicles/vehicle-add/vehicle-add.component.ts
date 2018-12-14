@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';import { Router } from '@angular/router';
+import { FormControl, FormGroup } from '@angular/forms';
+import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service'; import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
-import {UserService} from '../../shared/services/user_service/user.service';
-import {TokenService} from '../../shared/services/token_service/token.service';
-import {User} from '../../shared/models/User/user';
+import { User } from 'src/app/shared/models/User/user';
+import { Location } from '@angular/common';
+import { TokenService } from 'src/app/shared/services/token_service/token.service';
+
 
 @Component({
   selector: 'app-vehicle-add',
@@ -12,44 +13,37 @@ import {User} from '../../shared/models/User/user';
   styleUrls: ['./vehicle-add.component.css']
 })
 export class VehicleAddComponent implements OnInit {
+  
 
   newVehicleForm = new FormGroup({
     Brand: new FormControl(''),
     UniqueID: new FormControl(''),
     Type: new FormControl(''),
-    Size: new FormControl({value: '', disabled: true}),
+    Size: new FormControl({ value: '', disabled: true }),
     InternalPlus: new FormControl(''),
   });
 
   typeList: string[] =
     ['Small',
-    'Midsize',
-    'Large/Wagon',
-    'MPV',
-    'Boat'];
+      'Midsize',
+      'Large/Wagon',
+      'MPV',
+      'Boat'];
   vehicleIsBoat = false;
   currentUser = User;
 
   constructor(private vehicleService: VehicleService,
-              private snackBar: MatSnackBar,
-              private router: Router,
-              private userService: UserService,
-              private tokenService: TokenService) { }
+    private tokenService: TokenService,
+    private snackBar: MatSnackBar,
+    private location: Location ) { }
 
   ngOnInit() {
     this.tokenService.getUserFromToken().subscribe(user => {
-        this.userService.getUserByID(user.id).subscribe(userById => {
-            this.currentUser.prototype = userById;
-          },
-          error => {
-            console.log(error);
-            this.openSnackBar('failed1', 1500);
-          }
-        );
-      },
+      this.currentUser = user;
+    },
       error => {
         console.log(error);
-        this.openSnackBar('failed2', 1500 );
+        this.openSnackBar(error.message, 1500);
       }
     );
   }
@@ -67,16 +61,15 @@ export class VehicleAddComponent implements OnInit {
   }
   save() {
     const vehicle = this.newVehicleForm.value;
-    const user = this.currentUser.prototype;
-    vehicle.User = user;
-    this.vehicleService.addVehicle(vehicle).subscribe(success => {
-      this.openSnackBar('Vehicle added!', 1500);
-      this.router.navigateByUrl('/'); // User should be redirected to the previous page
-    }, err => {
+    vehicle.user = this.currentUser;
+      this.vehicleService.addVehicle(vehicle).subscribe(success => {
+        this.openSnackBar('Vehicle added!', 1500);
+        this.location.back(); // User should be redirected to the previous page
+      }, err => {
         console.log(err);
         this.openSnackBar('Failed to add vehicle! ' + err.error, 1500);
       }
-    );
+      );
   }
 
   openSnackBar(message: string, duration: number) {
