@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import { VehicleService } from 'src/app/shared/services/vehicle_service/vehicle.service';import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
+import {UserService} from '../../shared/services/user_service/user.service';
+import {TokenService} from '../../shared/services/token_service/token.service';
+import {User} from '../../shared/models/User/user';
 
 @Component({
   selector: 'app-vehicle-add',
@@ -25,13 +28,30 @@ export class VehicleAddComponent implements OnInit {
     'MPV',
     'Boat'];
   vehicleIsBoat = false;
+  currentUser = User;
 
   constructor(private vehicleService: VehicleService,
               private snackBar: MatSnackBar,
-              private router: Router) { }
+              private router: Router,
+              private userService: UserService,
+              private tokenService: TokenService) { }
 
   ngOnInit() {
-
+    this.tokenService.getUserFromToken().subscribe(user => {
+        this.userService.getUserByID(user.id).subscribe(userById => {
+            this.currentUser.prototype = userById;
+          },
+          error => {
+            console.log(error);
+            this.openSnackBar('failed1', 1500);
+          }
+        );
+      },
+      error => {
+        console.log(error);
+        this.openSnackBar('failed2', 1500 );
+      }
+    );
   }
 
   changeBoatSelection() {
@@ -47,6 +67,8 @@ export class VehicleAddComponent implements OnInit {
   }
   save() {
     const vehicle = this.newVehicleForm.value;
+    const user = this.currentUser.prototype;
+    vehicle.User = user;
     this.vehicleService.addVehicle(vehicle).subscribe(success => {
       this.openSnackBar('Vehicle added!', 1500);
       this.router.navigateByUrl('/'); // User should be redirected to the previous page
