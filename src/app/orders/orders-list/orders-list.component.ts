@@ -95,7 +95,9 @@ export class OrdersListComponent implements OnInit {
     
     filter.currentPage = event.pageIndex + 1;
     filter.itemsPerPage = event.pageSize;
-    filter.UserID = this.currentUser.id;
+    if (this.currentUser) {
+      filter.UserID = this.currentUser.id;
+    }
 
     this.itemsPrPage = event.pageSize;
     this.currentPage = event.pageIndex + 1;
