@@ -3,7 +3,6 @@ import { OrderService } from '../../shared/services/order_service/order.service'
 import { Order } from '../../shared/models/Order/order';
 import { MatSnackBar, PageEvent } from '@angular/material';
 import { TokenService } from 'src/app/shared/services/token_service/token.service';
-import { UserService } from 'src/app/shared/services/user_service/user.service';
 import { User } from 'src/app/shared/models/User/user';
 import { OrderFilter } from 'src/app/shared/models/Order/OrderFilter';
 
@@ -97,7 +96,9 @@ export class OrdersListComponent implements OnInit {
     
     filter.currentPage = event.pageIndex + 1;
     filter.itemsPerPage = event.pageSize;
-    filter.UserID = this.currentUser.id;
+    if (this.currentUser) {
+      filter.UserID = this.currentUser.id;
+    }
 
     this.itemsPrPage = event.pageSize;
     this.currentPage = event.pageIndex + 1;
