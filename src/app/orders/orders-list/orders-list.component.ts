@@ -36,11 +36,11 @@ export class OrdersListComponent implements OnInit {
     this.tokenService.isAdmin.subscribe(admin => {
       this.isAdmin = admin;
     });
-    
+
     const filter = new OrderFilter();
     filter.currentPage = this.currentPage;
     filter.itemsPerPage = this.itemsPrPage;
-    
+
     if (this.isAdmin) {
       this.orderService.getFilteredOrders(filter).subscribe(result => {
         this.datasource = result.list;
@@ -93,7 +93,7 @@ export class OrdersListComponent implements OnInit {
 
   getData(event: PageEvent) {
     const filter = new OrderFilter();
-    
+
     filter.currentPage = event.pageIndex + 1;
     filter.itemsPerPage = event.pageSize;
     if (this.currentUser) {
