@@ -54,7 +54,9 @@ export class VehiclesListComponent implements OnInit {
     const filter = new VehicleFilter();
     filter.currentPage = 1;
     filter.itemsPerPage = 5;
-    filter.userID = this.currentUser.id;
+    if (this.currentUser) {
+      filter.userID = this.currentUser.id;
+    }
 
     this.vehicleService.getFilteredVehicles(filter).subscribe(result => {
       this.datasource = result.list;

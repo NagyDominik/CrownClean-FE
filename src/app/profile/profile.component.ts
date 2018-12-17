@@ -50,12 +50,14 @@ export class ProfileComponent implements OnInit {
   }
 
   save() {
-    const phone = this.profileForm.get("phone").value;
-    const email = this.profileForm.get("email").value;
-    if (phone != this.currentUser.phoneNumber)
+    const phone = this.profileForm.get('phone').value;
+    const email = this.profileForm.get('email').value;
+    if (phone !== this.currentUser.phoneNumber) {
       this.currentUser.phoneNumber = phone;
-    if (email != this.currentUser.email)
+    }
+    if (email !== this.currentUser.email) {
       this.currentUser.email = email;
+    }
     this.userService.updateUser(this.currentUser).subscribe(() => {
       this.openSnackBar('Update Succesful!');
     },

@@ -22,6 +22,10 @@ export class JwtInterceptor implements HttpInterceptor {
                         console.log('Unauthorized');
                         this.router.navigateByUrl('login');
                     }
+                    if (err.status === 403) {
+                        console.log('Forbidden');
+                        this.router.navigateByUrl('login');
+                    }
                 }
             })
         );
