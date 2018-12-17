@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UsersListComponent } from './users/users-list/users-list.component';
 import { UserDetailComponent } from './users/user-detail/user-detail.component';
-
 import { UserUpdateComponent } from './users/user-update/user-update.component';
-import { UserAddComponent } from './users/user-add/user-add.component';
 import { AdminComponent } from './admin/admin.component';
 import { VehiclesListComponent } from './vehicles/vehicles-list/vehicles-list.component';
 import { OrdersListComponent } from './orders/orders-list/orders-list.component';
@@ -21,6 +19,7 @@ import { ContactComponent } from './information_pages/contact/contact.component'
 import { VehicleAddComponent} from './vehicles/vehicle-add/vehicle-add.component';
 import { ProfileComponent} from './profile/profile.component';
 import { AdminAuthGuard } from './shared/guard/adminAuth.guard';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
   {
@@ -32,19 +31,13 @@ const routes: Routes = [
       { path: 'user-update/:id', component: UserUpdateComponent, canActivate: [AdminAuthGuard] },
     ], canActivate: [AdminAuthGuard]
   },
-
-/*
-  { path: 'users', component: UsersListComponent }
-  { path: 'users/:id', component: UserDetailComponent },
-  { path: 'user-add', component: UserAddComponent },*/
-
-  { path: 'orders', component: OrdersListComponent },
-  { path: 'user-update/:id', component: UserUpdateComponent },
-  { path: 'orders/:id', component: OrderDetailComponent },
-  { path: 'order-add', component: OrderAddComponent },
-  { path: 'vehicles', component: VehiclesListComponent },
-  { path: 'vehicles/:id', component: VehicleDetailComponent },
-  { path: 'vehicle-add', component: VehicleAddComponent },
+  { path: 'orders', component: OrdersListComponent, canActivate: [AuthGuard]},
+  { path: 'user-update/:id', component: UserUpdateComponent, canActivate: [AuthGuard] },
+  { path: 'orders/:id', component: OrderDetailComponent, canActivate: [AuthGuard]},
+  { path: 'order-add', component: OrderAddComponent, canActivate: [AuthGuard] },
+  { path: 'vehicles', component: VehiclesListComponent, canActivate: [AuthGuard] },
+  { path: 'vehicles/:id', component: VehicleDetailComponent, canActivate: [AuthGuard] },
+  { path: 'vehicle-add', component: VehicleAddComponent, canActivate: [AuthGuard] },
   { path: '', component: WelcomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -52,7 +45,8 @@ const routes: Routes = [
   { path: 'services', component: CleaningServicesComponent },
   { path: 'about', component: AboutusComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  { path: '**', redirectTo: ''}
 ];
 
 @NgModule({
