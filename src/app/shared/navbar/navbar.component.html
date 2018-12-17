@@ -5,7 +5,7 @@
   <div fxLayoutGap="20px" fxFlex="60vw" fxLayoutAlign="end">
     <button mat-button class="navBarButton" routerLink="services">Services</button>
     <button mat-button class="navBarButton" routerLink="about">About us</button>
-    <button mat-button class="navBarButton" routerLink="contact">Contact</button>
+    <button mat-button class="navBarButton" (click)="openSnackBar('The page is currently unavailable!')">Contact</button>
   </div>
   <div fxLayoutAlign="end" fxFlex="25vw">
     <label class="mat-body-strong" fxLayoutAlign="center center" id="firstNameLbl">{{firstName}}</label>

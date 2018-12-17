@@ -4,6 +4,7 @@ import { TokenService } from '../services/token_service/token.service';
 import { Subscription } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-navbar',
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   constructor(private loginService: LoginService,
               private tokenService: TokenService,
+              public snackBar: MatSnackBar,
               private router: Router) { }
 
   ngOnInit() {
@@ -50,6 +52,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.router.navigateByUrl('welcome');
     });
     this.router.navigateByUrl('/');
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, 'OK', {
+      duration: 1500,
+    });
   }
 
 }
