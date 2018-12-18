@@ -60,16 +60,14 @@ export class RegisterComponent implements OnInit {
     user.IsCompany = this.signUpForm.get('IsCompany').value;
     this.loginService.register(user).subscribe(response => {
       if (response) {
-        console.log('Successfull registration');
         this.openSnackBar('Successfull registration', 1500);
         this.router.navigateByUrl('/');
       } else {
-        console.log('Registration failed');
         this.openSnackBar('Registration failed', 1500);
 
       }},
       error => {
-        alert(error.message);
+        this.openSnackBar(error.message, 1500);
         console.log(error);
       }
     );
