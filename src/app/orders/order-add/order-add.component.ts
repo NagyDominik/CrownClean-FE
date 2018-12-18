@@ -75,7 +75,7 @@ export class OrderAddComponent implements OnInit {
       });
     }
     
-    if (this.orderForm.get('AtAddress').value == "") {
+    if (this.orderForm.get('AtAddress').value === "") {
       order.atAddress = false;
     } else {
       order.atAddress = this.orderForm.get('AtAddress').value;
