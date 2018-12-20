@@ -64,7 +64,7 @@
     </table>
   </div>
   <div fxLayout="row" fxLayoutAlign="center" fxFill>
-      <mat-paginator fxFlex="75vw" [length]=length [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="itemsPrPage" (page)="pageEvent = getData($event)"></mat-paginator>
+      <mat-paginator fxFlex="75vw" [length]=length [pageSizeOptions]="[5, 10, 25, 100]" [pageSize]="itemsPrPage" (page)="getData($event)"></mat-paginator>
   </div>
   <div *ngIf="!isAdmin" fxLayoutAlign="center" class="addbtn">
     <button mat-fab color="primary" routerLink="/order-add"><mat-icon>add</mat-icon></button>
