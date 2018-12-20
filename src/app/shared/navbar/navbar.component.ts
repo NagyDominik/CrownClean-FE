@@ -43,7 +43,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscriptionIsLoggedIn.unsubscribe();
   }
 
-  onLogout(event) {
+  onLogout() {
     this.loginService.logout()
       .pipe(
         take(1)
