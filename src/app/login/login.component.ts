@@ -23,11 +23,7 @@ export class LoginComponent implements OnInit {
               private tokenService: TokenService) { }
 
   ngOnInit() {
-    this.loginForm.patchValue({
-      Email: 'john@mail.dk',
-      Password: 'Password123'
-    });
-    // reset login status
+  // reset login status
     this.loginService.logout();
   }
 
