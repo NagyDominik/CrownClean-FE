@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://crowncleanwebapp.azurewebsites.net/api/'
+  apiURL: 'https://crownclean.azurewebsites.net/api/'
 };
 
 /*
